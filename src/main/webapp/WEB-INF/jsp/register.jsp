@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Utimes Register Page</title>
-  <script src="../js/jquery-1.9.1.js"></script>
+  <script src="/js/jquery-1.9.1.js"></script>
   <script src="../js/jquery-ui.js"></script>
   <link rel="stylesheet" href="../css/jquery.ui.all.css" />
   <link rel="stylesheet" href="../css/utimes.css" />

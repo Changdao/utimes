@@ -1,5 +1,4 @@
 package com.utimes.study.service;
-import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class RegisterServiceImpl implements RegisterService
