@@ -5,15 +5,7 @@
 
     <!-- this bean with the well known name generates view names for us -->
     <bean id="viewNameTranslator" class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator"/>
-    <!-- <bean id="datasource"
-    		class="org.apache.commons.dbcp.BasicDataSource">
-     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-     <property name="url" value="jdbc:mysql://localhost/test"/>
-     <property name="username" value="utimes"/>
-     <property name="password" value="password"/>
-     <property name="initialSize" value="5"/>
-     <property name="maxActive" value="10"/>
-     </bean> -->
+    
     <bean name="/register.htm" class="com.utimes.study.web.RegisterController">
     <property name="registerService" ref="registerService"/>
     </bean> 

@@ -6,10 +6,10 @@
 <head>
   <meta charset="utf-8" />
   <title>Utimes Register Page</title>
-  <script src="/js/jquery-1.9.1.js"></script>
-  <script src="../js/jquery-ui.js"></script>
-  <link rel="stylesheet" href="../css/jquery.ui.all.css" />
-  <link rel="stylesheet" href="../css/utimes.css" />
+  <script src="/utimes/js/jquery-1.9.1.js"></script>
+  <script src="/utimes/js/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/utimes/css/jquery.ui.all.css" />
+  <link rel="stylesheet" href="/utimes/css/utimes.css" />
   <style>
 .ui-resizable-se {
 		bottom: 17px;
@@ -21,7 +21,7 @@
 			handles: "se"
 		});
     $("input[type=submit], input[type=reset]").button().click(function(event){
-				event.preventDefault();
+				/*event.preventDefault();*/
 				});
   });
   </script>
@@ -36,18 +36,24 @@
 <div id="form-container">	<!-- The form container -->
 
 
-<form id="contact-form" name="contact-form" method="post" action="register.">	<!-- The form, sent to submit.php -->
+<form id="contact-form" name="contact-form" method="post" action="register.htm">	<!-- The form, sent to submit.php -->
 
 <table width="40%" border="0" cellspacing="0" cellpadding="5">
 
 <tr>
-<td width="18%"><label for="name">姓名</label></td>	<!-- Text label for the input field -->
-<td width="45%"><input type="text" class="validate[required,custom[onlyLetter]]" name="name" id="name" value="" /></td>
+<td width="18%"><label for="name">姓</label></td>	<!-- Text label for the input field -->
+<td width="45%"><input type="text" class="validate[required,custom[onlyLetter]]" name="lastname" id="lastname" value="" /></td>
 <!-- We are using session to prevent losing data between page redirects -->
 
 <td width="37%" id="errOffset">&nbsp;</td>
 </tr>
+<tr>
+<td width="18%"><label for="name">名</label></td>	<!-- Text label for the input field -->
+<td width="45%"><input type="text" class="validate[required,custom[onlyLetter]]" name="firstname" id="firstname" value="" /></td>
+<!-- We are using session to prevent losing data between page redirects -->
 
+<td width="37%" id="errOffset">&nbsp;</td>
+</tr>
 <tr>
 <td><label for="email">Email</label></td>
 <td><input type="text" class="validate[required,custom[email]]" name="email" id="email" value="" /></td>
@@ -71,7 +77,7 @@
 
 <tr>
 <td valign="top"><label for="message">说明</label></td>
-<td><textarea name="message" id="resizable" class="validate[required]" cols="35" rows="5"></textarea></td>
+<td><textarea name="memo" id="resizable" class="validate[required]" cols="35" rows="5"></textarea></td>
 <td valign="top">&nbsp;</td>
 </tr>
 

@@ -15,3 +15,10 @@ Projects todo:<br>
 8. construct the scholl mantainence page<br>
 9. construct the request browser/query page
 
+10.change the user ben constructing method, use more native Spring method to build the UserBean.
+11.Use AJAX method to register.
+12.Redirect the registered success page to the "My Utimes" Page.
+13.Add Registers list
+14.Add search user function.
+15.Paginate it.
+
