@@ -8,6 +8,8 @@
     
     <bean name="/register.htm" class="com.utimes.study.web.RegisterController">
     <property name="registerService" ref="registerService"/>
+    <property name="formView" value="register"/>
+    <property name="successView" value="registered"/>
     </bean> 
     <!-- maps request URLs to Controller names -->
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
@@ -16,5 +18,14 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+		<map>
+			<entry key="com.utimes.study.bean.EmailAddress">
+				<bean id="emailEditor" class="com.utimes.study.bean.EmailAddressEditor"></bean>
+			</entry>
+		</map>
+		</property>
+		
+	</bean>
 </beans>

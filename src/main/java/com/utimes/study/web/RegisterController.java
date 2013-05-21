@@ -1,20 +1,53 @@
 package com.utimes.study.web;
 
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractController;
+
+import org.springframework.web.servlet.mvc.SimpleFormController;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.validation.BindException;
 import java.util.*;
 
 import com.utimes.study.bean.EmailAddress;
 import com.utimes.study.bean.UserBean;
 import com.utimes.study.service.RegisterService;
 
-public class RegisterController extends AbstractController {
+public class RegisterController extends SimpleFormController {
 	public RegisterController() {
+		setCommandClass(UserBean.class);
+		setCommandName("user");
+	}
+	
+	private static final String[] ALL_INTERESTS={
+		"Study abroad","Study tour","Imigration","Travel"
+	};
+	
+	protected ModelAndView onSubmit(Object command, BindException be)
+	{
+		System.out.println("-->onSubmit was called:"+command);
+		UserBean user=(UserBean)command;
+		registerService.register(user);
+		return new ModelAndView(getSuccessView());
+	}
+	
+	protected Object formBackingObject(HttpServletRequest request)throws Exception
+	{
+		System.out.println("-->formBackingObject was callled");
+		UserBean user=(UserBean)super.formBackingObject(request);
+		return user;
+	}
+	
+	protected Map<String, String[]> referenceData(HttpServletRequest request)throws Exception
+	{
+		System.out.println("-->referenceData was called.");
+		Map<String, String[]> referenceData = new HashMap<String, String[]>();
+		referenceData.put("interests", ALL_INTERESTS);
+		return referenceData;
 	}
 
-	protected ModelAndView handleRequestInternal(HttpServletRequest request,
+	/*protected ModelAndView handleRequestInternal(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		if ("POST".equalsIgnoreCase(request.getMethod())) {
 			UserBean user=new UserBean();
@@ -32,7 +65,9 @@ public class RegisterController extends AbstractController {
 
 			return new ModelAndView("register", "registers", registers);
 		}
-	}
+	}*/
+	
+	
 
 	private RegisterService registerService;
 
