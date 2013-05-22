@@ -6,7 +6,7 @@ public class UserBean {
 	private EmailAddress email;
 	private String interest;
 	private String description;
-	
+	private String userId;
 	
 	public String getDescription() {
 		return description;
@@ -49,7 +49,12 @@ public class UserBean {
 	public void setInterest(String interest) {
 		this.interest = interest;
 	}
-	
-	
+	public void setUserId(String string) {
+		this.userId=string;		
+	}
+	public String getUserId() {
+		return userId;
+	}
+		
 	
 }

@@ -7,12 +7,16 @@
     <bean id="viewNameTranslator" class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator"/>
     
     <bean name="/register.htm" class="com.utimes.study.web.RegisterController">
-    <property name="registerService" ref="registerService"/>
-    <property name="formView" value="register"/>
-    <property name="successView" value="registered"/>
+	    <property name="registerService" ref="registerService"/>
+	    <property name="formView" value="register"/>
+	    <property name="successView" value="registered"/>
     </bean> 
+    <bean name="/admin/all.htm" class="com.utimes.study.web.admin.RegisterController">
+    	<property name="registerService" ref="registerService"/>
+    	<property name="countPerPage" value="30"/>
+    </bean>
     <!-- maps request URLs to Controller names -->
-    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    <!-- bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/ -->
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>

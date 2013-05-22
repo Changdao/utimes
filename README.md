@@ -15,6 +15,9 @@ Project Questions
  
 =======
 Projects todo:<br>
+*: completed
+C: Canceled
+
 *1. prepare the enrionment to get an overview.<br>
 *2. prepare git, eclipse, jQuery, spring to make them work.<br>
 *3. install mysql.<br>
@@ -26,7 +29,7 @@ Projects todo:<br>
 9. construct the request browser/query page
 
 #10.change the user ben constructing method, use more native Spring method to build the UserBean.
-11.Use AJAX method to register.
+C11.Use AJAX method to register.
 12.Redirect the registered success page to the "My Utimes" Page.
 13.Add Registers list
 14.Add search user function.
@@ -34,5 +37,5 @@ Projects todo:<br>
 16.Registration need mail notification.
 17.Internationalize the register process.
 18.Check the charset/encode to avoid confusing code, like"?".
-
-
+19.Set an error style for the error message of registeration.
+20.Add register PASSWORD
