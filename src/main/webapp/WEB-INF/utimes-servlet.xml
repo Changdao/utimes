@@ -15,6 +15,12 @@
     	<property name="registerService" ref="registerService"/>
     	<property name="countPerPage" value="30"/>
     </bean>
+    
+    <bean name="/admin/schools.htm" class="com.utimes.study.web.admin.SchoolController">
+    	<property name="schoolService" ref="schoolService"/>
+    	<!-- property name="countPerPage" value="30"/ -->
+    </bean>
+    
     <!-- maps request URLs to Controller names -->
     <!-- bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/ -->
 

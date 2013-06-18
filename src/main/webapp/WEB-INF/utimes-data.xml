@@ -18,5 +18,7 @@
     <bean id="registerService" class="com.utimes.study.service.RegisterServiceImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
-
+	<bean id="schoolService" class="com.utimes.study.service.SchoolServiceImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"/>
+	</bean>
 </beans>

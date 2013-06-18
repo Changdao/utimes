@@ -34,12 +34,11 @@ public class RegisterServiceImpl implements RegisterService {
 	private static String GET_REGISTER_SQL="select * from register limit ?,?";
 	
 	@SuppressWarnings("unchecked")
-	@Override
-	public List<Object> getRegisters(int pageNumber, int countPerPage) {
+	public List<Object> getRegisters(int pageNumber, int countPerPage) 
+	{
 		return jdbcTemplate.query(GET_REGISTER_SQL, new Object[]{new Integer(pageNumber*countPerPage),new Integer(countPerPage)}, 
 				new RowMapper(){
 
-					@Override
 					public Object mapRow(ResultSet rs, int rowNum)
 							throws SQLException {
 						UserBean user=new UserBean();

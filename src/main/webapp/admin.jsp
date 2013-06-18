@@ -12,16 +12,16 @@
 <div id="main-container">
 		<table id="menu">
 		<tr>
-		<td><a href="/utimes/myprofile.htm">My Profile</a>
+		<td><a href="/utimes/admin/schools.htm">Schools</a>
 		</tr>
 		<tr>
-		<td><a href="/utimes/myrequest.htm">My Requests</a>
+		<td><a href="/utimes/admin/requests.htm">My Requests</a>
 		</tr>
 		<tr>
-		<td><a href="/utimes/myquery.htm">My Questions</a>
+		<td><a href="/utimes/admin/query.htm">My Questions</a>
 		</tr>
 		<tr>
-		<td><a href="/utimes/mynotices.htm">My Profile</a>
+		<td><a href="/utimes/admin/notices.htm">My Profile</a>
 		</tr>
 		
 		</table>
