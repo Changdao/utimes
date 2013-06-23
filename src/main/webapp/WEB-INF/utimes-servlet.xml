@@ -11,7 +11,24 @@
 	    <property name="formView" value="register"/>
 	    <property name="successView" value="registered"/>
     </bean> 
-    <bean name="/admin/all.htm" class="com.utimes.study.web.admin.RegisterController">
+    
+    <bean name="/myprofile.htm" class="com.utimes.study.web.ProfileController">
+    	<property name="registerService" ref="registerService"/>    	
+    </bean>
+    
+    <bean name="/myutimes.htm" class="com.utimes.study.web.MyUtimesController">
+    	<property name="loginView" value="login"/>
+    	<property name="successView" value="myutimes"/>
+    </bean>
+    <bean name="/login.htm" class="com.utimes.study.web.LoginController">
+    	<property name="registerService" ref="registerService"/>
+    </bean>
+    
+    <bean name="/schools.htm" class="com.utimes.study.web.SchoolController">
+    	<property name="schoolService" ref="schoolService"/>
+    </bean>
+    
+    <bean name="/admin/registers.htm" class="com.utimes.study.web.admin.RegisterController">
     	<property name="registerService" ref="registerService"/>
     	<property name="countPerPage" value="30"/>
     </bean>

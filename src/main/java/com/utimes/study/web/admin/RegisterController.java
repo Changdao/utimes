@@ -31,7 +31,7 @@ public class RegisterController extends AbstractController {
 		String pns=request.getParameter("pageno");
 		int pageNumber=pns==null||"".equals(pns)?0:Integer.parseInt(pns);
 		List<Object> registers=registerService.getRegisters(pageNumber,countPerPage);
-		return new ModelAndView("registers","registers",registers);
+		return new ModelAndView("admin/registers","registers",registers);
 	}
 
 	public RegisterService getRegisterService() {

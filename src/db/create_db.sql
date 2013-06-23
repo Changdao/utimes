@@ -6,6 +6,7 @@ CREATE TABLE `register` (
   `firstname` varchar(32) DEFAULT NULL,
   `lastname` varchar(32) DEFAULT NULL,
   `userid` varchar(32) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 

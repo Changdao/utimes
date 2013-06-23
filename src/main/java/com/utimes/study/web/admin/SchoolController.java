@@ -23,9 +23,9 @@ public class SchoolController extends AbstractController {
 		if(s!=null&&!"".equals(s.trim()))
 		{
 			List<SchoolBean> schools=schoolService.getSchools();
-			return new ModelAndView("schoolsdata","schools",schools);
+			return new ModelAndView("admin/schoolsdata","schools",schools);
 		}
-		else return new ModelAndView("school");
+		else return new ModelAndView("admin/school");
 	}
 
 	public SchoolService getSchoolService() {

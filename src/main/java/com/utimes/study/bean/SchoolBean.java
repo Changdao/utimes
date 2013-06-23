@@ -5,11 +5,20 @@ import java.util.List;
 
 public class SchoolBean {
 	private List<CourseBean> courses;
+	private String id;
 	private List areas;
 	private String name;
 	private String memo;
 	private Date since;
 	private String location;
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public List<CourseBean> getCourses()
 	{
 		return courses;
@@ -37,6 +46,11 @@ public class SchoolBean {
 	}
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	
+	public String toString()
+	{
+		return name;
 	}
 	
 }

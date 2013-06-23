@@ -8,4 +8,5 @@ public interface RegisterService
   public int getCount();
   public void register(UserBean user);
   public List<Object> getRegisters(int pageNumber, int countPerPage);
+  public UserBean login(String email,String password);
 }

@@ -21,6 +21,7 @@
 
 <div id="main-container">	<!-- The main container element -->
 <span id="ui-id-1" class="ui-dialog-title">注册完成</span>
+<span id="ui-id-2" class="ui-dialog-titile"><a href="/utimes/myutimes.htm">进入我的Utimes</a></span>
 </div>
 </body>
 </html>

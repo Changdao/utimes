@@ -7,6 +7,7 @@ public class UserBean {
 	private String interest;
 	private String description;
 	private String userId;
+	private String password;
 	
 	public String getDescription() {
 		return description;
@@ -54,6 +55,12 @@ public class UserBean {
 	}
 	public String getUserId() {
 		return userId;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 		
 	

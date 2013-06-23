@@ -26,14 +26,14 @@
 				});
     $("#submitbutton").click(function(event)){
     	$("register").submit();
-    }
+    });
   });
   </script>
 </head>
 <body>
 
 <div id="main-container">	<!-- The main container element -->
-<span id="ui-id-1" class="ui-dialog-title">游学注册</span>
+<span id="ui-id-1" class="ui-dialog-title">学员注册</span>
 <c:forEach items="${registers}" var="register">
 <li><c:out value="${register}"/></li>
 </c:forEach>
@@ -43,6 +43,18 @@
 <form:form commandName="user" id="contact-form" name="register" method="post" action="register.htm">	<!-- The form, sent to submit.php -->
 
 <table width="40%" border="0" cellspacing="0" cellpadding="5">
+
+<tr>
+<td><label for="email">Email</label></td>
+<td><form:input  cssClass="validate[required,custom[email]]" path="email" id="email" /></td>
+<td width=37%><form:errors path="email" /></td>
+</tr>
+
+<tr>
+<td><label for="password">Password</label></td>
+<td><form:input cssClass="validate[required]" path="password" id="password"/></td>
+<td with=37%><form:errors path="password" /></td>
+</tr>
 
 <tr>
 <td width="18%"><label for="lastname">姓</label></td>	<!-- Text label for the input field -->
@@ -59,11 +71,7 @@
 
 <td width=37%><form:errors path="firstName" /></td>
 </tr>
-<tr>
-<td><label for="email">Email</label></td>
-<td><form:input  cssClass="validate[required,custom[email]]" path="email" id="email" /></td>
-<td width=37%><form:errors path="email" /></td>
-</tr>
+
 
 <tr>
 <td><label for="subject">兴趣</label></td>
