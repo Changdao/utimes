@@ -1,5 +1,5 @@
 create database utimes character set utf8;
-CREATE TABLE `register` (
+CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(128) DEFAULT NULL,
   `memo` text,
@@ -45,3 +45,8 @@ CREATE TABLE COURSEDETAIL
 	`course_id`	int(11),
 	primary key (`id`)
 )
+
+
+/*
+*  
+*/

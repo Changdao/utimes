@@ -14,7 +14,7 @@
 		<table id="menu">
 		<tr>
 		<td>
-			<a href="/utimes/admin/registers.htm">注册学员</a>
+			<a href="/utimes/admin/users.htm">注册学员</a>
 		</td>
 		</tr>
 		<tr>

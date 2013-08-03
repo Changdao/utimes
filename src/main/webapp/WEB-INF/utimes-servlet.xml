@@ -6,14 +6,14 @@
     <!-- this bean with the well known name generates view names for us -->
     <bean id="viewNameTranslator" class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator"/>
     
-    <bean name="/register.htm" class="com.utimes.study.web.RegisterController">
-	    <property name="registerService" ref="registerService"/>
-	    <property name="formView" value="register"/>
-	    <property name="successView" value="registered"/>
+    <bean name="/register.htm" class="com.utimes.study.web.UserController">
+	    <property name="userService" ref="userService"/>
+	    <property name="formView" value="signup"/>
+	    <property name="successView" value="signedup"/>
     </bean> 
     
     <bean name="/myprofile.htm" class="com.utimes.study.web.ProfileController">
-    	<property name="registerService" ref="registerService"/>    	
+    	<property name="userService" ref="userService"/>    	
     </bean>
     
     <bean name="/myutimes.htm" class="com.utimes.study.web.MyUtimesController">
@@ -21,15 +21,19 @@
     	<property name="successView" value="myutimes"/>
     </bean>
     <bean name="/login.htm" class="com.utimes.study.web.LoginController">
-    	<property name="registerService" ref="registerService"/>
+    	<property name="userService" ref="userService"/>
     </bean>
     
     <bean name="/schools.htm" class="com.utimes.study.web.SchoolController">
     	<property name="schoolService" ref="schoolService"/>
     </bean>
+
+    <bean name="/register.htm" class="com.utimes.study.web.RegisterControoler">
+        <property name="registerService" ref="registerService"/>
+    </bean>
     
-    <bean name="/admin/registers.htm" class="com.utimes.study.web.admin.RegisterController">
-    	<property name="registerService" ref="registerService"/>
+    <bean name="/admin/users.htm" class="com.utimes.study.web.admin.UserController">
+    	<property name="userService" ref="userService"/>
     	<property name="countPerPage" value="30"/>
     </bean>
     

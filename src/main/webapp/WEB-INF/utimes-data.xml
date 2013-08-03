@@ -15,10 +15,17 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="datasource"/>
     </bean>
-    <bean id="registerService" class="com.utimes.study.service.RegisterServiceImpl">
+
+    <bean id="userService" class="com.utimes.study.service.UserServiceImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
+
 	<bean id="schoolService" class="com.utimes.study.service.SchoolServiceImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate"/>
 	</bean>
+
+    <bean id="registerService" class="com.utimes.study.service.RegisterService">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
 </beans>

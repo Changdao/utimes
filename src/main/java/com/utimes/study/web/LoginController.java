@@ -7,11 +7,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
 import com.utimes.study.bean.UserBean;
-import com.utimes.study.service.RegisterService;
+import com.utimes.study.service.UserService;
 
 public class LoginController extends AbstractController {
 
-	private RegisterService registerService;
+	private UserService userService;
 	
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest request,
@@ -25,7 +25,7 @@ public class LoginController extends AbstractController {
 		
 		if(email==null||email.trim().equals("")||
 				password==null||password.trim().equals("")||
-				(user=registerService.login(email, password))==null)
+				(user= userService.login(email, password))==null)
 			return new ModelAndView("login");
 		
 		request.getSession().setAttribute(Common.WEB_USER_KEY,user );
@@ -34,12 +34,12 @@ public class LoginController extends AbstractController {
 		
 	}
 
-	public RegisterService getRegisterService() {
-		return registerService;
+	public UserService getUserService() {
+		return userService;
 	}
 
-	public void setRegisterService(RegisterService registerService) {
-		this.registerService = registerService;
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 	
 

@@ -7,18 +7,18 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
 import com.utimes.study.bean.UserBean;
-import com.utimes.study.service.RegisterService;
+import com.utimes.study.service.UserService;
 
 public class ProfileController extends AbstractController {
 
-	private RegisterService registerService;
+	private UserService userService;
 
-	public RegisterService getRegisterService() {
-		return registerService;
+	public UserService getUserService() {
+		return userService;
 	}
 
-	public void setRegisterService(RegisterService registerService) {
-		this.registerService = registerService;
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 
 	@Override

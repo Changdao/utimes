@@ -9,6 +9,8 @@
   <script src="/utimes/js/jquery-ui.js"></script>
   <link rel="stylesheet" href="/utimes/css/jquery.ui.all.css" />
   <link rel="stylesheet" href="/utimes/css/utimes.css" />
+  <link rel="stylesheet" href="/utimes/css/base.css"/>
+  
   
   <script>
   $(function(){
