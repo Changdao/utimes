@@ -21,24 +21,28 @@ public class Currency {
 
         }
 
+        public long carry(double value)
+        {
+           return Math.round(     value*(double)this.getCarryValue() -  (double)((int)value) * this.getCarryValue()  ) ;
+        }
+
         public int getCarryValue() {
             return carryValue;
         }
         private static final String[] compensation={"","0","00","0000"};
 
-        public String formatDecimal(int value)
+        public String formatDecimal(long value)
         {
-            String a=Integer.toString(value);
+            String a=Long.toString(value);
 
             return (new StringBuilder()).append(compensation[this.carry-a.length()]).append(a).toString();
 
         }
 
     };
-    private String currencyType;
-    private int whole;
-    private int decimal;
-    private double toDouble;
+
+    private long whole;
+    private long decimal;
     private CarryType carry;
 
 
@@ -49,6 +53,12 @@ public class Currency {
         this.decimal=decimal;
     }
 
+    public Currency(CarryType carry, double value)
+    {
+        this.carry=carry;
+        this.whole=(int)value;
+        this.decimal=carry.carry(value-whole);
+    }
 
     public String toString()
     {
@@ -67,4 +77,16 @@ public class Currency {
         return this;
     }
 
+    public double toDouble()
+    {
+        return (this.whole+this.decimal/this.carry.getCarryValue());
+    }
+
+    public long getWhole() {
+        return whole;
+    }
+
+    public long getDecimal() {
+        return decimal;
+    }
 }
