@@ -8,11 +8,14 @@ package com.utimes.study.fee;
 public class SchoolFeeType {
     private String name;
 
+
+    public SchoolFeeType(String name)
+    {
+        this.name=name;
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

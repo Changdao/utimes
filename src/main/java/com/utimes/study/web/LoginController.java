@@ -16,7 +16,7 @@ public class LoginController extends AbstractController {
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		UserBean user;
