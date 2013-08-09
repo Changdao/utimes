@@ -12,8 +12,10 @@
 <link rel="stylesheet" href="/utimes/css/ui.jqgrid.css" />
 <script src="/utimes/js/jquery-1.9.1.js"></script>
 <script src="/utimes/js/jquery-ui.js"></script>
-<script src="/utimes/js/jquery.jqGrid.min.js" /></script>
-<script src="/utimes/js/grid.locale-cn.js" /></script>
+<script src="/utimes/js/jquery.form.js"></script>
+<script src="/utimes/js/jquery.jqGrid.min.js" > </script>
+<script src="/utimes/js/grid.locale-cn.js"> </script>
+
 <style>
 body {
 	font-size: 62.5%;
@@ -93,24 +95,27 @@ div#users-contain table td,div#users-contain table th {
 				index : 'memo',
 				width : 100
 			} ],
+			autowidth:true,
+			rownum:10,
+			rowList:[10,20,30],
+			pager: jQuery('#pager2'),
 			multiselect : false,
 			caption : "Schools"
-		});
-
-		jQuery("#list2").jqGrid('navGrid', '#pager2', {
+		}).navGrid('#pager2',{edit:false,add:false,del:false});
+		
+		/*jQuery("#schools").jqGrid('navGrid', '#pager2', {
 			edit : false,
 			add : false,
 			del : false
-		});
-		
+		});*/
+
 		var name = $( "#name" ),
 	      location = $( "#location" ),
 	      introduce = $( "#introduce" ),
 	      allFields = $( [] ).add( name ).add( location ).add( introduce ),
 	      tips = $( ".validateTips" );
-		
-		$("#dialog-form")
-				.dialog(
+
+		$("#dialog-form").dialog(
 						{
 							autoOpen : false,
 							height : 300,
@@ -150,11 +155,31 @@ div#users-contain table td,div#users-contain table th {
 										/*
 										Call the function to save the result.
 										Reload the grid/Asychronous update the grid?
-										
-										*/									
-										
-										
-										$(this).dialog("close");
+
+
+
+										$('#school-form').submit(
+										function(){$.get('createschool.htm', $('#school-form').serialize(),
+										           function(data){
+                                                       $('#testcontent').html(data);
+                                                   });
+                                                   });
+
+                                          judge result. return is a json.
+                                          ok? add row
+                                          no?
+
+                                        jQuery("#a4").click( function(){
+                                        	var datarow = {id:"99",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"};
+                                        	var su=jQuery("#list5").jqGrid('addRowData',99,datarow);
+                                        	if(su) alert("Succes. Write custom code to add data in server"); else alert("Can not update");
+                                        });
+
+                                        */
+
+                                        $('#school-form').submit();
+
+										//$(this).dialog("close");
 									}
 								},
 								Cancel : function() {
@@ -183,7 +208,47 @@ div#users-contain table td,div#users-contain table th {
 				alert("Please Select Row");
 		});
 
+		var options = {
+                //target:        '#output1',   // target element(s) to be updated with server response
+                beforeSubmit:  showRequest,  // pre-submit callback
+                success:       showResponse  // post-submit callback
+
+                // other available options:
+                //url:       url         // override for form's 'action' attribute
+                //type:      type        // 'get' or 'post', override for form's 'method' attribute
+                //dataType:  null        // 'xml', 'script', or 'json' (expected server response type)
+                //clearForm: true        // clear all form fields after successful submit
+                //resetForm: true        // reset the form after successful submit
+
+                // $.ajax options can be used here too, for example:
+                //timeout:   3000
+            };
+
+
+
+        // pre-submit callback
+        function showRequest(formData, jqForm, options) {
+            /*var queryString = $.param(formData);
+            alert('About to submit: \n\n' + queryString);*/
+            return true;
+        }
+
+        // post-submit callback
+        function showResponse(responseText, statusText, xhr, $form)  {
+
+            /*alert('status: ' + statusText + '\n\nresponseText: \n' + responseText +
+                '\n\nThe output div should have already been updated with the responseText.');  */
+            var datarow = jQuery.parseJSON(responseText);
+            //{id:"99",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"};
+            var su=jQuery("#schools").jqGrid('addRowData',datarow.id,datarow);
+            if(!su) alert("Can not update");
+            $('#dialog-form').dialog("close");
+        }
+
+       $('#school-form').ajaxForm(options);
+
 	});
+
 </script>
 
 </head>
@@ -199,7 +264,7 @@ div#users-contain table td,div#users-contain table th {
 	<div id="dialog-form" title="Create new school">
 		<p class="validateTips">All form fields are required.</p>
 
-		<form>
+		<form id="school-form" action="createschool.htm">
 			<fieldset>
 				<label for="name">Name</label> 
 				<input type="text" name="name"
@@ -215,5 +280,6 @@ div#users-contain table td,div#users-contain table th {
 			</fieldset>
 		</form>
 	</div>
+	<dif id="testcontent"/>
 </body>
 </html>

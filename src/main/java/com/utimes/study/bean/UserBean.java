@@ -5,28 +5,22 @@ public class UserBean {
 	private String lastName;
 	private EmailAddress email;
 	private String interest;
-	private String description;
+    private String description;
 	private String userId;
 	private String password;
-	
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
+
 	public EmailAddress getEmail() {
 		return email;
 	}
 	public void setEmail(EmailAddress email) {
 		this.email = email;
 	}
-	private String desc;
-	public String getDesc() {
-		return desc;
+
+	public String getDescription() {
+		return description;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -42,7 +36,7 @@ public class UserBean {
 	}
 	public String toString()
 	{
-		return super.toString()+email;
+		return super.toString()+"email:"+email+"\nfirst name:"+this.firstName+"\n lastnaem:"+this.lastName+"\n memo:"+this.description;
 	}
 	public String getInterest() {
 		return interest;

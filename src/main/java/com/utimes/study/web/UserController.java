@@ -29,6 +29,7 @@ public class UserController extends SimpleFormController {
 		System.out.println("-->onSubmit was called:"+command);
 		UserBean user=(UserBean)command;
 		userService.signup(user);
+        logger.debug(user);
 		return new ModelAndView(getSuccessView());
 	}
 	
@@ -53,7 +54,7 @@ public class UserController extends SimpleFormController {
 			UserBean user=new UserBean();
 			user.setFirstName(request.getParameter("firstname"));
 			user.setLastName(request.getParameter("lastname"));
-			user.setDesc(request.getParameter("memo"));
+			user.setDescription(request.getParameter("memo"));
 			user.setEmail(new EmailAddress(request.getParameter("email")));
 			registerService.register(user);
 			return new ModelAndView("registered","",null);

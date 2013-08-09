@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SchoolBean {
 	private List<CourseBean> courses;
-	private String id;
+	private int id;
 	private List areas;
 	private String name;
 	private String memo;
@@ -13,10 +13,10 @@ public class SchoolBean {
 	private String location;
 	
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public List<CourseBean> getCourses()
@@ -50,7 +50,7 @@ public class SchoolBean {
 	
 	public String toString()
 	{
-		return name;
+		return super.toString()+"name:"+name+"\nLocation:"+location+"\nmemo:"+memo;
 	}
 	
 }

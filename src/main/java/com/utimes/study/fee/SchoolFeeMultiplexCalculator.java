@@ -1,22 +1,23 @@
 package com.utimes.study.fee;
 
 /**
- * Created with IntelliJ IDEA.
- * User: nevernew
- * Date: 13-8-5
- * Time: 上午12:03
- * To change this template use File | Settings | File Templates.
+    The simple calculator, return the round(value*(ratio/base));
  */
 public class SchoolFeeMultiplexCalculator implements SchoolFeeCalculator {
-    private double ratio;
 
-    SchoolFeeMultiplexCalculator(double value)
+    //for example: 750dollar/4 weeks, the ratio is 750;
+    private double ratio;
+    //for example: 750dollar/4 weeks, the base is 4;
+    private double base;
+
+    public SchoolFeeMultiplexCalculator(double ratio, double base)
     {
-        this.ratio=value;
+        this.ratio=ratio;
+        this.base=base;
     }
 
     @Override
     public double calc(double value) {
-        return value*ratio;
+        return Math.round(value*(ratio/base));
     }
 }

@@ -2,11 +2,9 @@ package com.utimes.study.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Map;
 import java.util.List;
 
 
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -33,14 +31,14 @@ public class UserServiceImpl implements UserService {
 	public void signup(UserBean user) {
 		jdbcTemplate.update(USER_SQL, new Object[] {
 				user.getLastName(), user.getFirstName(),
-				user.getEmail().toString(), user.getDesc() });
+				user.getEmail().toString(), user.getDescription() });
 	}
 
 	private class UserBeanMapper implements RowMapper {
 		public Object mapRow(ResultSet rs, int rowNum)
 				throws SQLException {
 			UserBean user=new UserBean();
-			user.setDesc(rs.getString("memo"));
+			user.setDescription(rs.getString("memo"));
 			user.setEmail(new EmailAddress(rs.getString("email")));
 			user.setFirstName(rs.getString("firstName"));
 			user.setLastName(rs.getString("lastName"));

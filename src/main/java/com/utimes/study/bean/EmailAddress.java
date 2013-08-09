@@ -14,11 +14,13 @@ public class EmailAddress {
 	public EmailAddress(String email)
 	{
 		this.body=email;
+        if(email!=null&&!"".equals(email))
 		parseAddress();
 	}
 	private void parseAddress()
 	{
 		int idx=body.indexOf('@');
+        if(idx<0)return;
 		this.name=body.substring(0,idx);
 		this.host=body.substring(idx,body.length());
 	}

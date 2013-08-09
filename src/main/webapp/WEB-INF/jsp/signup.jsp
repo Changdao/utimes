@@ -3,9 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!doctype html>
  
-<html lang="zh_CN">
+<html>
 <head>
-  <meta charset="utf-8" />
   <title>Utimes Register Page</title>
   <script src="/utimes/js/jquery-1.9.1.js"></script>
   <script src="/utimes/js/jquery-ui.js"></script>
@@ -47,13 +46,13 @@
 <tr>
 <td><label for="email">Email</label></td>
 <td><form:input  cssClass="validate[required,custom[email]]" path="email" id="email" /></td>
-<td width=37%><form:errors path="email" /></td>
+<td width=37%><form:errors cssClass="ui-state-error-text" path="email" /></td>
 </tr>
 
 <tr>
 <td><label for="password">Password</label></td>
 <td><form:input cssClass="validate[required]" path="password" id="password"/></td>
-<td with=37%><form:errors path="password" /></td>
+<td with=37%><form:errors cssClass="ui-state-error-text" path="password" /></td>
 </tr>
 
 <tr>
@@ -62,14 +61,14 @@
 <form:input cssClass="validate[required,custom[onlyLetter]]" path="lastName" id="lastname"/></td>
 <!-- We are using session to prevent losing data between page redirects -->
 
-<td width=37%><form:errors path="lastName" /></td>
+<td width=37%><form:errors cssClass="ui-state-error-text" path="lastName" /></td>
 </tr>
 <tr>
 <td width="18%"><label for="firstname">名</label></td>	<!-- Text label for the input field -->
 <td width="45%"><form:input cssClass="validate[required,custom[onlyLetter]]" path="firstName" /></td>
 <!-- We are using session to prevent losing data between page redirects -->
 
-<td width=37%><form:errors path="firstName" /></td>
+<td width=37%><form:errors cssClass="ui-state-error-text" path="firstName" /></td>
 </tr>
 
 
@@ -85,7 +84,7 @@
 <tr>
 <td valign="top"><label for="message">说明</label></td>
 <td><form:textarea path="description" id="resizable" cssClass="validate[required]" cols="35" rows="5"/></td>
-<td width=37%><form:errors path="description" /></td>
+<td width=37%><form:errors  path="description" /></td>
 </tr>
 
 <tr>

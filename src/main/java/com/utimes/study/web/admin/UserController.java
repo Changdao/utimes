@@ -31,7 +31,7 @@ public class UserController extends AbstractController {
 		String pns=request.getParameter("pageno");
 		int pageNumber=pns==null||"".equals(pns)?0:Integer.parseInt(pns);
 		List<Object> registers=userService.getUsers(pageNumber,countPerPage);
-		return new ModelAndView("admin/registers","registers",registers);
+		return new ModelAndView("admin/users","registers",registers);
 	}
 
 	public UserService getUserService() {

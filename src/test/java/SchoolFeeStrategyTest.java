@@ -14,6 +14,7 @@ public class SchoolFeeStrategyTest {
     private SchoolFeeType feeType2;
     private SchoolFeeDef feeDef;
     private SchoolFeeDef feeDef2;
+    private SchoolFeeDef feeDef3;
     private SchoolFeeCalculator tableCalculator;
     private SchoolFeeCalculator calculator;
     private static final String BEFORE_OUT_OF_BROAD="Before out of broad";
@@ -27,7 +28,7 @@ public class SchoolFeeStrategyTest {
         feeType=new SchoolFeeType("Enrollment Fee");
         feeType2=new SchoolFeeType("Junior English Course");
 
-        feeDef=new SchoolFeeDef(feeType,0,strategy);
+        feeDef=new SchoolFeeDef(feeType,strategy);
         feeDef.setCalculator(new SchoolFeeConstantCalculator(35.0d));
 
 
@@ -67,8 +68,15 @@ public class SchoolFeeStrategyTest {
         rateMap.put("16",2400.00d);
 
         tableCalculator= new SchoolFeeTableCalculator(rateMap,4,200);
-        feeDef2=new SchoolFeeDef(feeType2,0,strategy);
+        feeDef2=new SchoolFeeDef(feeType2,strategy);
         feeDef2.setCalculator(tableCalculator);
+
+
+        SchoolFeeType feeType3=new SchoolFeeType("Course");
+
+        feeDef3=new SchoolFeeDef(feeType3,strategy);
+        SchoolFeeCalculator multiplexCalculator=new SchoolFeeMultiplexCalculator(750,4);
+        feeDef3.setCalculator(multiplexCalculator);
 
     }
 
@@ -83,14 +91,20 @@ public class SchoolFeeStrategyTest {
     {
 
         strategy.getCategory(0).add(feeDef);
-        Assert.assertEquals(((SchoolFeeDef)strategy.getCategory(0).get(0)).compute().toDouble(),35.00d,0.0001d);
+        Assert.assertEquals(feeDef.compute(35.00d).toDouble(),35.00d,0.0001d);
 
     }
 
     @Test
     public void testFeeCalc()
     {
-        Assert.assertEquals(feeDef2.getCalculator().calc(9),1800.00d,0.001d);
+        Assert.assertEquals(feeDef2.compute(9).toDouble(),1800.00d,0.001d);
+        Assert.assertEquals(feeDef3.compute(1).toDouble(),188d,0.001d);
+        Assert.assertEquals(feeDef3.compute(2).toDouble(),375d,0.001d);
+        Assert.assertEquals(feeDef3.compute(3).toDouble(),563d,0.001d);
+        Assert.assertEquals(feeDef3.compute(4).toDouble(),750d,0.001d);
+        Assert.assertEquals(feeDef3.compute(5).toDouble(),938d,0.001d);
+
     }
 
 

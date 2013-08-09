@@ -9,7 +9,8 @@ public class SchoolFeeDef {
 
     private SchoolFeeStrategy owner;
     private SchoolFeeType type;
-    private double value;
+    private String subType;
+
     private Currency currency;
     private SchoolFeeCalculator calculator;
 
@@ -19,16 +20,26 @@ public class SchoolFeeDef {
 
     public void setCalculator(SchoolFeeCalculator calculator) {
         this.calculator = calculator;
+        this.currency=new Currency();
     }
 
 
-    public SchoolFeeDef(SchoolFeeType type, double value, SchoolFeeStrategy owner)
+
+    public String getSubType() {
+        return subType;
+    }
+
+    public void setSubType(String subType) {
+        this.subType = subType;
+    }
+
+    public SchoolFeeDef(SchoolFeeType type,  SchoolFeeStrategy owner)
     {
         this.type=type;
-        this.value=value;
+
         this.owner=owner;
     }
-    public Currency compute()
+    public Currency compute(double value)
     {
         //todo:something bad smell.
         if(calculator!=null)

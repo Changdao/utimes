@@ -15,7 +15,7 @@ public class SchoolServiceImpl implements SchoolService {
 
 		public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
 			SchoolBean school = new SchoolBean();
-			school.setId(rs.getString("id"));
+			school.setId(rs.getInt("id"));
 			school.setName(rs.getString("name"));
 			school.setLocation(rs.getString("location"));
 			school.setMemo(rs.getString("introduce"));
@@ -41,8 +41,9 @@ public class SchoolServiceImpl implements SchoolService {
 				new Object[] { id }, new SchoolRowMapper());
 	}
 
+    private static String SCHOOL_CREATE_SQL ="insert into SCHOOL(name,location,INTRODUCE) value(?,?,?)";
 	public void addSchool(SchoolBean school) {
-		// TODO Auto-generated method stub
+        jdbcTemplate.update(SCHOOL_CREATE_SQL,new Object[]{school.getName(),school.getLocation(),school.getMemo()});
 
 	}
 
@@ -56,7 +57,16 @@ public class SchoolServiceImpl implements SchoolService {
 
 	}
 
-	public JdbcTemplate getJdbcTemplate() {
+    private static String SCHOOL_GET_BY_NAME_SQL = "select * from SCHOOL where name=?";
+    @Override
+    public SchoolBean findSchoolByName(String name) {
+        List<SchoolBean> results= jdbcTemplate.query(SCHOOL_GET_BY_NAME_SQL,
+                new Object[] { name }, new SchoolRowMapper());
+        if(results.size()>0)return results.get(0);
+        else return null;
+    }
+
+    public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
 

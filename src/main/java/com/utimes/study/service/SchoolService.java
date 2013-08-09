@@ -9,5 +9,6 @@ public interface SchoolService {
 	public void removeSchool();
 	public void addCourse();
 	public SchoolBean getSchool(String id);
+    public SchoolBean findSchoolByName(String name);
 
 }

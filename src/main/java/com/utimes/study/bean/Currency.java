@@ -46,6 +46,16 @@ public class Currency {
     private CarryType carry;
 
 
+    /**
+     * Default Currency, as a NullCurrency, to return 0.
+     */
+    public Currency()
+    {
+        this.carry=CarryType.Two;
+        this.whole=0;
+        this.decimal=0;
+    }
+
     public Currency(CarryType carry,int whole,int decimal)
     {
         this.carry=carry;
