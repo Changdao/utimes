@@ -8,8 +8,17 @@
 
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="message" />
+        <property name="basename" value="utimes" />
     </bean>
+
+    <!--
+    <property name="basename" >
+            <list>
+                <value>classpath:message</value>
+                <value>classpath:utimes</value>
+            </list>
+        </property>
+    -->
 
 
     <bean name="/register.htm" class="com.utimes.study.web.UserController">

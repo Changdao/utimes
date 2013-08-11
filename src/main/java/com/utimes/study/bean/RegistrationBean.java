@@ -18,7 +18,7 @@ public class RegistrationBean {
     private Date birthday;
     private String phoneNumber;
     private String cellNumber;
-    private EmailAddress email;
+    private String email;
     private String organization;
     private String address;
     private String campus;

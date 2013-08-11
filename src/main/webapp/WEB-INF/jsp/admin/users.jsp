@@ -3,6 +3,9 @@
 <%@ page import="com.utimes.study.bean.UserBean"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
 <html lang="zh_CN">
 <head>
 <meta charset="utf-8" />
@@ -20,59 +23,56 @@
 	$(function() {
 		jQuery("#list4").jqGrid(
 				{
-					datatype : "local",
+					url : "users.htm?loaddata=true",
+                    datatype : "json",
 					height : 250,
-					colNames : [ 'Email', 'Last Date', 'Reg Date', 'Last Name',
-							'First Name' ],
+					colNames : [ '<fmt:message key="user.email"/>', '<fmt:message key="user.lastname"/>', '<fmt:message key="user.firstname"/>', 'Last Date',
+							'Register Date','<fmt:message key="user.description"/>' ],
 					colModel : [ {
 						name : 'email',
 						index : 'email',
 						width : 60
 					}, {
-						name : 'lastdate',
-						index : 'lastdate',
-						width : 90,
-						sorttype : "date"
-					}, {
-						name : 'regdate',
-						index : 'regdate',
-						width : 90,
-						sorttype : "date"
-					}, {
-						name : 'lastname',
-						index : 'lastname',
+						name : 'lastName',
+						index : 'lastName',
 						width : 100
 					}, {
-						name : 'firstname',
-						index : 'firstname',
+						name : 'firstName',
+						index : 'firstName',
 						width : 100
-					} ],
-					multiselect : true,
+					} , {
+                        name : 'lastdate',
+                        index : 'lastdate',
+                        width : 90,
+                        sorttype : "date"
+                    }, {
+                        name : 'regdate',
+                        index : 'regdate',
+                        width : 90,
+                        sorttype : "date"
+                    },
+					{
+					    name: 'description',
+					    index: 'description',
+					    width: 100
+					}],
+					autowidth:true,
+					rownum:10,
+					viewrecords: true,
+                    rowList:[10,20,30],
+                    pager: jQuery('#pager2'),
+					multiselect : false,
 					caption : "Registers List"
-				});
+				}).navGrid('#pager2',{edit:false,add:false,del:false});
+		});
 	
-	var mydata = [
-<%List data = (List) request.getAttribute("registers");
-			for (int i = 0; i < data.size(); i++) {
-				UserBean user = (UserBean) data.get(i);
-				String sep = "\n";
-				if (i < data.size() - 1)
-					sep = ",\n";
-				out.print("{email:\"" + user.getEmail() + "\",lastdate:\""
-						+ "\",regdate:\"" + "\",lastname:\""
-						+ user.getLastName() + "\",firstname:\""
-						+ user.getFirstName() + "\"}" + sep);
 
-			}%>
-	];
-	for ( var i = 0; i <= mydata.length; i++)
-		jQuery("#list4").jqGrid('addRowData', i + 1, mydata[i]);
-	});
 </script>
 </head>
 <body>
 	<div id="main-container">
 		<table id="list4"></table>
+		<div id="pager2"></div>
 	</div>
 </body>
 </html>

@@ -5,12 +5,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 
 import org.springframework.validation.BindException;
 import java.util.*;
 
-import com.utimes.study.bean.EmailAddress;
+
 import com.utimes.study.bean.UserBean;
 import com.utimes.study.service.UserService;
 

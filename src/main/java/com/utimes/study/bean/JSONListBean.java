@@ -10,12 +10,12 @@ import java.util.List;
  * Time: 上午2:08
  * To change this template use File | Settings | File Templates.
  */
-public class SchoolListBean {
+public class JSONListBean {
 
-    public class SchoolCell
+    public class Cell
     {
         private int id;
-        private SchoolBean cell;
+        private Object cell;
 
         public int getId() {
             return id;
@@ -25,22 +25,25 @@ public class SchoolListBean {
             this.id = id;
         }
 
-        public SchoolBean getCell() {
+        public Object getCell() {
             return cell;
         }
 
-        public void setCell(SchoolBean cell) {
+        public void setCell(Object cell) {
             this.cell = cell;
         }
         //todo: implement.
     }
 
+    public interface IdGetter
+    {
+        public int getId(Object obj);
+    }
+
     private int page;
     private int total;
     private int records;
-    private List<SchoolCell> rows;
-
-
+    private List<Cell> rows;
 
 
     public int getPage() {
@@ -67,37 +70,48 @@ public class SchoolListBean {
         this.records = records;
     }
 
-    public List<SchoolCell> getRows() {
+    public List<Cell> getRows() {
         return rows;
     }
 
-    public void setRows(List<SchoolCell> rows) {
+    public void setRows(List<Cell> rows) {
         this.rows = rows;
     }
 
-    public void paginate(int page, int rownum, List<SchoolBean> schools)
+    public void addAllRows(List list,IdGetter idGetter)
+    {
+        rows=new ArrayList<Cell>();
+        for(int i=0;i<list.size();i++)
+        {
+            Cell cell=new Cell();
+            cell.setId(idGetter.getId(list.get(i)));
+            cell.setCell(list.get(i));
+            rows.add(cell);
+        }
+    }
+
+
+    public void addPaginateRows(int page, int rownum, List list, IdGetter idGetter)
     {
         System.out.println("Paginate!");
 
         int base=(page-1)*rownum;
 
         System.out.println("====>base:"+base);
-        rows=new ArrayList<SchoolCell>();
-        if(base>=schools.size())
+        rows=new ArrayList<Cell>();
+        if(base>=list.size())
         {
             //todo:should report error?
             return;
         }
         for(int i=0;i<rownum;i++)
         {
-            if((base+i)>=schools.size())break;
-            SchoolCell cell=new SchoolCell();
-            cell.setId(schools.get(base+i).getId());
-            cell.setCell(schools.get(base+i));
+            if((base+i)>=list.size())break;
+            Cell cell=new Cell();
+            cell.setId(idGetter.getId(list.get(base+i)));
+            cell.setCell(list.get(base+i));
             rows.add(cell);
         }
-        return;
-
     }
 
 }

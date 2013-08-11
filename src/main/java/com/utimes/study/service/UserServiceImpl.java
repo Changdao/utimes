@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-import com.utimes.study.bean.EmailAddress;
 import com.utimes.study.bean.UserBean;
 
 
@@ -39,9 +38,10 @@ public class UserServiceImpl implements UserService {
 				throws SQLException {
 			UserBean user=new UserBean();
 			user.setDescription(rs.getString("memo"));
-			user.setEmail(new EmailAddress(rs.getString("email")));
+			user.setEmail(rs.getString("email"));
 			user.setFirstName(rs.getString("firstName"));
 			user.setLastName(rs.getString("lastName"));
+            user.setId(rs.getInt("id"));
 		
 			return user;
 		}
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 	@SuppressWarnings("unchecked")
 	public List<Object> getUsers(int pageNumber, int countPerPage) 
 	{
-		return jdbcTemplate.query(GET_USER_SQL, new Object[]{new Integer(pageNumber*countPerPage),new Integer(countPerPage)}, 
+		return jdbcTemplate.query(GET_USER_SQL, new Object[]{new Integer((pageNumber-1)*countPerPage),new Integer(countPerPage)},
 				new UserBeanMapper());
 		
 	}

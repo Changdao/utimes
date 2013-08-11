@@ -1,12 +1,16 @@
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.utimes.study.bean.UserBean"%>
+<%@ page import="java.io.*,java.util.Locale" %>
+<%@ page import="javax.servlet.*,javax.servlet.http.* "%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
-<html lang="zh_CN">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<html>
 <head>
 <meta charset="utf-8" />
-<title>Utimes School Page</title>
+<title>Utimes School Page" </title>
 <link rel="stylesheet" href="/utimes/css/jquery.ui.all.css" />
 <link rel="stylesheet" href="/utimes/css/utimes.css" />
 <link rel="stylesheet" href="/utimes/css/ui.jqgrid.css" />
@@ -73,7 +77,7 @@ div#users-contain table td,div#users-contain table th {
 		jQuery("#schools").jqGrid({
 			url : "schools.htm?loaddata=true",
 			datatype : "json",
-			colNames : [ 'Name', 'Location', 'Since', 'Rate', 'Description' ],
+			colNames : [ "<fmt:message key='school.name'/>", "<fmt:message key='school.location'/>", '<fmt:message key="school.since"/>', '<fmt:message key="school.rate"/>', '<fmt:message key="school.description"/>' ],
 			colModel : [ {
 				name : 'name',
 				index : 'name',
@@ -98,6 +102,7 @@ div#users-contain table td,div#users-contain table th {
 			autowidth:true,
 			rownum:10,
 			rowList:[10,20,30],
+			viewrecords: true,
 			pager: jQuery('#pager2'),
 			multiselect : false,
 			caption : "Schools"
@@ -256,7 +261,7 @@ div#users-contain table td,div#users-contain table th {
 	<div id="main-container">
 		<table id="schools"></table>
 		<div id="pager2"></div>
-		<input type="BUTTON" id="new" value="Add New School" /> 
+		<input type="BUTTON" id="new" value="<fmt:message key='school.add'/>" />
 		<input
 			type="BUTTON" id="modify" value="Modify Selected School" />
 	</div>
@@ -280,6 +285,7 @@ div#users-contain table td,div#users-contain table th {
 			</fieldset>
 		</form>
 	</div>
-	<dif id="testcontent"/>
+	<div id="testcontent"/>
+
 </body>
 </html>

@@ -1,18 +1,27 @@
 package com.utimes.study.bean;
 
 public class UserBean {
+    private int Id;
 	private String firstName;
 	private String lastName;
-	private EmailAddress email;
+	private String email;
 	private String interest;
     private String description;
 	private String userId;
 	private String password;
 
-	public EmailAddress getEmail() {
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public String getEmail() {
 		return email;
 	}
-	public void setEmail(EmailAddress email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
