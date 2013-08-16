@@ -63,6 +63,9 @@
     <bean name="/admin/createschool.htm" class="com.utimes.study.web.admin.SchoolCreationController">
         <property name="schoolService" ref="schoolService"/>
     </bean>
+
+    <bean name="/admin/main.htm" class="com.utimes.study.web.admin.MainController">
+    </bean>
     
     <!-- maps request URLs to Controller names -->
     <!-- bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/ -->

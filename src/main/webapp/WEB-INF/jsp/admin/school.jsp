@@ -10,19 +10,24 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Utimes School Page" </title>
+<title>Utimes School Page</title>
 <link rel="stylesheet" href="/utimes/css/jquery.ui.all.css" />
+<link rel="stylesheet" href="/utimes/css/jquery.ui.custom.css" />
 <link rel="stylesheet" href="/utimes/css/utimes.css" />
 <link rel="stylesheet" href="/utimes/css/ui.jqgrid.css" />
 <script src="/utimes/js/jquery-1.9.1.js"></script>
 <script src="/utimes/js/jquery-ui.js"></script>
 <script src="/utimes/js/jquery.form.js"></script>
 <script src="/utimes/js/jquery.jqGrid.min.js" > </script>
+<script src="/utimes/js/jquery.layout.js"></script>
 <script src="/utimes/js/grid.locale-cn.js"> </script>
 
 <style>
-body {
-	font-size: 62.5%;
+html, body {
+	margin: 0;			/* Remove body margin/padding */
+	padding: 0;
+	overflow: hidden;	/* Remove scroll bars on browser window */
+    font-size: 75%;
 }
 
 label,input {
@@ -71,9 +76,21 @@ div#users-contain table td,div#users-contain table th {
 	border: 1px solid transparent;
 	padding: 0.3em;
 }
+
+#LeftPane {
+	overflow: auto;
+}
+
+#RightPane {
+	padding: 2px;
+	overflow: auto;
+}
+
 </style>
 <script type="text/javascript">
 	$(function() {
+
+
 		jQuery("#schools").jqGrid({
 			url : "schools.htm?loaddata=true",
 			datatype : "json",
@@ -105,7 +122,7 @@ div#users-contain table td,div#users-contain table th {
 			viewrecords: true,
 			pager: jQuery('#pager2'),
 			multiselect : false,
-			caption : "Schools"
+			caption : "<fmt:message key='schools.caption'/>"
 		}).navGrid('#pager2',{edit:false,add:false,del:false});
 		
 		/*jQuery("#schools").jqGrid('navGrid', '#pager2', {
@@ -258,13 +275,15 @@ div#users-contain table td,div#users-contain table th {
 
 </head>
 <body>
-	<div id="main-container">
-		<table id="schools"></table>
-		<div id="pager2"></div>
-		<input type="BUTTON" id="new" value="<fmt:message key='school.add'/>" />
-		<input
-			type="BUTTON" id="modify" value="Modify Selected School" />
-	</div>
+
+
+
+            <table id="schools"></table>
+            <div id="pager2"></div>
+            <input type="BUTTON" id="new" value="<fmt:message key='school.add'/>" />
+            <input
+                type="BUTTON" id="modify" value="Modify Selected School" />
+
 
 	<div id="dialog-form" title="Create new school">
 		<p class="validateTips">All form fields are required.</p>
