@@ -11,12 +11,10 @@
 <head>
 <meta charset="utf-8" />
 <title>Utimes School Page</title>
-<link rel="stylesheet" href="/utimes/css/jquery.ui.all.css" />
-<link rel="stylesheet" href="/utimes/css/jquery.ui.custom.css" />
+<link rel="stylesheet" href="/utimes/css/jquery-ui-1.9.2.custom.css" />
 <link rel="stylesheet" href="/utimes/css/utimes.css" />
 <link rel="stylesheet" href="/utimes/css/ui.jqgrid.css" />
-<script src="/utimes/js/jquery-1.9.1.js"></script>
-<script src="/utimes/js/jquery-ui.js"></script>
+<script src="/utimes/js/jquery-ui-1.9.2.custome.js"></script>
 <script src="/utimes/js/jquery.form.js"></script>
 <script src="/utimes/js/jquery.jqGrid.min.js" > </script>
 <script src="/utimes/js/jquery.layout.js"></script>
