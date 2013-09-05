@@ -28,24 +28,28 @@
             <div class="form-group" style="max-width: 600px;">
             <label class="control-label">Item Name</label>
             <div class="control-input">
-            <input type="text" class="text ui-widget-content ui-corner-all" data-fieldtype="Data" data-fieldname="company_name" placeholder="" data-doctype="Employee External Work History" style="max-height: 100px;"></div>
+            <input type="text" class="text ui-widget-content ui-corner-all" style="max-height: 100px;"></div>
             <div class="control-value like-disabled-input" style="display: none;"></div>
-            <p class="help-box small text-muted">   &nbsp;</p></div></div>
+            <p class="help-box small text-muted">   &nbsp;</p>
+        </div>
+    </div>
 <div>
 <div class="form-group" style="max-width: 600px;">
-<label class="control-label">Salary</label>
+<label class="control-label">Item Type</label>
 <div class="control-input">
-<input type="text" class="col-md-12 input-with-feedback form-control" data-fieldtype="Currency" data-fieldname="salary" placeholder="" data-doctype="Employee External Work History" style="text-align: right; max-height: 100px;"></div>
+<input type="text" class="text ui-widget-content ui-corner-all" style="text-align: right; max-height: 100px;"></div>
 <div class="control-value like-disabled-input" style="display: none;"></div>
 <p class="help-box small text-muted">   &nbsp;</p>
 </div>
 </div>
 
-<div><div class="form-group" style="max-width: 600px;"><label class="control-label">Contact</label>
-<div class="control-input"><input type="text" class="col-md-12 input-with-feedback form-control" data-fieldtype="Data" data-fieldname="contact" placeholder="" data-doctype="Employee External Work History" style="max-height: 100px;"></div>
+<div><div class="form-group" style="max-width: 600px;">
+<label class="control-label">Contact</label>
+<div class="control-input"><input type="text" class="col-md-12 input-with-feedback form-control" style="max-height: 100px;"></div>
 <div class="control-value like-disabled-input" style="display: none;"></div>
 <p class="help-box small text-muted">  &nbsp;</p></div></div></div>
 <div class="col-md-6"><div>
+
 <div class="form-group" style="max-width: 600px;"><label class="control-label">Designation</label>
 <div class="control-input"><input    type="text" class="col-md-12 input-with-feedback form-control" data-fieldtype="Data" data-fieldname="designation" placeholder="" data-doctype="Employee External Work History" style="max-height: 100px;"></div>
 <div class="control-value like-disabled-input" style="display: none;"></div><p class="help-box small text-muted">   &nbsp;</p></div></div>
