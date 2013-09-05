@@ -1,0 +1,9 @@
+<input type="text" class="col-md-12 input-with-feedback form-control"
+data-fieldtype="Data"
+data-fieldname="contact"
+placeholder=""
+data-doctype="Employee External Work History" style="max-height: 100px;">
+
+
+
+<input type="text" name="location" id="location" value="" class="text ui-widget-content ui-corner-all">

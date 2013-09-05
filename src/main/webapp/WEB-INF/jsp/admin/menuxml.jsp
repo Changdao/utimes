@@ -9,7 +9,7 @@
     <row><cell>4</cell><cell>Create School</cell><cell>loadoncex.html</cell><cell>1</cell><cell>6</cell><cell>7</cell><cell>true</cell><cell>true</cell></row>
     <row><cell>5</cell><cell>Check School</cell><cell>localex.html</cell><cell>1</cell><cell>8</cell><cell>9</cell><cell>true</cell><cell>true</cell></row>
     <row><cell>6</cell><cell>Users</cell><cell></cell><cell>0</cell><cell>11</cell><cell>18</cell><cell>false</cell><cell>false</cell></row>
-    <row><cell>7</cell><cell>List Users</cell><cell>manipex.html</cell><cell>1</cell><cell>12</cell><cell>13</cell><cell>true</cell><cell>true</cell></row>
+    <row><cell>7</cell><cell>List Users</cell><cell>users.htm</cell><cell>1</cell><cell>12</cell><cell>13</cell><cell>true</cell><cell>true</cell></row>
     <row><cell>8</cell><cell>Edit Users</cell><cell>getex.html</cell><cell>1</cell><cell>14</cell><cell>15</cell><cell>true</cell><cell>true</cell></row>
     <row><cell>9</cell><cell>Reset Password</cell><cell>setex.html</cell><cell>1</cell><cell>16</cell><cell>17</cell><cell>true</cell><cell>true</cell></row>
     <row><cell>10</cell><cell>Requests</cell><cell></cell><cell>0</cell><cell>19</cell><cell>32</cell><cell>false</cell><cell>false</cell></row>

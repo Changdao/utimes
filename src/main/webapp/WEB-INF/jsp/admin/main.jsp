@@ -103,21 +103,15 @@ div#users-contain table td,div#users-contain table th {
         filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
     }
 
-
-
 </style>
 <script type="text/javascript">
 	jQuery(document).ready(function(){
-
-
     $('body').layout({
     		resizerClass: 'ui-state-default',
             west__onresize: function (pane, $Pane) {
                 jQuery("#west-grid").jqGrid('setGridWidth',$Pane.innerWidth()-2);
     		}
     });
-
-
 
 	var maintab =$('#tabs','#RightPane').tabs({
             add: function(e, ui) {
@@ -133,9 +127,6 @@ div#users-contain table td,div#users-contain table th {
                 maintab.tabs('select', '#' + ui.panel.id);
             }
         });
-
-
-
     $.jgrid.defaults = $.extend($.jgrid.defaults,{loadui:"enable"});
 
     jQuery("#west-grid").jqGrid({
@@ -161,40 +152,25 @@ div#users-contain table td,div#users-contain table th {
                 onSelectRow: function(rowid) {
                     var treedata = $("#west-grid").jqGrid('getRowData',rowid);
                     if(treedata.isLeaf=="true") {
-                        //treedata.url
+
                         var st = "#t"+treedata.id;
         				if($(st).html() != null ) {
         					maintab.tabs('select',st);
         				} else {
 
         					maintab.tabs('add',st, treedata.menu);
-        					//$(st,"#tabs").load(treedata.url);
         					$.ajax({
         						url: treedata.url,
         						type: "GET",
         						dataType: "html",
         						complete : function (req, err) {
         							$(st,"#tabs").append(req.responseText);
-        							/*try { var pageTracker = _gat._getTracker("UA-5463047-4"); pageTracker._trackPageview(); } catch(err) {};
-        							var clck = '<p style="border: 1px solid; background-color: lemonchiffon; width:654px;height:25px;margin-bottom: 8px;padding-top: 8px;text-align: center">';
-        							clck += '<b>Please, support the jqGrid project by clicking on our sponsors ad! </b></p>';
-
-        							var fs = '<iframe src="adds.html" style="width:336px; height:290px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0"/>\
-        									&nbsp;&nbsp;&nbsp;&nbsp;<iframe src="adds3.html" style="width:336px; height:290px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0"/>\
-        									<br/><iframe src="adds2.html" style="width:728px; height:95px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0"/><br>\
-        									&nbsp;&nbsp;&nbsp;&nbsp;<iframe src="adds4.html" style="width:728px; height:95px;"scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0"/>\
-        							';
-        							$(st,"#tabs").append(clck);
-        							$(st,"#tabs").append(fs);  */
         						}
         					});
         				}
                     }
                 }
             });
-
-
-
     });
 
 </script>
@@ -207,15 +183,12 @@ div#users-contain table td,div#users-contain table th {
         </div> <!-- #LeftPane -->
        	<div id="RightPane" class="ui-layout-center ui-helper-reset ui-widget-content" ><!-- Tabs pane -->
 
-
-
-
         <div id="switcher"></div>
         <div id="tabs" class="jqgtabs">
         			<ul>
         				<li><a href="#tabs-1">Utimes administration</a></li>
         			</ul>
-        			<div id="tabs-1" style="font-size:12px;"> Utimes administration console. version 0.1.1. Copyright: Jidong Liu <br/>
+        			<div id="tabs-1" style="font-size:12px;"> Utimes administration console. version 0.1.1. <BR>Copyright: Jidong Liu <br/>
         			<br/>
         			Enjoy
         			<br/>

@@ -51,21 +51,8 @@
         <property name="registerService" ref="registerService"/>
     </bean-->
     
-    <bean name="/admin/users.htm" class="com.utimes.study.web.admin.UserController">
-    	<property name="userService" ref="userService"/>
-    	<property name="countPerPage" value="30"/>
-    </bean>
-    
-    <bean name="/admin/schools.htm" class="com.utimes.study.web.admin.SchoolController">
-    	<property name="schoolService" ref="schoolService"/>
-    	<!-- property name="countPerPage" value="30"/ -->
-    </bean>
-    <bean name="/admin/createschool.htm" class="com.utimes.study.web.admin.SchoolCreationController">
-        <property name="schoolService" ref="schoolService"/>
-    </bean>
 
-    <bean name="/admin/main.htm" class="com.utimes.study.web.admin.MainController">
-    </bean>
+
     
     <!-- maps request URLs to Controller names -->
     <!-- bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/ -->
@@ -84,4 +71,5 @@
 		</property>
 		
 	</bean>
+    <import resource="utimes-admin.xml"/>
 </beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+    <bean name="/admin/users.htm" class="com.utimes.study.web.admin.UserController">
+        <property name="userService" ref="userService"/>
+        <property name="countPerPage" value="30"/>
+    </bean>
+
+    <bean name="/admin/schools.htm" class="com.utimes.study.web.admin.SchoolController">
+        <property name="schoolService" ref="schoolService"/>
+        <!-- property name="countPerPage" value="30"/ -->
+    </bean>
+    <bean name="/admin/createschool.htm" class="com.utimes.study.web.admin.SchoolCreationController">
+        <property name="schoolService" ref="schoolService"/>
+    </bean>
+
+    <bean name="/admin/main.htm" class="com.utimes.study.web.admin.MainController">
+    </bean>
+    <bean name="/admin/school_edit.htm" class="com.utimes.study.web.admin.SchoolEditController"></bean>
+</beans>

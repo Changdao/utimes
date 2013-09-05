@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="/utimes/css/jquery-ui-1.9.2.custom.css" />
 <link rel="stylesheet" href="/utimes/css/utimes.css" />
 <link rel="stylesheet" href="/utimes/css/ui.jqgrid.css" />
-<script src="/utimes/js/jquery-ui-1.9.2.custome.js"></script>
+<script src="/utimes/js/jquery-ui-1.9.2.custom.js"></script>
 <script src="/utimes/js/jquery.form.js"></script>
 <script src="/utimes/js/jquery.jqGrid.min.js" > </script>
 <script src="/utimes/js/jquery.layout.js"></script>
@@ -138,8 +138,8 @@ div#users-contain table td,div#users-contain table th {
 		$("#dialog-form").dialog(
 						{
 							autoOpen : false,
-							height : 300,
-							width : 350,
+							height : 600,
+							width : 800,
 							modal : true,
 							buttons : {
 								"Create an school" : function() {
@@ -172,34 +172,9 @@ div#users-contain table td,div#users-contain table th {
 													"Password field only allow : a-z 0-9");*/
 
 									if (bValid) {
-										/*
-										Call the function to save the result.
-										Reload the grid/Asychronous update the grid?
-
-
-
-										$('#school-form').submit(
-										function(){$.get('createschool.htm', $('#school-form').serialize(),
-										           function(data){
-                                                       $('#testcontent').html(data);
-                                                   });
-                                                   });
-
-                                          judge result. return is a json.
-                                          ok? add row
-                                          no?
-
-                                        jQuery("#a4").click( function(){
-                                        	var datarow = {id:"99",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"};
-                                        	var su=jQuery("#list5").jqGrid('addRowData',99,datarow);
-                                        	if(su) alert("Succes. Write custom code to add data in server"); else alert("Can not update");
-                                        });
-
-                                        */
 
                                         $('#school-form').submit();
 
-										//$(this).dialog("close");
 									}
 								},
 								Cancel : function() {
@@ -215,17 +190,7 @@ div#users-contain table td,div#users-contain table th {
 			$( "#dialog-form" ).dialog( "open" );
 		});
 		$("#modify").button().click(function() {
-			var gr = jQuery("#schools").jqGrid('getGridParam', 'selrow');
-			if (gr != null)
-				/*jQuery("#schools").jqGrid('editGridRow', gr, {
-					height : 280,
-					reloadAfterSubmit : false
-				});*/
-				{
-					//Edit the school;
-				}
-			else
-				alert("Please Select Row");
+		    $('#edit-school-dialog').load('school_edit.htm');
 		});
 
 		var options = {
@@ -302,7 +267,7 @@ div#users-contain table td,div#users-contain table th {
 			</fieldset>
 		</form>
 	</div>
-	<div id="testcontent"/>
+	<div id="edit-school-dialog" title="Edit School"/>
 
 </body>
 </html>
