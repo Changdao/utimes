@@ -8,6 +8,7 @@ public interface SchoolService {
 	public void addSchool(SchoolBean school);
 	public void removeSchool();
 	public void addCourse();
+    public void updateSchool(SchoolBean schoolBean);
 	public SchoolBean getSchool(String id);
     public SchoolBean findSchoolByName(String name);
 

@@ -1,4 +1,11 @@
-
+<%@ page contentType="text/html;charset=utf-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.utimes.study.bean.SchoolBean"%>
+<%@ page import="java.io.*,java.util.Locale" %>
+<%@ page import="javax.servlet.*,javax.servlet.http.* "%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
     <head>
@@ -49,6 +56,7 @@
                        							modal : true,
                        							buttons : {
                        								"Update the school" : function() {
+                       								           alert('here');
                                                                $('#school-edit-form').submit();
                        								},
                        								Cancel : function() {
@@ -147,18 +155,20 @@
     </script>
     </head>
     <body>
-        <div>
+        <div style="margin-top: 15px; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(221, 221, 221); ">
+        <h3>Basic Information</h3>
         <form id="school-edit-form" action="editschool.htm">
 			<fieldset>
+			    <input type="hidden" name="id" id="id" value="<c:out value='${school.id}'/>"/>
 				<label for="name">Name</label>
 				<input type="text" name="name"
-					id="name" class="text ui-widget-content ui-corner-all" />
+					id="name" class="text ui-widget-content ui-corner-all" value="<c:out value='${school.name}'/>"/>
 				<label
 					for="location">Location</label>
 				<input type="text" name="location"
-					id="location" value="" class="text ui-widget-content ui-corner-all" />
+					id="location" value="<c:out value='${school.location}'/>" class="text ui-widget-content ui-corner-all" />
 
-				<label for"since"> Since:</label> <input class="text ui-widget-content ui-corner-all" type="text" id="since" />
+				<label for"since"> Since:</label> <input class="text ui-widget-content ui-corner-all" type="text" name="since" id="since" value=""/>
 
 				<label for="introduce">Introduce</label>
 
@@ -166,45 +176,80 @@
 					name="introduce" id="introduce" value=""
 					class="text ui-widget-content ui-corner-all" />
 
-				<label for="classroom">Classroom</label>
-				<input type="text" name="classroom" value="" class="text ui-widget-content ui-corner-all" />
 			</fieldset>
 		</form>
 		</div>
 
-		<div class="panel panel-default">
-        <div class="panel-heading" style="font-size: 9px;">
-            <div class="grid-row">
-                <div class="data-row" style="min-height: 26px;">
-                    <div class="col col-xs-1 row-index">#</div>
-                    <div class="col col-xs-2 grid-overflow-ellipsis"
-                         data-fieldname="name">Item Name
-                    </div>
-                    <div class="col col-xs-2 grid-overflow-ellipsis"
-                         data-fieldname="type">Item Type
-                    </div>
-                    <div class="col col-xs-2 grid-overflow-ellipsis text-right"
-                         data-fieldname="description">Item Description
-                    </div>
-                    <div class="col col-xs-3 grid-overflow-no-ellipsis"
-                         data-fieldname="time_to_pay">Time to pay
+        <div style="margin-top: 15px; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(221, 221, 221); ">
+        <h3>School Areas</h3>
+           <div class="panel panel-default">
+                           <div class="panel-heading" style="font-size: 9px;">
+                               <div class="grid-row">
+                                   <div class="data-row" style="min-height: 26px;">
+                                       <div class="col col-xs-1 row-index">#</div>
+                                       <div class="col col-xs-2 grid-overflow-ellipsis"
+                                            data-fieldname="name">Area Name
+                                       </div>
+                                       <div class="col col-xs-2 grid-overflow-ellipsis"
+                                            data-fieldname="type">Area Location
+                                       </div>
+                                       <div class="col col-xs-3 grid-overflow-no-ellipsis"
+                                            data-fieldname="time_to_pay">Are Description
+                                       </div>
+                                   </div>
+                                   <div class="panel panel-warning" style="display: none;"></div>
+                                   <div class="divider row"></div>
+                               </div>
+                           </div>
+                           <div class="panel-body">
+                               <div id="area_rows" class="rows ui-sortable">
+
+                               </div>
+                               <div style="margin-top: 5px; margin-bottom: -5px;">
+                                   <a href="#" id='area_add_row' class="grid-add-row">+ Add new area.</a>
+                                   <span class="text-muted">Click on row to edit.</span>
+                               </div>
+
+                           </div>
+           </div>
+        </div>
+
+        <div style="margin-top: 15px; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(221, 221, 221); ">
+        <h3>Tuition Items</h3>
+		    <div class="panel panel-default">
+                <div class="panel-heading" style="font-size: 9px;">
+                    <div class="grid-row">
+                        <div class="data-row" style="min-height: 26px;">
+                            <div class="col col-xs-1 row-index">#</div>
+                            <div class="col col-xs-2 grid-overflow-ellipsis"
+                                 data-fieldname="name">Item Name
+                            </div>
+                            <div class="col col-xs-2 grid-overflow-ellipsis"
+                                 data-fieldname="type">Item Type
+                            </div>
+                            <div class="col col-xs-2 grid-overflow-ellipsis text-right"
+                                 data-fieldname="description">Item Description
+                            </div>
+                            <div class="col col-xs-3 grid-overflow-no-ellipsis"
+                                 data-fieldname="time_to_pay">Time to pay
+                            </div>
+                        </div>
+                        <div class="panel panel-warning" style="display: none;"></div>
+                        <div class="divider row"></div>
                     </div>
                 </div>
-                <div class="panel panel-warning" style="display: none;"></div>
-                <div class="divider row"></div>
-            </div>
-        </div>
-        <div class="panel-body">
-            <div id="tuition_rows" class="rows ui-sortable">
+                <div class="panel-body">
+                    <div id="tuition_rows" class="rows ui-sortable">
 
 
-            </div>
-            <div style="margin-top: 5px; margin-bottom: -5px;">
-                <a href="#" id='tuition_add_row' class="grid-add-row">+ Add new row.</a>
-                <span class="text-muted">Click on row to edit.</span>
-            </div>
+                    </div>
+                    <div style="margin-top: 5px; margin-bottom: -5px;">
+                        <a href="#" id='tuition_add_row' class="grid-add-row">+ Add new row.</a>
+                        <span class="text-muted">Click on row to edit.</span>
+                    </div>
 
-        </div>
+                </div>
+            </div>
         </div>
     </div>
 

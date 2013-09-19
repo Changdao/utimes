@@ -29,6 +29,7 @@ CREATE TABLE `course` (
 create Table schoolarea (
 	`id`	int(11) not null auto_increment,
 	`name`	varchar(128) not null,
+	`location` text,
 	`school_id` int(11),
 	primary key (`id`)
 )

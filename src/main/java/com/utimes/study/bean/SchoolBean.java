@@ -6,7 +6,7 @@ import java.util.List;
 public class SchoolBean {
 	private List<CourseBean> courses;
 	private int id;
-	private List areas;
+	private List<SchoolAreaBean> areas;
 	private String name;
 	private String memo;
 	private Date since;

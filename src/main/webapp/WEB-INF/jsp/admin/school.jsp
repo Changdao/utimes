@@ -135,6 +135,15 @@ div#users-contain table td,div#users-contain table th {
 	      allFields = $( [] ).add( name ).add( location ).add( introduce ),
 	      tips = $( ".validateTips" );
 
+        $("#loading").dialog(
+        {
+            autoOpen:false,
+            height:600,
+            width:800,
+            modal:true
+        }
+        );
+
 		$("#dialog-form").dialog(
 						{
 							autoOpen : false,
@@ -172,9 +181,7 @@ div#users-contain table td,div#users-contain table th {
 													"Password field only allow : a-z 0-9");*/
 
 									if (bValid) {
-
                                         $('#school-form').submit();
-
 									}
 								},
 								Cancel : function() {
@@ -190,7 +197,18 @@ div#users-contain table td,div#users-contain table th {
 			$( "#dialog-form" ).dialog( "open" );
 		});
 		$("#modify").button().click(function() {
-		    $('#edit-school-dialog').load('school_edit.htm');
+		    //check the select.
+		    //pass the selected to school_edit.htm
+            var id = jQuery("#schools").jqGrid('getGridParam','selrow');
+            if(id)
+            {
+                $('#loading').dialog('open');
+		        $('#edit-school-dialog').load('school_edit.htm?schoolid='+id,function(){$('#loading').dialog('close');});
+
+
+
+
+		    }
 		});
 
 		var options = {
@@ -253,6 +271,7 @@ div#users-contain table td,div#users-contain table th {
 
 		<form id="school-form" action="createschool.htm">
 			<fieldset>
+
 				<label for="name">Name</label> 
 				<input type="text" name="name"
 					id="name" class="text ui-widget-content ui-corner-all" /> 
@@ -268,6 +287,8 @@ div#users-contain table td,div#users-contain table th {
 		</form>
 	</div>
 	<div id="edit-school-dialog" title="Edit School"/>
-
+    <div id="loading" title="loading">
+      <img src="/utimes/images/loading1.gif"/><span>Loading...</span>
+    </div>
 </body>
 </html>

@@ -17,5 +17,12 @@
 
     <bean name="/admin/main.htm" class="com.utimes.study.web.admin.MainController">
     </bean>
-    <bean name="/admin/school_edit.htm" class="com.utimes.study.web.admin.SchoolEditController"></bean>
+    <bean name="/admin/school_edit.htm" class="com.utimes.study.web.admin.SchoolEditController">
+        <property name="schoolService" ref="schoolService"/>
+    </bean>
+
+    <bean name="/admin/editschool.htm" class="com.utimes.study.web.admin.SchoolUpdateControler">
+        <property name="schoolService" ref="schoolService"/>
+    </bean>
+
 </beans>
