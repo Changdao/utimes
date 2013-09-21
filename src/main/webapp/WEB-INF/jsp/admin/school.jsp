@@ -203,10 +203,11 @@ div#users-contain table td,div#users-contain table th {
             if(id)
             {
                 $('#loading').dialog('open');
-		        $('#edit-school-dialog').load('school_edit.htm?schoolid='+id,function(){$('#loading').dialog('close');});
-
-
-
+		        //$('#edit-school-dialog').load('school_edit.htm?schoolid='+id,function(){$('#loading').dialog('close');});
+                //var theactive=$('#tabs','#RightPane').tabs('option','active');
+                //$('#tabs>div')[theactive].load(
+                //$('#schoolsall').load('school_edit.htm?schoolid='+id,function(){$('#loading').dialog('close');});
+                $("#tabs div[aria-hidden='false']").load('school_edit.htm?schoolid='+id,function(){$('#loading').dialog('close');});
 
 		    }
 		});
@@ -257,7 +258,7 @@ div#users-contain table td,div#users-contain table th {
 </head>
 <body>
 
-
+   <div id='schoolsall'>
 
             <table id="schools"></table>
             <div id="pager2"></div>
@@ -290,5 +291,6 @@ div#users-contain table td,div#users-contain table th {
     <div id="loading" title="loading">
       <img src="/utimes/images/loading1.gif"/><span>Loading...</span>
     </div>
+   </div>
 </body>
 </html>

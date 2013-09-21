@@ -25,4 +25,8 @@
         <property name="schoolService" ref="schoolService"/>
     </bean>
 
+    <bean name="/admin/schoolarea.htm" class="com.utimes.study.web.admin.SchoolAreaEditController">
+        <property name="schoolService" ref="schoolService"/>
+    </bean>
+
 </beans>

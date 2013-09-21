@@ -7,6 +7,8 @@ import org.springframework.web.servlet.mvc.AbstractController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.Enumeration;
 
 
@@ -28,6 +30,15 @@ public class SchoolUpdateControler extends AbstractController {
         this.schoolService = schoolService;
     }
 
+
+    private static SimpleDateFormat sdf;
+    static
+    {
+        sdf=new SimpleDateFormat();
+        sdf.applyPattern("yyyy-MM-dd");
+    }
+
+
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -36,7 +47,10 @@ public class SchoolUpdateControler extends AbstractController {
         String name=request.getParameter("name");
         String introduce=request.getParameter("introduce");
         String location=request.getParameter("location");
-        String since=request.getParameter("since");
+        String sinceStr=request.getParameter("since");
+
+        Date sinceDate= sdf.parse(sinceStr);
+
 
         Enumeration emer=request.getParameterNames();
         while(emer.hasMoreElements())
@@ -50,6 +64,7 @@ public class SchoolUpdateControler extends AbstractController {
         sb.setName(name);
         sb.setMemo(introduce);
         sb.setLocation(location);
+        sb.setSince(sinceDate);
         //todo: process the since.
 
         schoolService.updateSchool(sb);

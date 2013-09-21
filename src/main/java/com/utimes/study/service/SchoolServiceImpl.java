@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.utimes.study.bean.SchoolAreaBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -39,6 +40,28 @@ public class SchoolServiceImpl implements SchoolService {
 
 	}
 
+    private class SchoolAreaRowMapper implements RowMapper{
+
+        private final SchoolBean owner;
+
+        public SchoolAreaRowMapper(SchoolBean owner)
+        {
+            this.owner=owner;
+        }
+
+        public Object mapRow(ResultSet rs, int rowNum) throws SQLException{
+            SchoolAreaBean area=new SchoolAreaBean();
+            area.setLocation(rs.getString("location"));
+            area.setName(rs.getString("name"));
+            area.setId(rs.getInt("id"));
+            area.setOwner(owner);
+            area.setMemo(rs.getString("memo"));
+            return area;
+
+        }
+    }
+
+
 	private JdbcTemplate jdbcTemplate;
 	private static String SCHOOL_SELECT_SQL = "SELECT * FROM SCHOOL";
 
@@ -49,10 +72,15 @@ public class SchoolServiceImpl implements SchoolService {
 	}
 
 	private static String SCHOOL_GET_BY_ID_SQL = "select * from SCHOOL where id=?";
+    private static String SCHOOL_AREA_GET_BY_SCHOOL_SQL="select * from SCHOOLAREA where flag>=0 and school_id=?";
 
 	public SchoolBean getSchool(String id) {
-		return (SchoolBean) jdbcTemplate.queryForObject(SCHOOL_GET_BY_ID_SQL,
+
+		SchoolBean school=(SchoolBean) jdbcTemplate.queryForObject(SCHOOL_GET_BY_ID_SQL,
 				new Object[] { id }, new SchoolRowMapper());
+        List<SchoolAreaBean> areas=jdbcTemplate.query(SCHOOL_AREA_GET_BY_SCHOOL_SQL, new Object[]{id}, new SchoolAreaRowMapper(school));
+        school.setAreas(areas);
+        return school;
 	}
 
     private Integer getLastInsertID()
@@ -78,12 +106,16 @@ public class SchoolServiceImpl implements SchoolService {
                 jdbcTemplate.update(SCHOOL_CREATE_SQL, new Object[]{theSchool.getName(), theSchool.getLocation(), theSchool.getMemo()});
                 Integer id=getLastInsertID();
                 jdbcTemplate.update(SCHOOL_CREATE_DEFAULT_AREA_SQL,new Object[]{"缺省校区",theSchool.getLocation(),id});
-
-
             }
         });
 
 	}
+
+    private static String SCHOOL_AREA_DELETE_SQL="update schoolarea set flag=-1 where id=? ";
+    public void deleteArea(String id)
+    {
+        jdbcTemplate.update(SCHOOL_AREA_DELETE_SQL,new Object[]{id});
+    }
 
 	public void removeSchool() {
 		// TODO Auto-generated method stub
@@ -112,6 +144,24 @@ public class SchoolServiceImpl implements SchoolService {
                                                             schoolBean.getSince(),schoolBean.getId()
                                                });
     }
+
+
+    private static String SCHOOL_AREA_INSERT_SQL="insert into schoolarea(name,school_id,locaction,memo,flag) value(?,?,?,?,1)";
+
+    @Override
+    public Integer addSchoolArea(SchoolAreaBean schoolArea, Integer schoolId) {
+        jdbcTemplate.update(SCHOOL_AREA_INSERT_SQL,new Object[]{schoolArea.getName(),schoolId ,schoolArea.getLocation(),schoolArea.getMemo()});
+        return getLastInsertID();
+    }
+
+    public Integer addSchoolArea(SchoolAreaBean schoolArea)
+    {
+        addSchoolArea(schoolArea, schoolArea.getOwner().getId());
+        return getLastInsertID();
+    }
+
+
+
 
     public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;

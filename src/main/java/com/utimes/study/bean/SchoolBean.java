@@ -6,7 +6,16 @@ import java.util.List;
 public class SchoolBean {
 	private List<CourseBean> courses;
 	private int id;
-	private List<SchoolAreaBean> areas;
+
+    public List<SchoolAreaBean> getAreas() {
+        return areas;
+    }
+
+    public void setAreas(List<SchoolAreaBean> areas) {
+        this.areas = areas;
+    }
+
+    private List<SchoolAreaBean> areas;
 	private String name;
 	private String memo;
 	private Date since;

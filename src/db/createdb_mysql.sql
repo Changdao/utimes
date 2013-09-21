@@ -31,6 +31,8 @@ create Table schoolarea (
 	`name`	varchar(128) not null,
 	`location` text,
 	`school_id` int(11),
+	`memo` text,
+	`flag` int(11),
 	primary key (`id`)
 )
 
