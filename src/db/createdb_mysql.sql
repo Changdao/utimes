@@ -32,7 +32,7 @@ create Table schoolarea (
 	`location` text,
 	`school_id` int(11),
 	`memo` text,
-	`flag` int(11),
+	`flag` int(11) default 0,
 	primary key (`id`)
 )
 

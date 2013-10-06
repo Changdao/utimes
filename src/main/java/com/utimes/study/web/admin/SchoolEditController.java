@@ -37,9 +37,11 @@ public class SchoolEditController extends AbstractController {
         }
 
         String schoolId=(String)request.getParameter("schoolid");
+        System.out.println("\n==>SchoolId:"+schoolId);
         if(null!=schoolId&&!"".equals(schoolId.trim()))
         {
             SchoolBean sb =schoolService.getSchool(schoolId);
+            System.out.println("\n==>school area size:"+sb.getAreas().size());
             Thread.sleep(1000);
             return new ModelAndView("/admin/school_edit","school",sb);
         }

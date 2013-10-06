@@ -146,7 +146,7 @@ public class SchoolServiceImpl implements SchoolService {
     }
 
 
-    private static String SCHOOL_AREA_INSERT_SQL="insert into schoolarea(name,school_id,locaction,memo,flag) value(?,?,?,?,1)";
+    private static String SCHOOL_AREA_INSERT_SQL="insert into schoolarea(name,school_id,location,memo,flag) value(?,?,?,?,1)";
 
     @Override
     public Integer addSchoolArea(SchoolAreaBean schoolArea, Integer schoolId) {
@@ -171,4 +171,12 @@ public class SchoolServiceImpl implements SchoolService {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+
+    private static String SCHOOL_AREA_UPDATE_SQL="update schoolarea set name=?,location=?,memo=?,flag=0 where id=?";
+
+    @Override
+    public void updateSchoolArea(SchoolAreaBean areaBean) {
+        jdbcTemplate.update(SCHOOL_AREA_UPDATE_SQL,new Object[]{areaBean.getName(),areaBean.getLocation(),areaBean.getMemo(),areaBean.getId()});
+
+    }
 }

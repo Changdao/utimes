@@ -1,0 +1,5 @@
+ $.post('schoolarea.htm?action=save',{name:areaName,location:areaLocation,memo:areaMemo},function(){
+                                                                    //update the data-idx
+                                                                    alert('posted');
+                                                                }
+                                                            );

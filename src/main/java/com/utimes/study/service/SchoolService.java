@@ -21,6 +21,7 @@ public interface SchoolService {
      */
     public Integer addSchoolArea(SchoolAreaBean schoolArea);
     public Integer addSchoolArea(SchoolAreaBean schoolArea, Integer schoolId);
+    public void updateSchoolArea(SchoolAreaBean areaBean);
 
 
 }

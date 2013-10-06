@@ -85,14 +85,78 @@
             $('#area').delegate('#area_add_row','click',
                 function()
                 {
-                    console.log('display add panel');
+
+                    console.log('display add panel:'+$(this));
                     //new area row
                     //panel open
                     // onsave = save the content.
                     //         savesuccessful= display row, hide panel
                     //                          set the school-id
+                    var _datacount=$('#area_rows .grid-row').size();
 
-                    $('#area_rows').
+                    $.get( "schoolarea.htm?action=new", function( data ) {
+                        _thedata=data;
+
+                        $( "#area_rows" ).append( data );
+                        var _last=$('#area_rows .grid-row').last();
+                        var _row_index=""+(_datacount+1);
+                        _last.find('.row-index').html(_row_index);
+
+                        var pnl=_last.children('.panel');
+                        var row=_last.children('.data-row');
+                        row.updateArea=function(obj)
+                        {
+                            row.find('div[data-fieldname="name"]').text(obj.name);
+                            row.find('div[data-fieldname="memo"]').text(obj.memo);
+                            row.find('div[data-fieldname="location"]').text(obj.location);
+                            console.log('...I was called?');
+                        }
+                        var areaid=_last.attr('data-idx');
+                        pnl.addClass("panel-open");
+                        pnl.load("schoolarea.htm?action=loadpanel",function(){
+                            pnl.find('.row-index').text(_row_index);
+                            //clicked event handler.
+                            pnl.find('.btn-success')
+                            .click(
+                                    function(){
+                                                console.log('clicked me');
+                                                var areaName=pnl.find('#area_name');
+                                                var areaLocation=pnl.find('#area_location');
+                                                var areaMemo=pnl.find('#area_memo');
+                                                var schoolId=$('#id').val();
+                                                console.log('school id:'+schoolId);
+                                                console.log('areaname:'+areaName);
+                                                console.log('areaname:'+areaName.val());
+
+                                                 $.post('schoolarea.htm?action=save',
+                                                        {schoolid:schoolId,
+                                                         id:areaid,
+                                                         name:areaName.val(),
+                                                         location:areaLocation.val(),
+                                                         memo:areaMemo.val()
+                                                         },
+                                                         function(data){
+                                                                      console.log('return:'+data);
+                                                                      var obj=$.parseJSON(data);
+                                                                      console.log('return ojb:'+obj);
+                                                                      console.log('return area id:'+obj.id);
+                                                                      _last.attr('data-idx',obj.id);
+                                                                      //todo: it is necessary to use closure to beautify the code
+                                                                      row.updateArea(obj);
+                                                         }
+                                                 );
+                                                 pnl.css('display','none');
+                                                 row.css('display','block');
+                                            }
+                            );
+
+                            pnl.css('display','block');
+                            row.css('display','none');
+
+                          }
+                        );
+                    });
+
                 }
             );
 
@@ -107,17 +171,23 @@
                                  {
                                     //console.log('find:'+the_utimes_area_row.size());
                                     //console.log('is it:'+);
-                                    var areaid=  the_utimes_area_row.attr('data-idx');
-                                    $.get('schoolarea.htm',{action:'delete',id:area_id}
-                                      function(response)
-                                      {
-                                        that.remove();
-                                      }
-                                    );
+                                    var area_id= the_utimes_area_row.attr('data-idx');
+                                    if(area_id>0)
+                                    {
+                                        $.get('schoolarea.htm',{action:'delete',id:area_id},
+                                            function(response)
+                                            {
+                                                the_utimes_area_row.remove();
+                                            }
+                                        );
+                                    }
+                                    else
+                                    {
+                                        the_utimes_area_row.remove();
+                                        //todo: recalc the sn
+                                    }
                                  }
-
                                 }
-
             );
 
 
@@ -325,6 +395,47 @@
                 </div>
             </div>
         </div>
+
+
+        <div id='course' style="margin-top: 15px; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(221, 221, 221); ">
+            <h3>Tuition Items</h3>
+            <div class="panel panel-default">
+                <div class="panel-heading" style="font-size: 9px;">
+                    <div class="grid-row">
+                        <div class="data-row" style="min-height: 26px;">
+                            <div class="col col-xs-1 row-index">#</div>
+                            <div class="col col-xs-2 grid-overflow-ellipsis"
+                                 data-fieldname="name">Course Name
+                            </div>
+                            <div class="col col-xs-2 grid-overflow-ellipsis"
+                                 data-fieldname="type">Item Type
+                            </div>
+                            <div class="col col-xs-2 grid-overflow-ellipsis text-right"
+                                 data-fieldname="description">Item Description
+                            </div>
+                            <div class="col col-xs-3 grid-overflow-no-ellipsis"
+                                 data-fieldname="time_to_pay">Time to pay
+                            </div>
+                        </div>
+                        <div class="panel panel-warning" style="display: none;"></div>
+                        <div class="divider row"></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="tuition_rows" class="rows ui-sortable">
+
+                    </div>
+                    <div style="margin-top: 5px; margin-bottom: -5px;">
+                        <a href="#" id='tuition_add_row' class="grid-add-row">+ Add new row.</a>
+                        <span class="text-muted">Click on row to edit.</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 
 
