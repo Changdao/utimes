@@ -52,27 +52,6 @@
             $( "#since" ).datepicker( "setDate", theSince);
 
 
-            /*$('#edit-school-dialog').dialog({
-                                                autoOpen : false,
-                                                height : 600,
-                                                width : 800,
-                                                modal : true,
-                                                buttons : {
-                                                    "Update the school" : function() {
-                                                               alert('here');
-                                                               $('#school-edit-form').submit();
-                                                    },
-                                                    Cancel : function() {
-                                                        $(this).dialog("close");
-                                                    }
-                                                },
-                                                close : function() {
-                                                    //allFields.val("").removeClass("ui-state-error");
-                                                }
-                                            }
-                    );
-            $('#edit-school-dialog').dialog('open');  */
-
             $('#btnsaveschool').button().click(function(){
                 //save it.
                 var theactive=$('#tabs','#RightPane').tabs('option','active');
@@ -87,11 +66,7 @@
                 {
 
                     console.log('display add panel:'+$(this));
-                    //new area row
-                    //panel open
-                    // onsave = save the content.
-                    //         savesuccessful= display row, hide panel
-                    //                          set the school-id
+
                     var _datacount=$('#area_rows .grid-row').size();
 
                     $.get( "schoolarea.htm?action=new", function( data ) {
@@ -104,60 +79,57 @@
 
                         var pnl=_last.children('.panel');
                         var row=_last.children('.data-row');
-                        row.updateArea=function(obj)
-                        {
-                            row.find('div[data-fieldname="name"]').text(obj.name);
-                            row.find('div[data-fieldname="memo"]').text(obj.memo);
-                            row.find('div[data-fieldname="location"]').text(obj.location);
-                            console.log('...I was called?');
-                        }
+
                         var areaid=_last.attr('data-idx');
                         pnl.addClass("panel-open");
                         pnl.load("schoolarea.htm?action=loadpanel",function(){
                             pnl.find('.row-index').text(_row_index);
-                            //clicked event handler.
-                            pnl.find('.btn-success')
-                            .click(
-                                    function(){
-                                                console.log('clicked me');
-                                                var areaName=pnl.find('#area_name');
-                                                var areaLocation=pnl.find('#area_location');
-                                                var areaMemo=pnl.find('#area_memo');
-                                                var schoolId=$('#id').val();
-                                                console.log('school id:'+schoolId);
-                                                console.log('areaname:'+areaName);
-                                                console.log('areaname:'+areaName.val());
-
-                                                 $.post('schoolarea.htm?action=save',
-                                                        {schoolid:schoolId,
-                                                         id:areaid,
-                                                         name:areaName.val(),
-                                                         location:areaLocation.val(),
-                                                         memo:areaMemo.val()
-                                                         },
-                                                         function(data){
-                                                                      console.log('return:'+data);
-                                                                      var obj=$.parseJSON(data);
-                                                                      console.log('return ojb:'+obj);
-                                                                      console.log('return area id:'+obj.id);
-                                                                      _last.attr('data-idx',obj.id);
-                                                                      //todo: it is necessary to use closure to beautify the code
-                                                                      row.updateArea(obj);
-                                                         }
-                                                 );
-                                                 pnl.css('display','none');
-                                                 row.css('display','block');
-                                            }
-                            );
-
                             pnl.css('display','block');
                             row.css('display','none');
-
                           }
                         );
                     });
 
                 }
+            );
+
+            $('#area').delegate('.data-row','refresh',function(event,obj){
+                var that=$(event.target);
+                that.find('div[data-fieldname="name"]').text(obj.name);
+                that.find('div[data-fieldname="memo"]').text(obj.memo);
+                that.find('div[data-fieldname="location"]').text(obj.location);
+            });
+
+            //clicked event handler.
+            $('#area').delegate('.btn-success','click',
+                    function(){
+                                var _last=$('#area_rows .grid-row').last();
+                                var pnl=_last.children('.panel');
+                                var row=_last.children('.data-row');
+                                var areaName=pnl.find('#area_name');
+                                var areaLocation=pnl.find('#area_location');
+                                var areaMemo=pnl.find('#area_memo');
+                                var schoolId=$('#id').val();
+                                var areaid=_last.attr('data-idx');
+
+
+                                 $.post('schoolarea.htm?action=save',
+                                        {schoolid:schoolId,
+                                         id:areaid,
+                                         name:areaName.val(),
+                                         location:areaLocation.val(),
+                                         memo:areaMemo.val()
+                                         },
+                                         function(data){
+                                                      var obj=$.parseJSON(data);
+                                                      _last.attr('data-idx',obj.id);
+                                                      //todo: it is necessary to use closure to beautify the code
+                                                      row.triggerHandler('refresh',obj);
+                                         }
+                                 );
+                                 pnl.css('display','none');
+                                 row.css('display','block');
+                            }
             );
 
             $('#area_rows').delegate('.grid-delete-row','click',
@@ -191,82 +163,123 @@
             );
 
 
-            closePanels=function(openpnls){
-                            //console.log(openpnls);
-                            openpnls.children('.data-row').css('display','block');
-                            openpnls.children('.panel').css('display','none');
-                            openpnls.children('.panel').html('');
-                            openpnls.removeClass('panel-open');
-                        }
+
+            $('#tuition_rows').delegate('.grid-row','collapse',function(event,obj)
+            {
+                openpnls=$(obj);
+
+                openpnls.find('.data-row').css('display','block');
+                openpnls.find('.panel').css('display','none');
+                openpnls.find('.panel').html('');
+                openpnls.removeClass('panel-open');
+            }
+            );
+
+            $('#tuition').delegate('.grid-row','refresh',function(event,obj,dataobj)
+            {
+                var that=$(event.target);
+                console.log('tuition refresh that:'+that+' is:'+that.html());
+                that.find('div[data-fieldname="name"]').text(dataobj.name);
+                that.find('div[data-fieldname="memo"]').text(dataobj.memo);
+                that.find('div[data-fieldname="money"]').text(dataobj.location);
+                that.find('div[data-fieldname="type"]').text(dataobj.type);
+                that.find('div[data-fieldname="paytype"]').text(dataobj.paytype);
+                that.attr('data-idx',dataobj.id);
+                $('#tuition .panel-open').trigger('collapse',$('#tuition .panel-open'));
+            }
+            );
+
+            $('#tuition').on('click','.grid-toggle-row',function(){
+                    var that=$(event.target);
+                    console.log('tuition click that:'+that+' is:'+that.html());
+                    var pnl=that.parents('.panel');
+                    var thatrow=that.parents('.grid-row');
+                    console.log('tuition click thatrow:'+thatrow+' size:'+thatrow.size());
+                    var tuition_id=thatrow.attr('data-idx');
+                    var tuition_name=pnl.find('#tuition_name').val();
+                    var tuition_type=pnl.find('#tuition_type').val();
+                    var tuition_paytype=pnl.find('#tuition_paytype').val();
+                    var tuition_money=pnl.find('#tuition_money').val();
+                    var tuition_memo=pnl.find('#tuition_memo').val();
+                    var tuition_schoolid= $('#id').val();
+
+                    $.post('schooltuition.htm?action=save',
+                            {id:tuition_id,
+                             name:tuition_name,
+                             type:tuition_type,
+                             paytype:tuition_paytype,
+                             money:tuition_money,
+                             memo:tuition_memo,
+                             schoolid:tuition_schoolid},
+                             function(data)
+                            {
+                                var dataobj=$.parseJSON(data);
+                                thatrow.trigger('refresh', [thatrow,dataobj]);
+                                event.stopPropagation();
+
+                    });
+
+
+            });
+
+            $('#tuition_rows').delegate('.grid-row','toggleEdit',function(event,target)
+                {
+
+                    var that=$(target);
+                    that.addClass("panel-open");
+                    var pnl=that.find('.panel');
+                    var row_idx=that.find('.row-index').text();
+                    pnl.load('school_edit.htm?action=loadtuitionpanel&rownumber='+row_idx );
+
+                    pnl.css('display','block');
+                    that.find('.data-row').css('display','none');
+                }
+            );
+
+            $('#tuition_rows').delegate('.grid-row','click',function()
+            {
+
+                var that=$(event.target);
+
+                if(that.is('.data-row'))
+                {
+                    var gridrow=that.parents('.grid-row');
+
+                    if(gridrow.hasClass('panel-open'))return;
+
+                    $('#tuition .panel-open').trigger('collapse',$('#tuition .panel-open'));
+                    gridrow.trigger('toggleEdit',gridrow);
+                }
+                else
+                {
+                    var dr=that.parents('.data-row');
+                    if(dr&&dr.size()>0)
+                    {
+                         var gridrow=that.parents('.grid-row');
+                         if(gridrow.hasClass('panel-open'))return;
+                         $('#tuition .panel-open').trigger('collapse',$('#tuition .panel-open'));
+                         gridrow.trigger('toggleEdit',gridrow);
+                    }
+
+                }
+
+            });
 
             $('#tuition_add_row').click(function(){
 
-                        closePanels($('#tuition .panel-open'));
+                        $('#tuition .panel-open').trigger('collapse',$('#tuition .panel-open'));
 
                         var cnt=$('#tuition_rows').children().size()+1;
-                        var newrow=$('<div class="grid-row" data-idx="1">'+
-                    '<div class="data-row" style="min-height: 26px;">'+
-                        '<div class="col col-xs-1 row-index">'+cnt+'</div>'+
-                        '<div class="col col-xs-2 grid-overflow-ellipsis"'+
-                             ' data-fieldname="company_name"> '+
-                        '</div> '+
-                        '<div class="col col-xs-2 grid-overflow-ellipsis" '+
-                              ' data-fieldname="designation"></div> '+
-                        '<div class="col col-xs-2 grid-overflow-ellipsis text-right" ' +
-                             ' data-fieldname="salary"> '+
-                            ' <div style="text-align: right">N$ 0.00</div> '+
-                        ' </div> '+
-                        ' <div class="col col-xs-3 grid-overflow-no-ellipsis" '+
-                             ' data-fieldname="address"></div> '+
-                        '<div class="col-md-1 pull-right" '+
-                             'style="text-align: right; padding-right: 5px;"> '+
-                            '<button class="btn btn-small btn-success grid-insert-row" '+
-                                    ' style="padding: 4px;"> '+
-                                ' <i class="icon icon-plus-sign"></i> '+
-                            '</button>'+
-                            '<button class="btn btn-small btn-default grid-delete-row" '+
-                                    ' style="padding: 4px;"> '+
-                                '<i class="icon icon-trash"></i>'+
-                            '</button>'+
-                        '</div>'+
-                    '</div>'+
-                    '<div class="panel panel-warning" style="display: none;"></div>'+
-                    '<div class="divider row"></div>'+
-                '</div>');
-                        newrow.rownumber=cnt;
-                        newrow.appendTo('#tuition_rows');
+                        $.get('school_edit.htm?action=loadtuitionrow',function(data)
+                        {
+                          $('#tuition_rows').append(data);
+                          var newrow=$('#tuition_rows .grid-row').last();
+                          newrow.rownumber=cnt;
+                          newrow.find('.row-index').text(cnt);
+                          newrow.trigger('toggleEdit',newrow);
 
-
-                        newrow.toggle_view=function(){
-
-                            newrow.addClass("panel-open");
-                            var pnl=this.children('.panel');
-                            //alert(pnl);
-                            pnl.load('school_edit.htm?loadtuitionpanel=true&rownumber='+newrow.rownumber,function()
-                            {
-                                console.log('panel:'+pnl);
-                                console.log('children:'+pnl.children('.grid-toggle-row'));
-                                console.log('newrow:'+newrow);
-                                $('.grid-toggle-row',pnl).click(function(event){
-
-                                                                closePanels(newrow);
-                                                                event.stopPropagation();
-
-                                                            });
-                            }
-                            );
-
-                            pnl.css('display','block');
-                            this.children('.data-row').css('display','none');
-                        };
-
-                        newrow.click(function(){
-                            if(newrow.hasClass('panel-open'))return;
-                            closePanels($('#tuition .panel-open'));
-                            newrow.toggle_view();
                         });
 
-                        newrow.toggle_view();
 
                     });
 
@@ -371,11 +384,15 @@
                             <div class="col col-xs-2 grid-overflow-ellipsis"
                                  data-fieldname="type">Item Type
                             </div>
-                            <div class="col col-xs-2 grid-overflow-ellipsis text-right"
-                                 data-fieldname="description">Item Description
+                            <div class="col col-xs-2 grid-overflow-ellipsis"
+                                 data-fieldname="paytype">Item Type
                             </div>
+                            <div class="col col-xs-2 grid-overflow-ellipsis text-right"
+                                 data-fieldname="memo">Item Fee
+                            </div>
+
                             <div class="col col-xs-3 grid-overflow-no-ellipsis"
-                                 data-fieldname="time_to_pay">Time to pay
+                                 data-fieldname="moeny">Item Description
                             </div>
                         </div>
                         <div class="panel panel-warning" style="display: none;"></div>

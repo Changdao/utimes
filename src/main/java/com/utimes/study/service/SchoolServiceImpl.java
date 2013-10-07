@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.utimes.study.bean.SchoolAreaBean;
+import com.utimes.study.bean.SchoolTuitionBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -178,5 +179,22 @@ public class SchoolServiceImpl implements SchoolService {
     public void updateSchoolArea(SchoolAreaBean areaBean) {
         jdbcTemplate.update(SCHOOL_AREA_UPDATE_SQL,new Object[]{areaBean.getName(),areaBean.getLocation(),areaBean.getMemo(),areaBean.getId()});
 
+    }
+
+
+    private static String SCHOOL_TUITION_UPDATE_SQL="update schooltuitionitems set name=?,type=?,paytype=?,money=?,memo=? where id=?";
+
+    @Override
+    public int updatefSchoolTuition(SchoolTuitionBean tuitionBean) {
+        jdbcTemplate.update(SCHOOL_TUITION_UPDATE_SQL, new Object[]{tuitionBean.getName(),tuitionBean.getType(),tuitionBean.getPaytype(),tuitionBean.getMoney(),tuitionBean.getMemo(),tuitionBean.getId()});
+        return getLastInsertID();
+    }
+
+
+
+    private static String SCHOOL_TUITION_ADD_SQL="insert into schooltuitionitems(name,type,paytype,money,memo,school_id) value(?,?,?,?,?,?)";
+    @Override
+    public void addSchoolTuition(SchoolTuitionBean tuitionBean,int schoolId) {
+        jdbcTemplate.update(SCHOOL_TUITION_ADD_SQL,new Object[]{tuitionBean.getName(),tuitionBean.getType(),tuitionBean.getPaytype(),tuitionBean.getMoney(),tuitionBean.getMemo(),schoolId});
     }
 }

@@ -2,6 +2,7 @@ package com.utimes.study.web.admin;
 
 import com.utimes.study.bean.SchoolBean;
 import com.utimes.study.service.SchoolService;
+import com.utimes.study.util.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
@@ -26,22 +27,31 @@ public class SchoolEditController extends AbstractController {
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String name=request.getParameter("name");
-        System.out.println("name:"+name);
+        Logger.debug("name:"+name);
 
-        String loadTuitionPanel=(String)request.getParameter("loadtuitionpanel");
-        if(!(null==loadTuitionPanel||"".equals(loadTuitionPanel.trim())))
+        String action=(String)request.getParameter("action");
+        Logger.debug("action:"+action);
+        if(!(null==action||"".equals(action.trim())))
         {
-            String rownumber=(String)request.getParameter("rownumber");
+            switch(action)
+            {
+                case "loadtuitionpanel":
+                    Logger.debug("Action:loadtuitionpanel");
+                    String rownumber=(String)request.getParameter("rownumber");
+                    Logger.debug("rownumber:"+rownumber);
+                    return new ModelAndView("/admin/tuition_panel","rownumber",rownumber);
 
-            return new ModelAndView("/admin/tuition_panel","rownumber",rownumber);
+                case "loadtuitionrow":
+                    return new ModelAndView("/admin/tuition_row","rownumber","");
+            }
         }
 
         String schoolId=(String)request.getParameter("schoolid");
-        System.out.println("\n==>SchoolId:"+schoolId);
+        Logger.debug("\n==>SchoolId:"+schoolId);
         if(null!=schoolId&&!"".equals(schoolId.trim()))
         {
             SchoolBean sb =schoolService.getSchool(schoolId);
-            System.out.println("\n==>school area size:"+sb.getAreas().size());
+            Logger.debug("\n==>school area size:"+sb.getAreas().size());
             Thread.sleep(1000);
             return new ModelAndView("/admin/school_edit","school",sb);
         }

@@ -25,7 +25,7 @@ public class CurrencyTest{
     @Before
     public void setUp() throws Exception
     {
-        System.out.println("Test SetUp");
+        //System.out.println("Test SetUp");
         this.currency2_1=new Currency(Currency.CarryType.Two,125,84);
         this.currency2_2=new Currency(Currency.CarryType.Two,481,23);
         this.currency4_1=new Currency(Currency.CarryType.Four,250,19);
@@ -35,7 +35,7 @@ public class CurrencyTest{
     @Test
     public void testToString()
     {
-        System.out.println("Test ToString");
+        //System.out.println("Test ToString");
         Assert.assertEquals("125.84", currency2_1.toString());
         Assert.assertEquals("481.23", currency2_2.toString());
         Assert.assertEquals("250.0019", currency4_1.toString());
@@ -45,7 +45,7 @@ public class CurrencyTest{
     @Test
     public void testAdd()
     {
-        System.out.println("Test Add");
+        //System.out.println("Test Add");
         Assert.assertEquals("607.07", currency2_1.add(currency2_2).toString());
     }
 
@@ -53,7 +53,7 @@ public class CurrencyTest{
     @Test
     public void testInit()
     {
-        System.out.println("Test init with double");
+        //System.out.println("Test init with double");
         Currency currency=new Currency(Currency.CarryType.Two,32.23);
         Assert.assertEquals(32l,currency.getWhole());
         Assert.assertEquals(23l,currency.getDecimal());
@@ -62,7 +62,7 @@ public class CurrencyTest{
     @Test
     public void testInit2()
     {
-        System.out.println("Test init with double");
+        //System.out.println("Test init with double");
         Currency currency=new Currency(Currency.CarryType.Two,0.0);
         Assert.assertEquals(0,currency.getWhole());
         Assert.assertEquals(0,currency.getDecimal());

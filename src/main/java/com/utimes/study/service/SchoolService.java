@@ -3,6 +3,7 @@ import java.util.List;
 
 import com.utimes.study.bean.SchoolAreaBean;
 import com.utimes.study.bean.SchoolBean;
+import com.utimes.study.bean.SchoolTuitionBean;
 
 public interface SchoolService {
 	public List<SchoolBean> getSchools();
@@ -24,4 +25,7 @@ public interface SchoolService {
     public void updateSchoolArea(SchoolAreaBean areaBean);
 
 
+    int updatefSchoolTuition(SchoolTuitionBean tuitionBean);
+
+    void addSchoolTuition(SchoolTuitionBean tuitionBean,int schoolId);
 }

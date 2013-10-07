@@ -18,6 +18,7 @@
       <spring.version>2.0.3</spring.version>
       <jackson.version>1.9.10</jackson.version>
       <jdk.version>1.7</jdk.version>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 <dependencies>
 <dependency>
@@ -107,6 +108,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>native2ascii-maven-plugin</artifactId>
+                <version>1.0-beta-1</version>
                 <executions>
                     <execution>
                         <id>native2ascii-utf8-resources</id>
@@ -114,7 +116,7 @@
                             <goal>native2ascii</goal>
                         </goals>
                         <configuration>
-                            <encoding>UTF8</encoding>
+                            <encoding>UTF-8</encoding>
                         </configuration>
                     </execution>
                 </executions>

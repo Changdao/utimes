@@ -29,7 +29,7 @@
                     <div class="form-group" style="max-width: 600px;">
                         <label class="control-label">Item Name</label>
                         <div class="control-input">
-                            <input type="text" class="text ui-widget-content ui-corner-all" style="max-height: 100px;">
+                            <input type="text" class="text ui-widget-content ui-corner-all"  id="tuition_name" style="max-height: 100px;" >
                         </div>
                         <div class="control-value like-disabled-input" style="display: none;"></div>
                         <p class="help-box small text-muted">   &nbsp;</p>
@@ -39,7 +39,7 @@
                     <div class="form-group" style="max-width: 600px;">
                         <label class="control-label">Item Type</label>
                         <div class="control-input">
-                            <input type="text" class="text ui-widget-content ui-corner-all" style="text-align: right; max-height: 100px;">
+                            <input type="text" class="text ui-widget-content ui-corner-all" style=" max-height: 100px;" id="tuition_type">
                         </div>
                         <div class="control-value like-disabled-input" style="display: none;"></div>
                         <p class="help-box small text-muted">   &nbsp;</p>
@@ -48,9 +48,9 @@
 
                 <div>
                     <div class="form-group" style="max-width: 600px;">
-                        <label class="control-label">Contact</label>
+                        <label class="control-label">Item Fee</label>
                         <div class="control-input">
-                            <input type="text" class="col-md-12 input-with-feedback form-control" style="max-height: 100px;">
+                            <input type="text" class="text ui-widget-content ui-corner-all" style="text-align: right;max-height: 100px;" id="tuition_money">
                         </div>
                         <div class="control-value like-disabled-input" style="display: none;"></div>
                         <p class="help-box small text-muted">  &nbsp;</p>
@@ -58,22 +58,12 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div>
-
-                    <div class="form-group" style="max-width: 600px;"><label class="control-label">Designation</label>
-                        <div class="control-input">
-                            <input    type="text" class="text ui-widget-content ui-corner-all" placeholder="" style="max-height: 100px;">
-                        </div>
-                        <div class="control-value like-disabled-input" style="display: none;"></div>
-                        <p class="help-box small text-muted">   &nbsp;</p>
-                    </div>
-                </div>
 
                 <div>
                     <div class="form-group">
                         <label class="control-label">Item description</label>
                         <div class="control-input">
-                            <textarea    type="text" class="text ui-widget-content ui-corner-all" placeholder="" style="max-height: 100px;"></textarea>
+                            <textarea    type="text" class="text ui-widget-content ui-corner-all" placeholder="" style="max-height: 100px;" id="tuition_memo"></textarea>
                         </div>
                         <div class="control-value like-disabled-input" style="display: none;"></div>
                         <p class="help-box small text-muted">  &nbsp;</p>
@@ -85,7 +75,7 @@
                     <div class="form-group" style="max-width: 600px;"><label class="control-label">Time to Pay</label>
                         <div class="control-input">
                             <input   type="text" class="text ui-widget-content ui-corner-all"
-                                placeholder="" style="max-height: 100px;">
+                                placeholder="" style="max-height: 100px;" id="tuition_paytype">
                         </div>
                         <div class="control-value like-disabled-input" style="display: none;"></div>
                         <p class="help-box small text-muted"> &nbsp;</p>
