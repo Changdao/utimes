@@ -94,15 +94,17 @@
             );
 
             $('#area').delegate('.data-row','refresh',function(event,obj){
+                console.log(".data-row refreshed was called!");
                 var that=$(event.target);
                 that.find('div[data-fieldname="name"]').text(obj.name);
                 that.find('div[data-fieldname="memo"]').text(obj.memo);
                 that.find('div[data-fieldname="location"]').text(obj.location);
+                console.log(".data-row refreshed, updated!");
             });
 
             //clicked event handler.
             $('#area').delegate('.btn-success','click',
-                    function(){
+                    function(event){
                                 var _last=$('#area_rows .grid-row').last();
                                 var pnl=_last.children('.panel');
                                 var row=_last.children('.data-row');
@@ -124,7 +126,8 @@
                                                       var obj=$.parseJSON(data);
                                                       _last.attr('data-idx',obj.id);
                                                       //todo: it is necessary to use closure to beautify the code
-                                                      row.triggerHandler('refresh',obj);
+                                                      console.log('area added!'+data);
+                                                      row.trigger('refresh',[obj]);
                                          }
                                  );
                                  pnl.css('display','none');
@@ -133,7 +136,7 @@
             );
 
             $('#area_rows').delegate('.grid-delete-row','click',
-                        function()
+                        function(event)
                                 {
                                  console.log('delete was clicked....');
                                  var the_utimes_area_row=$(this).parents('.grid-row');
@@ -159,15 +162,16 @@
                                         //todo: recalc the sn
                                     }
                                  }
+                                 event.stopPropagation();
                                 }
             );
 
 
 
-            $('#tuition_rows').delegate('.grid-row','collapse',function(event,obj)
+            $('#tuition_rows').on('collapse','.grid-row',function(event)
             {
-                openpnls=$(obj);
-
+                console.log('collapse was triggered:'+$(this));
+                openpnls=$(this);
                 openpnls.find('.data-row').css('display','block');
                 openpnls.find('.panel').css('display','none');
                 openpnls.find('.panel').html('');
@@ -175,21 +179,22 @@
             }
             );
 
-            $('#tuition').delegate('.grid-row','refresh',function(event,obj,dataobj)
+            $('#tuition_rows').on('refresh','.grid-row',function(event,dataobj)
             {
-                var that=$(event.target);
-                console.log('tuition refresh that:'+that+' is:'+that.html());
+                var that=$(this);
+                console.log('tuition refresh that:'+that);//+' is:'+that.html());
                 that.find('div[data-fieldname="name"]').text(dataobj.name);
                 that.find('div[data-fieldname="memo"]').text(dataobj.memo);
-                that.find('div[data-fieldname="money"]').text(dataobj.location);
+                that.find('div[data-fieldname="money"]').text(dataobj.money);
                 that.find('div[data-fieldname="type"]').text(dataobj.type);
-                that.find('div[data-fieldname="paytype"]').text(dataobj.paytype);
+                that.find('div[data-fieldname="paytype"]').text(dataobj.payype);
                 that.attr('data-idx',dataobj.id);
-                $('#tuition .panel-open').trigger('collapse',$('#tuition .panel-open'));
+                console.log('================================>here');
+                that.trigger('collapse');
             }
             );
 
-            $('#tuition').on('click','.grid-toggle-row',function(){
+            $('#tuition_rows').on('click','.grid-toggle-row',function(){
                     var that=$(event.target);
                     console.log('tuition click that:'+that+' is:'+that.html());
                     var pnl=that.parents('.panel');
@@ -211,34 +216,83 @@
                              money:tuition_money,
                              memo:tuition_memo,
                              schoolid:tuition_schoolid},
-                             function(data)
-                            {
+                             function(data){
                                 var dataobj=$.parseJSON(data);
-                                thatrow.trigger('refresh', [thatrow,dataobj]);
+                                console.log('return data:'+dataobj);
+                                thatrow.trigger('refresh', [dataobj]);
                                 event.stopPropagation();
-
                     });
-
-
             });
 
-            $('#tuition_rows').delegate('.grid-row','toggleEdit',function(event,target)
+            $('#tuition_rows').on('click','.grid-delete-row',function(event){
+                var that=$(this);
+                console.log('tuition click that:'+that+' is:'+that.html());
+                console.log('.grid-delete-row was clicked');
+                var the_utimes_tuition_row=$(this).parents('.grid-row');
+
+
+                 if(the_utimes_tuition_row.size()>0)
+                 {
+                    //console.log('find:'+the_utimes_area_row.size());
+                    //console.log('is it:'+);
+                    var _id= the_utimes_tuition_row.attr('data-idx');
+                    console.log('_id:'+_id);
+                    if(_id>0)
+                    {
+                        $.get('schooltuition.htm',{action:'delete',id:_id},
+                            function(response)
+                            {
+                                the_utimes_tuition_row.remove();
+                            }
+                        );
+                    }
+                    else
+                    {
+                        the_utimes_tuition_row.remove();
+                        //todo: recalc the sn
+                    }
+                 }
+                 event.stopPropagation();
+                console.log('stopped?FUCK!');
+            });
+
+
+            $('#tuition_rows').on('toggleEdit','.grid-row',function(event,target)
                 {
 
                     var that=$(target);
                     that.addClass("panel-open");
                     var pnl=that.find('.panel');
                     var row_idx=that.find('.row-index').text();
-                    pnl.load('school_edit.htm?action=loadtuitionpanel&rownumber='+row_idx );
+
+                    var tuition_name=that.find('div[data-fieldname="name"]').text();
+                    var tuition_type=that.find('div[data-fieldname="type"]').text();
+                    var tuition_paytype=that.find('div[data-fieldname="paytype"]').text();
+                    var tuition_money=that.find('div[data-fieldname="money"]').text();
+                    console.log('the money is:"'+tuition_money+'"');
+                    var tuition_memo=that.find('div[data-fieldname="memo"]').text();
+
+
+                    pnl.load('school_edit.htm?action=loadtuitionpanel&rownumber='+row_idx,function(){
+                        console.log("shcool_edit is loaded.");
+                        pnl.find('#tuition_name').val(tuition_name);
+                        pnl.find('#tuition_type').val(tuition_type);
+                        pnl.find('#tuition_paytype').val(tuition_paytype);
+                        pnl.find('#tuition_money').val(tuition_money.trim());
+                        pnl.find('#tuition_memo').val(tuition_memo);
+                        pnl.find('.row-index').text(row_idx);
+                    });
+
+                    console.log('school_edit is loading...');
 
                     pnl.css('display','block');
                     that.find('.data-row').css('display','none');
                 }
             );
 
-            $('#tuition_rows').delegate('.grid-row','click',function()
+            $('#tuition_rows').on('click','.grid-row',function()
             {
-
+                console.log('.grid-row was clicked');
                 var that=$(event.target);
 
                 if(that.is('.data-row'))
@@ -401,8 +455,35 @@
                 </div>
                 <div class="panel-body">
                     <div id="tuition_rows" class="rows ui-sortable">
+                    <% sn=0;%>
+                    <% System.out.println("I'm here!");%>
+                       <c:forEach var='tuition' items='${school.tuitionItems}'>
+                            <% sn++;%>
+
+                            <div class="grid-row" data-idx="<c:out value='${tuition.id}'/>">
+                                <div class="data-row" style="min-height: 26px; display: block; ">
+                                        <div class="col col-xs-1 row-index"><%=sn%></div>
+                                        <div class="col col-xs-2 grid-overflow-ellipsis" data-fieldname="name"><c:out value='${tuition.name}'/></div>
+                                        <div class="col col-xs-2 grid-overflow-ellipsis" data-fieldname="type"><c:out value='${tuition.type}'/></div>
+                                        <div class="col col-xs-2 grid-overflow-ellipsis" data-fieldname="paytype"><c:out value='${tuition.payType}'/></div>
+
+                                        <div class="col col-xs-2 grid-overflow-ellipsis text-right" data-fieldname="money">
+                                                    <div style="text-align: right"><c:out value='${tuition.money}'/></div>
+                                        </div>
+                                        <div class="col col-xs-3 grid-overflow-no-ellipsis" data-fieldname="memo"><c:out value='${tuition.memo}'/></div>
+                                        <div class="col-md-1 pull-right" style="text-align: right; padding-right: 5px;">
+                                                    <button class="btn btn-small btn-success grid-insert-row" style="padding: 4px;">
+                                                    <i class="icon icon-plus-sign"></i> </button>
+                                                    <button class="btn btn-small btn-default grid-delete-row" style="padding: 4px;">
+                                                    <i class="icon icon-trash"></i></button>
+                                        </div>
+                                </div>
+                                <div class="panel panel-warning" style="display: none; "></div>
+                                <div class="divider row"></div>
+                            </div>
 
 
+                       </c:forEach>
                     </div>
                     <div style="margin-top: 5px; margin-bottom: -5px;">
                         <a href="#" id='tuition_add_row' class="grid-add-row">+ Add new row.</a>
@@ -412,46 +493,6 @@
                 </div>
             </div>
         </div>
-
-
-        <div id='course' style="margin-top: 15px; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(221, 221, 221); ">
-            <h3>Tuition Items</h3>
-            <div class="panel panel-default">
-                <div class="panel-heading" style="font-size: 9px;">
-                    <div class="grid-row">
-                        <div class="data-row" style="min-height: 26px;">
-                            <div class="col col-xs-1 row-index">#</div>
-                            <div class="col col-xs-2 grid-overflow-ellipsis"
-                                 data-fieldname="name">Course Name
-                            </div>
-                            <div class="col col-xs-2 grid-overflow-ellipsis"
-                                 data-fieldname="type">Item Type
-                            </div>
-                            <div class="col col-xs-2 grid-overflow-ellipsis text-right"
-                                 data-fieldname="description">Item Description
-                            </div>
-                            <div class="col col-xs-3 grid-overflow-no-ellipsis"
-                                 data-fieldname="time_to_pay">Time to pay
-                            </div>
-                        </div>
-                        <div class="panel panel-warning" style="display: none;"></div>
-                        <div class="divider row"></div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div id="tuition_rows" class="rows ui-sortable">
-
-                    </div>
-                    <div style="margin-top: 5px; margin-bottom: -5px;">
-                        <a href="#" id='tuition_add_row' class="grid-add-row">+ Add new row.</a>
-                        <span class="text-muted">Click on row to edit.</span>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
 
     </div>
 

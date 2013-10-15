@@ -11,7 +11,7 @@ public class Logger {
     private static final boolean debugFlag=true;
     public final static void debug(String str)
     {
-        if(debugFlag)System.out.println(str);
+        if(debugFlag)System.out.println("<DEBUG>"+str);
     }
 
 }

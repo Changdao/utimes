@@ -14,6 +14,7 @@ public interface SchoolService {
 	public SchoolBean getSchool(String id);
     public SchoolBean findSchoolByName(String name);
     public void deleteArea(String id);
+    public void deleteTuition(int id);
 
     /**
      *

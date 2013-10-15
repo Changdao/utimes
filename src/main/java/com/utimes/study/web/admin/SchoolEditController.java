@@ -56,7 +56,6 @@ public class SchoolEditController extends AbstractController {
             return new ModelAndView("/admin/school_edit","school",sb);
         }
 
-
         return new ModelAndView("/admin/school_edit","key","");
     }
 }

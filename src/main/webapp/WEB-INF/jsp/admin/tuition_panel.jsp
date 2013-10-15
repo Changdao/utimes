@@ -9,7 +9,7 @@
 
 <div class="panel-heading">
     <div class="toolbar" style="height: 24px;">
-        <span class="panel-title">Editing Row #<span  class="row-index"><c:out value="${rownumber}"/></span></span>
+        <span class="panel-title">Editing Row #<span  class="row-index">#</span></span>
         <button class="btn btn-success pull-right grid-toggle-row" title="Close" style="margin-left: 7px;">
             <i class="icon-chevron-up"></i>
         </button>

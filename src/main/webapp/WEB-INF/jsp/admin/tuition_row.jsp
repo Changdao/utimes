@@ -15,7 +15,7 @@
             <div class="col col-xs-2 grid-overflow-ellipsis" data-fieldname="paytype"> </div>
 
             <div class="col col-xs-2 grid-overflow-ellipsis text-right" data-fieldname="money">
-                        <div style="text-align: right">N$ 0.00</div>
+                        <div style="text-align: right">0.00</div>
             </div>
             <div class="col col-xs-3 grid-overflow-no-ellipsis" data-fieldname="memo"></div>
             <div class="col-md-1 pull-right" style="text-align: right; padding-right: 5px;">

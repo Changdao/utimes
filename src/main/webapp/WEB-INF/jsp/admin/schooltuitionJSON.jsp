@@ -2,6 +2,10 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.google.gson.Gson" %>
 <%
-	Gson gson=new Gson();
-	out.print(gson.toJson(request.getAttribute("tuition")));
+    Object tuition=request.getAttribute("tuition");
+    if(tuition!=null)
+    {
+	    Gson gson=new Gson();
+	    out.print(gson.toJson(tuition));
+	}
 %>

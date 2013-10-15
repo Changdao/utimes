@@ -6,13 +6,13 @@ import java.util.List;
 
 import com.utimes.study.bean.SchoolAreaBean;
 import com.utimes.study.bean.SchoolTuitionBean;
+import com.utimes.study.util.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.utimes.study.bean.SchoolBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.util.Assert;
@@ -40,6 +40,28 @@ public class SchoolServiceImpl implements SchoolService {
 		}
 
 	}
+
+    private class SchoolTuitionRowMapper implements RowMapper{
+        private final SchoolBean school;
+
+        public SchoolTuitionRowMapper(SchoolBean owner)
+        {
+            this.school=owner;
+        }
+
+        @Override
+        public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+            SchoolTuitionBean tuition=new SchoolTuitionBean();
+            tuition.setName(rs.getString("name"));
+            tuition.setPayType(rs.getInt("paytype"));
+            tuition.setType(rs.getInt("type"));
+            tuition.setMoney(rs.getDouble("money"));
+            tuition.setMemo(rs.getString("memo"));
+            tuition.setOwner(this.school);
+            tuition.setId(rs.getInt("id"));
+            return tuition;
+        }
+    }
 
     private class SchoolAreaRowMapper implements RowMapper{
 
@@ -74,13 +96,18 @@ public class SchoolServiceImpl implements SchoolService {
 
 	private static String SCHOOL_GET_BY_ID_SQL = "select * from SCHOOL where id=?";
     private static String SCHOOL_AREA_GET_BY_SCHOOL_SQL="select * from SCHOOLAREA where flag>=0 and school_id=?";
+    private static String SCHOOL_TUITION_GET_BY_SCHOOL_SQL="select * from SCHOOLTUITIONITEMS WHERE school_id=? and flag>=0";
+
 
 	public SchoolBean getSchool(String id) {
 
 		SchoolBean school=(SchoolBean) jdbcTemplate.queryForObject(SCHOOL_GET_BY_ID_SQL,
 				new Object[] { id }, new SchoolRowMapper());
         List<SchoolAreaBean> areas=jdbcTemplate.query(SCHOOL_AREA_GET_BY_SCHOOL_SQL, new Object[]{id}, new SchoolAreaRowMapper(school));
+        List<SchoolTuitionBean> tuitions=jdbcTemplate.query(SCHOOL_TUITION_GET_BY_SCHOOL_SQL,new Object[]{id},new SchoolTuitionRowMapper(school));
+        Logger.debug("Tuition count:"+tuitions.size());
         school.setAreas(areas);
+        school.setTuitionItems(tuitions);
         return school;
 	}
 
@@ -118,7 +145,13 @@ public class SchoolServiceImpl implements SchoolService {
         jdbcTemplate.update(SCHOOL_AREA_DELETE_SQL,new Object[]{id});
     }
 
-	public void removeSchool() {
+    private static final String TUITION_DELETE_SQL="update schooltuitionitems set flag=-1 where id=?";
+    @Override
+    public void deleteTuition(int id) {
+        jdbcTemplate.update(TUITION_DELETE_SQL,new Object[]{id});
+    }
+
+    public void removeSchool() {
 		// TODO Auto-generated method stub
 
 	}
@@ -186,7 +219,7 @@ public class SchoolServiceImpl implements SchoolService {
 
     @Override
     public int updatefSchoolTuition(SchoolTuitionBean tuitionBean) {
-        jdbcTemplate.update(SCHOOL_TUITION_UPDATE_SQL, new Object[]{tuitionBean.getName(),tuitionBean.getType(),tuitionBean.getPaytype(),tuitionBean.getMoney(),tuitionBean.getMemo(),tuitionBean.getId()});
+        jdbcTemplate.update(SCHOOL_TUITION_UPDATE_SQL, new Object[]{tuitionBean.getName(),tuitionBean.getType(),tuitionBean.getPayType(),tuitionBean.getMoney(),tuitionBean.getMemo(),tuitionBean.getId()});
         return getLastInsertID();
     }
 
@@ -195,6 +228,6 @@ public class SchoolServiceImpl implements SchoolService {
     private static String SCHOOL_TUITION_ADD_SQL="insert into schooltuitionitems(name,type,paytype,money,memo,school_id) value(?,?,?,?,?,?)";
     @Override
     public void addSchoolTuition(SchoolTuitionBean tuitionBean,int schoolId) {
-        jdbcTemplate.update(SCHOOL_TUITION_ADD_SQL,new Object[]{tuitionBean.getName(),tuitionBean.getType(),tuitionBean.getPaytype(),tuitionBean.getMoney(),tuitionBean.getMemo(),schoolId});
+        jdbcTemplate.update(SCHOOL_TUITION_ADD_SQL,new Object[]{tuitionBean.getName(),tuitionBean.getType(),tuitionBean.getPayType(),tuitionBean.getMoney(),tuitionBean.getMemo(),schoolId});
     }
 }

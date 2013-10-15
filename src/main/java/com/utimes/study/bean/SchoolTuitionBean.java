@@ -13,7 +13,7 @@ public class SchoolTuitionBean {
     private int id;
     private String name;
     private int type;//for calculation
-    private int paytype;//for category;
+    private int payType;//for category;
     private double money;
     private String memo;
     private SchoolBean owner;
@@ -42,12 +42,12 @@ public class SchoolTuitionBean {
         this.type = type;
     }
 
-    public int getPaytype() {
-        return paytype;
+    public int getPayType() {
+        return payType;
     }
 
-    public void setPaytype(int paytype) {
-        this.paytype = paytype;
+    public void setPayType(int payType) {
+        this.payType = payType;
     }
 
     public double getMoney() {
@@ -76,6 +76,6 @@ public class SchoolTuitionBean {
 
     @Override
     public String toString() {
-        return super.toString()+"{id:"+this.id+",name:"+this.name+",type:"+this.type+",paytype:"+this.paytype+",money:"+this.money+"}";
+        return super.toString()+"{id:"+this.id+",name:"+this.name+",type:"+this.type+",payType:"+this.payType +",money:"+this.money+"}";
     }
 }

@@ -27,43 +27,75 @@ public class SchoolTuitionController extends AbstractController {
         this.schoolService = schoolService;
     }
 
+
+    public int validateInteger(String para)throws Exception
+    {
+        if(para!=null)
+        {
+            return Integer.parseInt(para.trim());
+        }
+        else throw new NumberFormatException(para+" is not a number");
+    }
+
+    public double validateNumber(String para)throws Exception
+    {
+        if(para!=null)
+        {
+            return Double.parseDouble(para.trim());
+        }
+        else throw new NumberFormatException(para+" is not a number");
+    }
+
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String action=request.getParameter("action");
         if(action!=null&&!"".equals(action.trim()))
         {
+            String id;
             switch( action)
             {
                 case "delete":
-                    break;
+                     id=request.getParameter("id");
+                    schoolService.deleteTuition(Integer.parseInt(id));
+                    return new ModelAndView("/admin/schooltuitionJSON","tuition",null);
+
                 case "add":
                     break;
                 case "save":
-                    String id=request.getParameter("id");
+                     id=request.getParameter("id");
                     String paytype=request.getParameter("paytype");
                     String name=request.getParameter("name");
                     String type=request.getParameter("type");
                     String memo=request.getParameter("memo");
                     String money=request.getParameter("money");
                     String schoolId=request.getParameter("schoolid");
-                    SchoolTuitionBean tuitionBean = new SchoolTuitionBean();
-                    tuitionBean.setId(Integer.parseInt(id));
-                    tuitionBean.setName(name);
-                    tuitionBean.setMemo(memo);
-                    tuitionBean.setMoney(Double.parseDouble(money));
-                    tuitionBean.setPaytype(Integer.parseInt(paytype));
-                    tuitionBean.setType(Integer.parseInt(type));
-                    Logger.debug(tuitionBean.toString());
-                    if(tuitionBean.getId()>0)
-                    {
-                        schoolService.updatefSchoolTuition(tuitionBean);
-                    }
-                    else
+                    try
                     {
 
-                        schoolService.addSchoolTuition(tuitionBean,Integer.parseInt(schoolId));
+                        SchoolTuitionBean tuitionBean = new SchoolTuitionBean();
+                        tuitionBean.setId(validateInteger(id));
+                        tuitionBean.setName(name);
+                        tuitionBean.setMemo(memo);
+                        tuitionBean.setMoney(validateNumber(money));
+                        tuitionBean.setPayType(validateInteger(paytype));
+                        tuitionBean.setType(validateInteger(type));
+                        Logger.debug(tuitionBean.toString());
+                        if(tuitionBean.getId()>0)
+                        {
+                            schoolService.updatefSchoolTuition(tuitionBean);
+                        }
+                        else
+                        {
+
+                            schoolService.addSchoolTuition(tuitionBean,Integer.parseInt(schoolId));
+                        }
+                        return new ModelAndView("/admin/schooltuitionJSON","tuition",tuitionBean);
                     }
-                    return new ModelAndView("/admin/schooltuitionJSON","tuition",tuitionBean);
+                    catch(Exception e)
+                    {
+                        return new ModelAndView("/admin/schooltuitionJSON","tuition",null);
+                    }
+
 
                 case "get":
                     break;
