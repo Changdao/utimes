@@ -61,6 +61,77 @@
             });
             $('#btncancelsave').button().click(function(){$("#tabs div[aria-hidden='false']").load('schools.htm');});
 
+            $('#area').on('collapse','.grid-row',function(event)
+                        {
+                            console.log('area collapse was triggered:'+$(this));
+                            openpnls=$(this);
+                            openpnls.find('.data-row').css('display','block');
+                            openpnls.find('.panel').css('display','none');
+                            openpnls.find('.panel').html('');
+                            openpnls.removeClass('panel-open');
+                        }
+            );
+
+            $('#area').on('toggleEdit','.grid-row',function()
+                {
+
+                    var that=$(this);
+                    that.addClass("panel-open");
+                    var pnl=that.find('.panel');
+                    var row_idx=that.find('.row-index').text();
+
+                    var area_name=that.find('div[data-fieldname="name"]').text();
+                    var area_location=that.find('div[data-fieldname="location"]').text();
+                    var area_memo=that.find('div[data-fieldname="memo"]').text();
+
+                    console.log('area_name:'+area_name);
+                    console.log('area_location:'+area_location);
+                    console.log('area_memo:'+area_memo);
+
+                    pnl.load('schoolarea.htm?action=loadpanel',function(){
+                        console.log("area_edit is loaded.");
+                        pnl.find('#area_name').val(area_name);
+                        pnl.find('#area_location').val(area_location);
+                        pnl.find('#area_memo').val(area_memo);
+                        pnl.find('.row-index').text(row_idx);
+                    });
+
+                    console.log('area_edit is loading...');
+
+                    pnl.css('display','block');
+                    that.find('.data-row').css('display','none');
+                }
+            );
+
+            $('#area').on('click','.grid-row',function(event)
+            {
+                console.log('area .grid-row was clicked');
+                var that=$(event.target);
+
+                if(that.is('.data-row'))
+                {
+                    var gridrow=that.parents('.grid-row');
+
+                    if(gridrow.hasClass('panel-open'))return;
+
+                    $('#area .panel-open').trigger('collapse',$('#area .panel-open'));
+                    gridrow.trigger('toggleEdit',gridrow);
+                }
+                else
+                {
+                    var dr=that.parents('.data-row');
+                    if(dr&&dr.size()>0)
+                    {
+                         var gridrow=that.parents('.grid-row');
+                         if(gridrow.hasClass('panel-open'))return;
+                         $('#area .panel-open').trigger('collapse',$('#area .panel-open'));
+                         gridrow.trigger('toggleEdit',gridrow);
+                    }
+
+                }
+
+            });
+
             $('#area').delegate('#area_add_row','click',
                 function()
                 {
@@ -398,8 +469,8 @@
                                     <div class="grid-row" data-idx="<c:out value='${area.id}'/>">
                                         <div class="data-row" style="min-height: 26px; display: block; ">
                                                 <div class="col col-xs-1 row-index"><%=sn%></div>
-                                                <div class="col col-xs-2 grid-overflow-ellipsis" ><c:out value='${area.name}'/> </div>
-                                                <div class="col col-xs-2 grid-overflow-ellipsis" ><c:out value='${area.location}'/> </div>
+                                                <div class="col col-xs-2 grid-overflow-ellipsis" data-fieldname="name"><c:out value='${area.name}'/> </div>
+                                                <div class="col col-xs-2 grid-overflow-ellipsis" data-fieldname="location"><c:out value='${area.location}'/> </div>
 
                                                 <div class="col col-xs-3 grid-overflow-no-ellipsis" data-fieldname="memo"><c:out value='${area.memo}'/></div>
                                                 <div class="col-md-1 pull-right" style="text-align: right; padding-right: 5px;">
