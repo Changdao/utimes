@@ -32,7 +32,7 @@
 
         </div>
         <c:forEach var="area" items='${school.areas}'>
-            <div id="area" style="margin-top: 15px; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(221, 221, 221); ">
+            <div id='area_<c:out value="${area.id}"/>' style="margin-top: 15px; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(221, 221, 221); ">
                 <h3>School Areas</h3>
                <div class="panel panel-default">
                                <div class="panel-heading" style="font-size: 9px;">
@@ -40,7 +40,7 @@
                                        <div class="data-row" style="min-height: 26px;">
                                            <div class="col col-xs-1 row-index">#</div>
                                            <div class="col col-xs-2 grid-overflow-ellipsis"
-                                                data-fieldname="name">Area Name
+                                                data-fieldname="name"><c:out value="${area.name}"/>
                                            </div>
                                            <div class="col col-xs-2 grid-overflow-ellipsis"
                                                 data-fieldname="type">Area Location
