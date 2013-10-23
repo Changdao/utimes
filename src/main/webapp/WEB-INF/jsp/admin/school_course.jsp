@@ -21,10 +21,17 @@
     <script src="/utimes/js/grid.locale-cn.js"> </script>
     <script type="text/javascript">
      $(function(){
+        $('#btn_return').button().click(function(){$("#tabs div[aria-hidden='false']").load('schools.htm');});
+        $('#courses_main').on('new','.panel-body',function()
+        {
+            $(this).
+        }
+        );
         $('#courses_main').on('click','#course_add_row',function()
         {
-            alert(this);
-            $(this).parents('.'
+            console.log(this);
+            $(this).parents('.panel-body').trigger('new');
+
         }
         );
 
