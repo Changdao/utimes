@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.utimes.study.bean.CourseBean;
 import com.utimes.study.bean.SchoolAreaBean;
 import com.utimes.study.bean.SchoolTuitionBean;
 import com.utimes.study.util.Logger;
@@ -229,5 +230,34 @@ public class SchoolServiceImpl implements SchoolService {
     @Override
     public void addSchoolTuition(SchoolTuitionBean tuitionBean,int schoolId) {
         jdbcTemplate.update(SCHOOL_TUITION_ADD_SQL,new Object[]{tuitionBean.getName(),tuitionBean.getType(),tuitionBean.getPayType(),tuitionBean.getMoney(),tuitionBean.getMemo(),schoolId});
+    }
+
+    class CourseRowMapper implements RowMapper{
+        SchoolAreaBean area;
+        public CourseRowMapper(SchoolAreaBean area)
+        {
+            this.area=area;
+        }
+        @Override
+        public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+            CourseBean course=new CourseBean();
+            course.setName(rs.getString("name"));
+            course.setOwner(area);
+            course.setId(rs.getInt("id"));
+            course.setMoneyRate(rs.getDouble("moneyrate"));
+            course.setMemo(rs.getString("memo"));
+            return course;
+        }
+    }
+
+    private static String SCHOOL_COURSES_SELECT_SQL="select * from course where area_id=?";
+    @Override
+    public void loadCourses(SchoolBean school) {
+        for(SchoolAreaBean area:school.getAreas())
+        {
+            List<CourseBean> courses=jdbcTemplate.query(SCHOOL_COURSES_SELECT_SQL,new Object[]{area.getId()},new CourseRowMapper(area));
+            area.setCourses(courses);
+        }
+
     }
 }

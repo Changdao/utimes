@@ -217,7 +217,7 @@ div#users-contain table td,div#users-contain table th {
             if(id)
             {
                 $('#loading').dialog('open');
-                $('#tabs div[aria-hiden="false"]').load('school_edit.htm?schoolid='+id,function(){$('#loading').dialog('close');});
+                $("#tabs div[aria-hidden='false']").load('school_edit.htm?action=editcourse&schoolid='+id,function(){$('#loading').dialog('close');});
             }
             else alert('Please select a school.');
 		});

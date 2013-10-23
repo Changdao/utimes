@@ -29,4 +29,5 @@ public interface SchoolService {
     int updatefSchoolTuition(SchoolTuitionBean tuitionBean);
 
     void addSchoolTuition(SchoolTuitionBean tuitionBean,int schoolId);
+    void loadCourses(SchoolBean school);
 }

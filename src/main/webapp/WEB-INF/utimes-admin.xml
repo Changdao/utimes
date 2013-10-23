@@ -31,5 +31,8 @@
     <bean name="/admin/schooltuition.htm" class="com.utimes.study.web.admin.SchoolTuitionController">
         <property name="schoolService" ref="schoolService"/>
     </bean>
+    <bean name="/admin/schoolcourse.htm" class="com.utimes.study.web.admin.SchoolCourseController">
+        <property name="schoolService" ref="schoolService"/>
+    </bean>
 
 </beans>
