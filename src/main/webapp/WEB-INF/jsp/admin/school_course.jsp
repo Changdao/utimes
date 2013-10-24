@@ -22,18 +22,65 @@
     <script type="text/javascript">
      $(function(){
         $('#btn_return').button().click(function(){$("#tabs div[aria-hidden='false']").load('schools.htm');});
+
+        $('').on('click','.grid-delete-row',function(event){
+            $.post('schoolcourse.html?action=delete',{id:theDataId},function()
+            {
+                $....remove();
+            });
+        });
+
+        $('#courses_main').on('click','.grid-toggle-row',function(event){
+            var theTarget=$(event.target);
+
+            theTarget.parents('#courses_rows').trigger('');
+
+            var courseName=;
+            var courseMoney=;
+            var courseMemo=;
+
+            $.post('schoolcourse.html?action=save',{name:courseName,money:courseMoney,memo:courseMemo},function(data)
+            {
+                var resultJSON=$.parseJSON(data);
+                theTarget.parents('#grid-row').trigger('refresh',resultJSON);
+            });
+
+        });
+
         $('#courses_main').on('new','.panel-body',function()
         {
-            $(this).
-        }
-        );
-        $('#courses_main').on('click','#course_add_row',function()
-        {
+
+            var theRows=$(this).find('#courses_rows');
+
+            $.get( "schoolcourse.htm?action=new", function( data ) {
+                                    _thedata=data;
+                                    var _datacount=theRows.find('.grid-row').size();
+
+                                    theRows.append( data );
+
+                                    var _last=theRows.find('.grid-row').last();
+                                    var _row_index=""+(_datacount+1);
+                                    _last.find('.row-index').html(_row_index);
+
+                                    var pnl=_last.children('.panel');
+                                    var row=_last.children('.data-row');
+
+                                    var areaid=_last.attr('data-idx');
+                                    pnl.addClass("panel-open");
+                                    pnl.load("schoolcourse.htm?action=loadpanel",function(){
+                                        pnl.find('.row-index').text(_row_index);
+                                        pnl.css('display','block');
+                                        row.css('display','none');
+                                      }
+                                    );
+                                });
+        });
+
+        $('#courses_main').on('click','#course_add_row',function(){
             console.log(this);
             $(this).parents('.panel-body').trigger('new');
 
-        }
-        );
+        });
 
       });
 

@@ -1,6 +1,8 @@
 package com.utimes.study.web.admin;
 
+import com.utimes.study.bean.CourseBean;
 import com.utimes.study.service.SchoolService;
+import com.utimes.study.util.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
@@ -31,8 +33,12 @@ public class SchoolCourseController extends AbstractController {
 
         switch(action)
         {
+            case "loadpanel":
+                return new ModelAndView("/admin/course_panel","course",new CourseBean());
             case "new":
-                break;
+                Logger.debug("new was called.");
+
+                return new ModelAndView("/admin/course_row","course",new CourseBean());
             case "delete":
                 break;
             case "save":

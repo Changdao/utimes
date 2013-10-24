@@ -22,14 +22,14 @@
     </div>
 </div>
 <div class="panel-body">
-    <div class="form-area">
+    <div class="form-course">
         <div class="row" style="padding: 0px 15px;">
             <div class="col-md-6">
                 <div>
                     <div class="form-group" style="max-width: 600px;">
-                        <label class="control-label">Area Name</label>
+                        <label class="control-label">Course Name</label>
                         <div class="control-input">
-                            <input type="text" class="text ui-widget-content ui-corner-all" id='area_name' style="max-height: 100px;">
+                            <input type="text" class="text ui-widget-content ui-corner-all" id='course_name' style="max-height: 100px;">
                         </div>
                         <div class="control-value like-disabled-input" style="display: none;"></div>
                         <p class="help-box small text-muted">   &nbsp;</p>
@@ -37,9 +37,9 @@
                 </div>
                 <div>
                     <div class="form-group" style="max-width: 600px;">
-                        <label class="control-label">Area Location</label>
+                        <label class="control-label">Course Location</label>
                         <div class="control-input">
-                            <input type="text" class="text ui-widget-content ui-corner-all" id='area_location' style="text-align: right; max-height: 100px;">
+                            <input type="text" class="text ui-widget-content ui-corner-all" id='course_money' style="text-align: right; max-height: 100px;">
                         </div>
                         <div class="control-value like-disabled-input" style="display: none;"></div>
                         <p class="help-box small text-muted">   &nbsp;</p>
@@ -49,9 +49,9 @@
             <div class="col-md-6">
                 <div>
                     <div class="form-group">
-                        <label class="control-label">Area Memo</label>
+                        <label class="control-label">Course Memo</label>
                         <div class="control-input">
-                            <textarea type="text" id='area_memo' class="text ui-widget-content ui-corner-all" placeholder="" style="height:90%;width:90%;max-height: 100px;"></textarea>
+                            <textarea type="text" id='course_memo' class="text ui-widget-content ui-corner-all" placeholder="" style="height:90%;width:90%;max-height: 100px;"></textarea>
                         </div>
                         <div class="control-value like-disabled-input" style="display: none;"></div>
                         <p class="help-box small text-muted">  &nbsp;</p>

@@ -10,10 +10,10 @@
 <div class="grid-row" data-idx="<c:out value='${area.id}'/>">
     <div class="data-row" style="min-height: 26px; display: block; ">
             <div class="col col-xs-1 row-index">#</div>
-            <div class="col col-xs-2 grid-overflow-ellipsis" data-fieldname="name"><c:out value='${area.name}'/> </div>
-            <div class="col col-xs-2 grid-overflow-ellipsis" data-fieldname="location"><c:out value='${area.location}'/> </div>
+            <div class="col col-xs-2 grid-overflow-ellipsis" data-fieldname="name"><c:out value='${course.name}'/> </div>
+            <div class="col col-xs-2 grid-overflow-ellipsis" data-fieldname="moneyRate"><c:out value='${course.moneyRate}'/> </div>
 
-            <div class="col col-xs-3 grid-overflow-no-ellipsis" data-fieldname="memo"><c:out value='${area.memo}'/></div>
+            <div class="col col-xs-3 grid-overflow-no-ellipsis" data-fieldname="memo"><c:out value='${course.memo}'/></div>
             <div class="col-md-1 pull-right" style="text-align: right; padding-right: 5px;">
                         <button class="btn btn-small btn-success grid-insert-row" style="padding: 4px;">
                         <i class="icon icon-plus-sign"></i> </button>

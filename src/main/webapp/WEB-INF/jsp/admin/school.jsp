@@ -212,7 +212,6 @@ div#users-contain table td,div#users-contain table th {
 		    }
 		});
 		$('#course').button().click(function(){
-            alert('not implemented');
             var id=$('#schools').jqGrid('getGridParam','selrow');
             if(id)
             {
