@@ -265,7 +265,7 @@
             }
             );
 
-            $('#tuition_rows').on('click','.grid-toggle-row',function(){
+            $('#tuition_rows').on('click','.grid-toggle-row',function(event){
                     var that=$(event.target);
                     console.log('tuition click that:'+that+' is:'+that.html());
                     var pnl=that.parents('.panel');
@@ -291,8 +291,9 @@
                                 var dataobj=$.parseJSON(data);
                                 console.log('return data:'+dataobj);
                                 thatrow.trigger('refresh', [dataobj]);
-                                event.stopPropagation();
+
                     });
+                    event.stopPropagation();
             });
 
             $('#tuition_rows').on('click','.grid-delete-row',function(event){

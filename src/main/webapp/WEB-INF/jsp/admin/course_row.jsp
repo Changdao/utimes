@@ -21,6 +21,6 @@
                         <i class="icon icon-trash"></i></button>
             </div>
     </div>
-    <div class="panel panel-warning" style="display: none; "></div>
+    <div class="panel panel-warning panel-container" style="display: none; "></div>
     <div class="divider row"></div>
 </div>

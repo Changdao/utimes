@@ -25,6 +25,7 @@ CREATE TABLE `course` (
 	`moneyrate` decimal(11,2) default 0,
 	`memo` text,
 	`area_id` int(11),
+	`flag` int(11) default 0,
 	primary key (`id`)
 )ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 

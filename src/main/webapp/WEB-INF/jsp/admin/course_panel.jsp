@@ -37,7 +37,7 @@
                 </div>
                 <div>
                     <div class="form-group" style="max-width: 600px;">
-                        <label class="control-label">Course Location</label>
+                        <label class="control-label">Course Money(4weeks)</label>
                         <div class="control-input">
                             <input type="text" class="text ui-widget-content ui-corner-all" id='course_money' style="text-align: right; max-height: 100px;">
                         </div>

@@ -157,10 +157,18 @@ public class SchoolServiceImpl implements SchoolService {
 
 	}
 
-	public void addCourse() {
-		// TODO Auto-generated method stub
-
+    private static String SCHOOL_COURSE_ADD_SQL="insert into course(name,moneyrate,memo,area_id) values(?,?,?,?)";
+	public int addCourse(CourseBean course,int areaId) {
+        jdbcTemplate.update(SCHOOL_COURSE_ADD_SQL, new Object[]{course.getName(), course.getMoneyRate(), course.getMemo(), areaId});
+        return getLastInsertID();
 	}
+
+    private static final String SCHOOL_COURSE_UPDATE_SQL="update course set name=?,money=?,memo=?";
+
+    @Override
+    public void updateCourse(CourseBean course) {
+        jdbcTemplate.update(SCHOOL_COURSE_UPDATE_SQL,new Object[]{course.getName(),course.getMoneyRate(),course.getMemo()});
+    }
 
     private static String SCHOOL_GET_BY_NAME_SQL = "select * from SCHOOL where name=?";
     @Override
@@ -250,7 +258,7 @@ public class SchoolServiceImpl implements SchoolService {
         }
     }
 
-    private static String SCHOOL_COURSES_SELECT_SQL="select * from course where area_id=?";
+    private static String SCHOOL_COURSES_SELECT_SQL="select * from course where area_id=? and flag=0";
     @Override
     public void loadCourses(SchoolBean school) {
         for(SchoolAreaBean area:school.getAreas())
@@ -259,5 +267,17 @@ public class SchoolServiceImpl implements SchoolService {
             area.setCourses(courses);
         }
 
+    }
+
+
+    private static String SCHOOL_COURSE_DELETE_SQL="update course set flag=-1 where id=? ";
+    @Override
+    public void deleteCourse(CourseBean course) {
+        jdbcTemplate.update(SCHOOL_COURSE_DELETE_SQL,new Object[]{course.getId()});
+    }
+
+    @Override
+    public void deleteCourse(int id) {
+        jdbcTemplate.update(SCHOOL_COURSE_DELETE_SQL,new Object[]{id});
     }
 }
