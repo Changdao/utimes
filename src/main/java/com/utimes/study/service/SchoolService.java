@@ -1,6 +1,7 @@
 package com.utimes.study.service;
 import java.util.List;
 
+import com.utimes.study.bean.CourseBean;
 import com.utimes.study.bean.SchoolAreaBean;
 import com.utimes.study.bean.SchoolBean;
 import com.utimes.study.bean.SchoolTuitionBean;
@@ -9,7 +10,12 @@ public interface SchoolService {
 	public List<SchoolBean> getSchools();
 	public void addSchool(SchoolBean school);
 	public void removeSchool();
-	public void addCourse();
+
+    public int addCourse(CourseBean course, int id);
+    public void updateCourse(CourseBean course);
+    public void deleteCourse(CourseBean course);
+    public void deleteCourse(int id);
+
     public void updateSchool(SchoolBean schoolBean);
 	public SchoolBean getSchool(String id);
     public SchoolBean findSchoolByName(String name);
@@ -29,4 +35,5 @@ public interface SchoolService {
     int updatefSchoolTuition(SchoolTuitionBean tuitionBean);
 
     void addSchoolTuition(SchoolTuitionBean tuitionBean,int schoolId);
+    void loadCourses(SchoolBean school);
 }

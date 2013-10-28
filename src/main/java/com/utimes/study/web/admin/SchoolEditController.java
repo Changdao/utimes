@@ -31,6 +31,17 @@ public class SchoolEditController extends AbstractController {
 
         String action=(String)request.getParameter("action");
         Logger.debug("action:"+action);
+
+        String schoolId=(String)request.getParameter("schoolid");
+        Logger.debug("\n==>SchoolId:"+schoolId);
+        SchoolBean sb=null;
+        if(null!=schoolId&&!"".equals(schoolId.trim()))
+        {
+            sb =schoolService.getSchool(schoolId);
+            Logger.debug("\n==>school area size:"+sb.getAreas().size());
+            Thread.sleep(1000);
+
+        }
         if(!(null==action||"".equals(action.trim())))
         {
             switch(action)
@@ -43,19 +54,17 @@ public class SchoolEditController extends AbstractController {
 
                 case "loadtuitionrow":
                     return new ModelAndView("/admin/tuition_row","rownumber","");
+
+                case "editcourse":
+                    if(sb!=null)
+                    {
+                        schoolService.loadCourses(sb);
+                    }
+                    return new ModelAndView("/admin/school_course","school",sb);
             }
         }
-
-        String schoolId=(String)request.getParameter("schoolid");
-        Logger.debug("\n==>SchoolId:"+schoolId);
-        if(null!=schoolId&&!"".equals(schoolId.trim()))
-        {
-            SchoolBean sb =schoolService.getSchool(schoolId);
-            Logger.debug("\n==>school area size:"+sb.getAreas().size());
-            Thread.sleep(1000);
-            return new ModelAndView("/admin/school_edit","school",sb);
-        }
-
+        if(sb==null)
         return new ModelAndView("/admin/school_edit","key","");
+        else return new ModelAndView("/admin/school_edit","school",sb);
     }
 }

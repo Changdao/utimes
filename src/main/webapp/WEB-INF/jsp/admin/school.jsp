@@ -211,6 +211,17 @@ div#users-contain table td,div#users-contain table th {
 
 		    }
 		});
+		$('#course').button().click(function(){
+            var id=$('#schools').jqGrid('getGridParam','selrow');
+            if(id)
+            {
+                $('#loading').dialog('open');
+                $("#tabs div[aria-hidden='false']").load('school_edit.htm?action=editcourse&schoolid='+id,function(){$('#loading').dialog('close');});
+            }
+            else alert('Please select a school.');
+		});
+
+
 
 		var options = {
                 //target:        '#output1',   // target element(s) to be updated with server response
@@ -263,8 +274,8 @@ div#users-contain table td,div#users-contain table th {
             <table id="schools"></table>
             <div id="pager2"></div>
             <input type="BUTTON" id="new" value="<fmt:message key='school.add'/>" />
-            <input
-                type="BUTTON" id="modify" value="Modify Selected School" />
+            <input type="BUTTON" id="modify" value="Modify Selected School" />
+            <input type="BUTTON" id="course" value="School courses" />
 
 
 	<div id="dialog-form" title="Create new school">

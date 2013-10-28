@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.utimes.study.bean.CourseBean;
 import com.utimes.study.bean.SchoolAreaBean;
 import com.utimes.study.bean.SchoolTuitionBean;
 import com.utimes.study.util.Logger;
@@ -156,10 +157,18 @@ public class SchoolServiceImpl implements SchoolService {
 
 	}
 
-	public void addCourse() {
-		// TODO Auto-generated method stub
-
+    private static String SCHOOL_COURSE_ADD_SQL="insert into course(name,moneyrate,memo,area_id) values(?,?,?,?)";
+	public int addCourse(CourseBean course,int areaId) {
+        jdbcTemplate.update(SCHOOL_COURSE_ADD_SQL, new Object[]{course.getName(), course.getMoneyRate(), course.getMemo(), areaId});
+        return getLastInsertID();
 	}
+
+    private static final String SCHOOL_COURSE_UPDATE_SQL="update course set name=?,money=?,memo=?";
+
+    @Override
+    public void updateCourse(CourseBean course) {
+        jdbcTemplate.update(SCHOOL_COURSE_UPDATE_SQL,new Object[]{course.getName(),course.getMoneyRate(),course.getMemo()});
+    }
 
     private static String SCHOOL_GET_BY_NAME_SQL = "select * from SCHOOL where name=?";
     @Override
@@ -229,5 +238,46 @@ public class SchoolServiceImpl implements SchoolService {
     @Override
     public void addSchoolTuition(SchoolTuitionBean tuitionBean,int schoolId) {
         jdbcTemplate.update(SCHOOL_TUITION_ADD_SQL,new Object[]{tuitionBean.getName(),tuitionBean.getType(),tuitionBean.getPayType(),tuitionBean.getMoney(),tuitionBean.getMemo(),schoolId});
+    }
+
+    class CourseRowMapper implements RowMapper{
+        SchoolAreaBean area;
+        public CourseRowMapper(SchoolAreaBean area)
+        {
+            this.area=area;
+        }
+        @Override
+        public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+            CourseBean course=new CourseBean();
+            course.setName(rs.getString("name"));
+            course.setOwner(area);
+            course.setId(rs.getInt("id"));
+            course.setMoneyRate(rs.getDouble("moneyrate"));
+            course.setMemo(rs.getString("memo"));
+            return course;
+        }
+    }
+
+    private static String SCHOOL_COURSES_SELECT_SQL="select * from course where area_id=? and flag=0";
+    @Override
+    public void loadCourses(SchoolBean school) {
+        for(SchoolAreaBean area:school.getAreas())
+        {
+            List<CourseBean> courses=jdbcTemplate.query(SCHOOL_COURSES_SELECT_SQL,new Object[]{area.getId()},new CourseRowMapper(area));
+            area.setCourses(courses);
+        }
+
+    }
+
+
+    private static String SCHOOL_COURSE_DELETE_SQL="update course set flag=-1 where id=? ";
+    @Override
+    public void deleteCourse(CourseBean course) {
+        jdbcTemplate.update(SCHOOL_COURSE_DELETE_SQL,new Object[]{course.getId()});
+    }
+
+    @Override
+    public void deleteCourse(int id) {
+        jdbcTemplate.update(SCHOOL_COURSE_DELETE_SQL,new Object[]{id});
     }
 }

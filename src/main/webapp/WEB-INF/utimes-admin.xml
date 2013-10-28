@@ -31,5 +31,10 @@
     <bean name="/admin/schooltuition.htm" class="com.utimes.study.web.admin.SchoolTuitionController">
         <property name="schoolService" ref="schoolService"/>
     </bean>
+    <bean name="/admin/schoolcourse.htm" class="com.utimes.study.web.admin.SchoolCourseController">
+        <!-- http://localhost:8080/utimes/admin/schoolcourse.htm?action=new
+        Failed to load resource: the server responded with a status of 404 (Not Found)-->
+        <property name="schoolService" ref="schoolService"/>
+    </bean>
 
 </beans>

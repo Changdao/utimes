@@ -1,5 +1,7 @@
 package com.utimes.study.bean;
 
+import java.util.List;
+
 /**
  * One school often have only one area, but Fella has two.
  *
@@ -10,6 +12,8 @@ public class SchoolAreaBean {
     private String name;
     private String location;
     private String memo;
+    private List<CourseBean> courses;
+
 
     public SchoolBean getOwner() {
         return owner;
@@ -49,5 +53,13 @@ public class SchoolAreaBean {
 
     public void setMemo(String memo) {
         this.memo = memo;
+    }
+
+    public List<CourseBean> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<CourseBean> courses) {
+        this.courses = courses;
     }
 }

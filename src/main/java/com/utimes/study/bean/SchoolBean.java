@@ -4,15 +4,10 @@ import java.util.Date;
 import java.util.List;
 
 public class SchoolBean {
-	private List<CourseBean> courses;
+
 	private int id;
-
-
-
     private List<SchoolAreaBean> areas;
     private List<SchoolTuitionBean> tuitionItems;
-
-
 	private String name;
 	private String memo;
 	private Date since;
@@ -39,10 +34,7 @@ public class SchoolBean {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public List<CourseBean> getCourses()
-	{
-		return courses;
-	}
+
 	public String getName() {
 		return name;
 	}
