@@ -57,7 +57,12 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>utimes</servlet-name>
-        <url-pattern>*.htm</url-pattern>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/assets/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -2,11 +2,12 @@
 <html>
 <head>
 <title>My Utimes </title>
-<link rel="stylesheet" href="/utimes/css/jquery.ui.all.css" />
-<link rel="stylesheet" href="/utimes/css/utimes.css" />
-<link rel="stylesheet" href="/utimes/css/ui.jqgrid.css" />
-<script src="/utimes/js/jquery-1.9.1.js"></script>
-<script src="/utimes/js/jquery-ui.js"></script>
+<link rel="stylesheet" href="/utimes/assets/css/bootstrap.css" />
+<link rel="stylesheet" href="/utimes/assets/css/utimes.css" />
+<!-- switch from jquery ui to bootstrap -->
+<!-- link rel="stylesheet" href="/utimes/css/ui.jqgrid.css" / -->
+<script src="/utimes/assets/js/jquery-1.9.1.js"></script>
+<!-- script src="/utimes/js/jquery-ui.js"></script -->
 </head>
 <body>
 <div id="main-container">
@@ -26,7 +27,7 @@
 		<tr>
 		<td><a href="/utimes/schools.htm">浏览学校</a>
 		</td></tr>
-		
+
 		</table>
 	</div>
 </body>

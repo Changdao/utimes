@@ -11,14 +11,14 @@
 <head>
 <meta charset="utf-8" />
 <title>Utimes School Page</title>
-<link rel="stylesheet" href="/utimes/css/jquery-ui-1.9.2.custom.css" />
-<link rel="stylesheet" href="/utimes/css/utimes.css" />
-<link rel="stylesheet" href="/utimes/css/ui.jqgrid.css" />
-<script src="/utimes/js/jquery-ui-1.9.2.custom.js"></script>
-<script src="/utimes/js/jquery.form.js"></script>
-<script src="/utimes/js/jquery.jqGrid.min.js" > </script>
-<script src="/utimes/js/jquery.layout.js"></script>
-<script src="/utimes/js/grid.locale-cn.js"> </script>
+<link rel="stylesheet" href="/utimes/assets/css/jquery-ui-1.9.2.custom.css" />
+<link rel="stylesheet" href="/utimes/assets/css/utimes.css" />
+<link rel="stylesheet" href="/utimes/assets/css/ui.jqgrid.css" />
+<script src="/utimes/assets/js/jquery-ui-1.9.2.custom.js"></script>
+<script src="/utimes/assets/js/jquery.form.js"></script>
+<script src="/utimes/assets/js/jquery.jqGrid.min.js" > </script>
+<script src="/utimes/assets/js/jquery.layout.js"></script>
+<script src="/utimes/assets/js/grid.locale-cn.js"> </script>
 
 <style>
 html, body {
@@ -300,7 +300,7 @@ div#users-contain table td,div#users-contain table th {
 	</div>
 	<div id="edit-school-dialog" title="Edit School"/>
     <div id="loading" title="loading">
-      <img src="/utimes/images/loading1.gif"/><span>Loading...</span>
+      <img src="/utimes/assets/images/loading1.gif"/><span>Loading...</span>
     </div>
    </div>
 </body>

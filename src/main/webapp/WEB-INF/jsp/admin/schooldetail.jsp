@@ -2,15 +2,15 @@
 <head>
     <meta charset="utf-8"/>
     <title>Utimes Register Page</title>
-    <link rel="stylesheet" href="/utimes/css/jquery.ui.all.css"/>
-    <link rel="stylesheet" href="/utimes/css/utimes.css"/>
-    <link rel="stylesheet" href="/utimes/css/ui.jqgrid.css"/>
-    <link rel="stylesheet" href="/utimes/css/erpnext-all.css"/>
-    <script src="/utimes/js/jquery-1.9.1.js"></script>
-    <script src="/utimes/js/jquery-ui.js"></script>
-    <script src="/utimes/js/jquery.jqGrid.min.js"/>
+    <link rel="stylesheet" href="/utimes/assets/css/jquery.ui.all.css"/>
+    <link rel="stylesheet" href="/utimes/assets/css/utimes.css"/>
+    <link rel="stylesheet" href="/utimes/assets/css/ui.jqgrid.css"/>
+    <link rel="stylesheet" href="/utimes/assets/css/erpnext-all.css"/>
+    <script src="/utimes/assets/js/jquery-1.9.1.js"></script>
+    <script src="/utimes/assets/js/jquery-ui.js"></script>
+    <script src="/utimes/assets/js/jquery.jqGrid.min.js"/>
     </script>
-    <script src="/utimes/js/grid.locale-cn.js"/>
+    <script src="/utimes/assets/js/grid.locale-cn.js"/>
     </script>
 
 

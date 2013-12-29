@@ -11,15 +11,15 @@
 <head>
 <meta charset="utf-8" />
 <title>Utimes School Page</title>
-<link rel="stylesheet" href="/utimes/css/jquery-ui-1.9.2.custom.css" />
-<link rel="stylesheet" href="/utimes/css/utimes.css" />
-<link rel="stylesheet" href="/utimes/css/ui.jqgrid.css" />
-<script src="/utimes/js/jquery-1.9.1.js"></script>
-<script src="/utimes/js/jquery-ui-1.9.2.custom.js"></script>
-<script src="/utimes/js/jquery.form.js"></script>
-<script src="/utimes/js/jquery.jqGrid.min.js" > </script>
-<script src="/utimes/js/jquery.layout.js"></script>
-<script src="/utimes/js/grid.locale-cn.js"> </script>
+<link rel="stylesheet" href="/utimes/assets/css/jquery-ui-1.9.2.custom.css" />
+<link rel="stylesheet" href="/utimes/assets/css/utimes.css" />
+<link rel="stylesheet" href="/utimes/assets/css/ui.jqgrid.css" />
+<script src="/utimes/assets/js/jquery-1.9.1.js"></script>
+<script src="/utimes/assets/js/jquery-ui-1.9.2.custom.js"></script>
+<script src="/utimes/assets/js/jquery.form.js"></script>
+<script src="/utimes/assets/js/jquery.jqGrid.min.js" > </script>
+<script src="/utimes/assets/js/jquery.layout.js"></script>
+<script src="/utimes/assets/js/grid.locale-cn.js"> </script>
 
 <style>
 html, body {
@@ -198,7 +198,7 @@ div#users-contain table td,div#users-contain table th {
         			<b>Support: Jidong Liu jameslau@263.net </b>
         			</p>
 
-        			<iframe src="/utimes/admin/welcome.html" style="width:728px; height:100px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0"/>
+        			<iframe src="/utimes/assets/admin/welcome.html" style="width:728px; height:100px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0"/>
 
         			</div>
         		</div>

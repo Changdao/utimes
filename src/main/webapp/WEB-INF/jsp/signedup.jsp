@@ -6,10 +6,10 @@
 <head>
   <meta charset="utf-8" />
   <title>Utimes Register Page</title>
-  <script src="/utimes/js/jquery-1.9.1.js"></script>
-  <script src="/utimes/js/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/utimes/css/jquery.ui.all.css" />
-  <link rel="stylesheet" href="/utimes/css/utimes.css" />
+  <script src="/utimes/assets/js/jquery-1.9.1.js"></script>
+  <script src="/utimes/assets/js/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/utimes/assets/css/jquery.ui.all.css" />
+  <link rel="stylesheet" href="/utimes/assets/css/utimes.css" />
   <style>
 .ui-resizable-se {
 		bottom: 17px;

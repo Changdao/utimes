@@ -9,16 +9,16 @@
 
 <html>
     <head>
-    <link rel="stylesheet" href="/utimes/css/jquery-ui-1.9.2.custom.css" />
-    <link rel="stylesheet" href="/utimes/css/utimes.css" />
-    <link rel="stylesheet" href="/utimes/css/ui.jqgrid.css" />
-    <link rel="stylesheet" href="/utimes/css/bootstrap.css"/>
-    <link rel="stylesheet" href="/utimes/css/fontawesome.css"/>
-    <script src="/utimes/js/jquery-ui-1.9.2.custom.js"></script>
-    <script src="/utimes/js/jquery.form.js"></script>
-    <script src="/utimes/js/jquery.jqGrid.min.js" > </script>
-    <script src="/utimes/js/jquery.layout.js"></script>
-    <script src="/utimes/js/grid.locale-cn.js"> </script>
+    <link rel="stylesheet" href="/utimes/assets/css/jquery-ui-1.9.2.custom.css" />
+    <link rel="stylesheet" href="/utimes/assets/css/utimes.css" />
+    <link rel="stylesheet" href="/utimes/assets/css/ui.jqgrid.css" />
+    <link rel="stylesheet" href="/utimes/assets/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/utimes/assets/css/fontawesome.css"/>
+    <script src="/utimes/assets/js/jquery-ui-1.9.2.custom.js"></script>
+    <script src="/utimes/assets/js/jquery.form.js"></script>
+    <script src="/utimes/assets/js/jquery.jqGrid.min.js" > </script>
+    <script src="/utimes/assets/js/jquery.layout.js"></script>
+    <script src="/utimes/assets/js/grid.locale-cn.js"> </script>
     <script type="text/javascript">
      $(function(){
         $('#btn_return').button().click(function(){$("#tabs div[aria-hidden='false']").load('schools.htm');});

@@ -55,8 +55,6 @@ create table schooltuitionitems(
     primary key (`id`)
 )
 
-
-
 /*
  * Length: minutes
  * */
@@ -67,4 +65,16 @@ CREATE TABLE COURSEDETAIL
 	`length`	int(11),
 	`course_id`	int(11),
 	primary key (`id`)
+)
+
+/*
+* administrators table
+*/
+create table admin
+(
+    `id` int(11) not null auto_increment,
+    `name` varchar(64) not null,
+    `password` varchar(64),
+    `role` varchar(32),
+    primary key (`id`)
 )
