@@ -5,7 +5,7 @@ CREATE TABLE `register` (
   `memo` text,
   `firstname` varchar(32) DEFAULT NULL,
   `lastname` varchar(32) DEFAULT NULL,
-  `userid` varchar(32) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
@@ -44,15 +44,16 @@ create Table schoolarea (
   paytype: 0: before 1: after
 */
 create table schooltuitionitems(
-    `id`    int(11) not null auto_increment,
-    `name`  varchar(128) not null,
-    `prototype` varchar(128) not null,
-    `type`  int(11) default 0,
-    `money` decimal(12,2) default 0,
-    `paytype` varchar(64) not null,
-    `school_id` int(11),
-    `memo` text,
-    primary key (`id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) NOT NULL,
+  `type` int(11) DEFAULT '0',
+  `money` decimal(12,2) DEFAULT '0.00',
+  `schoolarea_id` int(11) DEFAULT NULL,
+  `memo` text,
+  `school_id` int(11) DEFAULT NULL,
+  `paytype` int(11) DEFAULT '0',
+  `flag` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
 )
 
 /*
