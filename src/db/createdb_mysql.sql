@@ -1,5 +1,8 @@
 create database utimes character set utf8;
-CREATE TABLE `register` (
+use utimes;
+drop table register;
+drop table user;
+CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(128) DEFAULT NULL,
   `memo` text,
@@ -9,7 +12,7 @@ CREATE TABLE `register` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
-
+drop table school;
 CREATE TABLE school (
 	`id` int primary key AUTO_INCREMENT,
 	`NAME` VARCHAR(128) DEFAULT NULL,
@@ -19,6 +22,7 @@ CREATE TABLE school (
 	`multiarea` int
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
+drop table course;
 CREATE TABLE `course` (
 	`id` int(11) not null auto_increment,
 	`name` varchar(128) default null,
@@ -29,6 +33,7 @@ CREATE TABLE `course` (
 	primary key (`id`)
 )ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
+drop table schoolarea;
 create Table schoolarea (
 	`id`	int(11) not null auto_increment,
 	`name`	varchar(128) not null,
@@ -37,12 +42,13 @@ create Table schoolarea (
 	`memo` text,
 	`flag` int(11) default 0,
 	primary key (`id`)
-)
+);
 
 /*
   type: 1: per 4 weeks, the real value should multiplex, 0: no other operation
   paytype: 0: before 1: after
 */
+drop table schooltuitionitems;
 create table schooltuitionitems(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL,
@@ -54,11 +60,12 @@ create table schooltuitionitems(
   `paytype` int(11) DEFAULT '0',
   `flag` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-)
+);
 
 /*
  * Length: minutes
  * */
+drop table coursedetail;
 CREATE TABLE COURSEDETAIL
 (
 	`id`	int(11) not null auto_increment,
@@ -66,11 +73,12 @@ CREATE TABLE COURSEDETAIL
 	`length`	int(11),
 	`course_id`	int(11),
 	primary key (`id`)
-)
+);
 
 /*
 * administrators table
 */
+drop table admin;
 create table admin
 (
     `id` int(11) not null auto_increment,
@@ -78,4 +86,4 @@ create table admin
     `password` varchar(64),
     `role` varchar(32),
     primary key (`id`)
-)
+);
