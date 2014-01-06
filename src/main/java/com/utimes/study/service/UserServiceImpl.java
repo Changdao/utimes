@@ -21,6 +21,11 @@ public class UserServiceImpl implements UserService {
 		this.jdbcTemplate = jt;
 	}
 
+    static
+    {
+        System.out.println("<DEBUG> USER SERVICE IMPL THIS IS INITIALIZAED.......");
+    }
+
 	public int getCount() {
 		return jdbcTemplate.queryForInt(COUNT_SQL);
 	}

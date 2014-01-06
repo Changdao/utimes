@@ -11,6 +11,7 @@
          http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <context:component-scan base-package="com.utimes.study.web"/>
+    <context:annotation-config/>
 
     <!-- this bean with the well known name generates view names for us -->
     <bean id="viewNameTranslator" class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator"/>
@@ -65,4 +66,5 @@
 
     </bean>
     <import resource="utimes-admin.xml"/>
+    <import resource="utimes-data.xml"/>
 </beans>

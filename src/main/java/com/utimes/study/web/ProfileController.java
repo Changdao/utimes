@@ -26,16 +26,14 @@ public class ProfileController extends AbstractController {
 			HttpServletResponse response) throws Exception {
 		UserBean user = (UserBean) request.getSession().getAttribute(
 				Common.WEB_USER_KEY);
-		if (user != null) {
+        if(user==null)return new ModelAndView("login");
 
-			// todo to reimplement this by a native method
 
-			request.setAttribute("interests", new String[] { "Study abroad",
+		// todo to reimplement this by a native method
+
+		request.setAttribute("interests", new String[] { "Study abroad",
 					"Study tour", "Imigration", "Travel" });
-			return new ModelAndView("register", "user", user);
-		} else
-			return new ModelAndView("login");
-
+		return new ModelAndView("register", "user", user);
 	}
 
 }

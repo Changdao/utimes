@@ -11,8 +11,8 @@
        <property name="password" value="utimes"/>
        <property name="initialSize" value="5"/>
        <property name="maxActive" value="10"/>
+    </bean>
 
-     </bean>
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"/>
     </bean>
