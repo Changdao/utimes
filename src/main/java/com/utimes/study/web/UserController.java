@@ -21,7 +21,7 @@ public class UserController extends SimpleFormController {
 	}
 	
 	private static final String[] ALL_INTERESTS={
-		"Study abroad","Study tour","Imigration","Travel"
+		"Study abroad","Study tour","Immigration","Travel"
 	};
 	
 	protected ModelAndView onSubmit(Object command, BindException be)

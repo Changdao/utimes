@@ -91,7 +91,7 @@
                       </label>
                     </div>
                     <button type="submit" class="btn btn-default">Login</button>
-                    <span class="color-white"><button type="button" class="btn btn-link pull-right">Register</button></span>
+                    <span class="color-white"><a type="button" class="btn btn-link pull-right" href="register.htm">Register</a></span>
                   </form>
                 </li>
               </ul>

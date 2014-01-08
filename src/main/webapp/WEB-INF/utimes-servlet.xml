@@ -27,13 +27,19 @@
         <property name="successView" value="signedup"/>
 
         <property name="validator">
-            <bean class="com.utimes.study.validator.UserValidator"/>
+            <bean class="com.utimes.study.validator.UserValidator">
+                <property name="userService" ref="userService"/>
+            </bean>
         </property>
     </bean>
 
     <bean name="/myprofile.htm" class="com.utimes.study.web.ProfileController">
         <property name="userService" ref="userService"/>
     </bean>
+
+    <!--bean name="/pricing.html" class="com.utimes.study.web.PricingController">
+        <property name="priceService" ref="priceService"/>
+    </bean -->
 
     <bean name="/myutimes.htm" class="com.utimes.study.web.MyUtimesController">
         <property name="loginView" value="login"/>

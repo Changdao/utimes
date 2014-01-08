@@ -68,5 +68,11 @@ public class UserServiceImpl implements UserService {
 		//Logger.getLogger(this.getClass()).debug("UserBean is:"+obj);
 		return (UserBean)obj;
 	}
-	
+
+    @Override
+    public boolean exists(String email) {
+        List list=jdbcTemplate.queryForList("SELECT * FROM USER WHERE EMAIL=?",new Object[]{email});
+
+        return list!=null&&list.size()>1;
+    }
 }
