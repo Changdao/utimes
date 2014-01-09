@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Neat template by w3widgets</title>
+    <title>Utimes | School List Prices</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
@@ -116,12 +116,31 @@
     </div>
     <!-- Breadcrumbs - END -->
 
-    <section class="background-blue color-white">
+    <section class="background-blue color-yellow">
         <div class="container">
             <h1 class="no-border">Pricing search</h1>
+            <form id="searchform">
             <div class="row">
-            ///form
+                <div class="form-group">
+                    <label for="inputEmail1" class="col-lg-3 control-label">School</label>
+                    <div class="col-lg-9">
+                        <select class='form-control input-lg' id="schoolselect">
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail1" class="col-lg-3 control-label">Courses</label>
+                    <div class="col-lg-9">
+                        <select class="form-control input-lg" id="courseselect">
+
+                        </select>
+                    </div>
+                </div>
+
             </div>
+            </form>
         </div>
     </section>
 
@@ -285,6 +304,10 @@
         <script src="assets/js/jquery.event.move.js"></script>
         <script src="assets/js/responsive-slider.js"></script>
         <script src="assets/js/responsive-calendar.js"></script>
+        <script src="assets/js/underscore.js"></script>
+        <script src="assets/js/backbone.js"></script>
+
+        <script src="assets/js/utimes/pricesearch.js"></script>
 
     <script type="text/javascript">
       function matchHeight(objects, cols, nomatch) {
@@ -348,6 +371,10 @@
     $(window).load(function(){
       matchHeight($('.info-thumbnail .caption .description'), 4);
     });
+    </script>
+
+    <script id="formtemplate" type="text/template">
+      <option>placeholder</option>
     </script>
   </body>
 </html>
