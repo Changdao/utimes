@@ -40,7 +40,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">我的U时代 <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="pricing.html">游学费用</a></li>
+                <li><a href="/utimes/price">游学费用</a></li>
                 <li><a href="services.html">游学百科</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="gallery.html">海外院校</a></li>

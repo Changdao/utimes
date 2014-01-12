@@ -258,12 +258,24 @@ public class SchoolServiceImpl implements SchoolService {
         }
     }
 
-    private static String SCHOOL_COURSES_SELECT_SQL="select * from course where area_id=? and flag=0";
+    private static String SCHOOL_AREA_COURSES_SELECT_SQL ="select * from course where area_id=? and flag=0";
+
+    private static String SCHOOL_COURSES_SELECT_SQL = "select * from course where flag=0 and area_id in (select id from schoolarea where school_id=?)";
+    public List<CourseBean> getCourses(int schoolId)
+    {
+        return  jdbcTemplate.query(SCHOOL_COURSES_SELECT_SQL,new Object[]{schoolId},new CourseRowMapper(null));
+    }
+
+    private  List<CourseBean> getCoursesByArea(SchoolAreaBean area)
+    {
+        return  jdbcTemplate.query(SCHOOL_AREA_COURSES_SELECT_SQL,new Object[]{area},new CourseRowMapper(area));
+    }
+
     @Override
     public void loadCourses(SchoolBean school) {
         for(SchoolAreaBean area:school.getAreas())
         {
-            List<CourseBean> courses=jdbcTemplate.query(SCHOOL_COURSES_SELECT_SQL,new Object[]{area.getId()},new CourseRowMapper(area));
+            List<CourseBean> courses=getCoursesByArea(area);//
             area.setCourses(courses);
         }
 

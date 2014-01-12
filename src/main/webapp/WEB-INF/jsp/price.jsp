@@ -118,28 +118,38 @@
 
     <section class="background-blue color-yellow">
         <div class="container">
-            <h1 class="no-border">Pricing search</h1>
+            <h1>Pricing search</h1>
             <form id="searchform">
             <div class="row">
+            <div class="col-sm-12 col-md-offset-3 col-md-6">
                 <div class="form-group">
-                    <label for="inputEmail1" class="col-lg-3 control-label">School</label>
-                    <div class="col-lg-9">
-                        <select class='form-control input-lg' id="schoolselect">
+                    <label for="inputEmail1" class="control-label">School</label>
+                    <div>
+                        <select class='form-control' id="schoolselect">
 
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputEmail1" class="col-lg-3 control-label">Courses</label>
-                    <div class="col-lg-9">
-                        <select class="form-control input-lg" id="courseselect">
+                    <label for="inputEmail1" class="control-label">Courses</label>
+                    <div>
+                        <select class="form-control" id="courseselect">
 
                         </select>
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label for="weeks" class="control-label">Weeks</label>
+                    <div>
+                        <input class="form-control" id="weeks" type="text">
+                    </div>
+                </div>
+
+                <a class="btn btn-primary" href="#add" id="comparebtn">Add To Compare </a>
             </div>
+            </div> <!-- row -->
             </form>
         </div>
     </section>
@@ -161,7 +171,7 @@
               <div class="special background-emerald color-white"><h3>Bronze package</h3></div>
               <div class="caption">
                 <div class="description">NEAT template supports as much modern technologies and trends as possible. One of them is font awesome icons. This great set of fonts is avaliable anywere you want on your page. Some of NEAT ui elements are also using font awesome like this info thumbnails.</div>
-                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Order</a></p>
+                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
               </div>
             </div>
           </div>
@@ -178,7 +188,7 @@
               <div class="special background-peter-river color-white"><h3>Silver package</h3></div>
               <div class="caption">
                 <div class="description">You can use template elements as you have them in the examples but if you feel creative you can compose our own color combinations in ui elements. You have beutiful set of flat ui colors to work with just use <i>color-{color-name}</i> or <i>background-{color-name}</i> to change text color or background of any element on the page.</div>
-                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Order</a></p>
+                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
               </div>
             </div>
           </div>
@@ -195,7 +205,7 @@
               <div class="special background-sun-flower color-white"><h3>Gold package</h3></div>
               <div class="caption">
                 <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</div>
-                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Order</a></p>
+                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
               </div>
             </div>
           </div>
@@ -212,7 +222,7 @@
               <div class="special background-amethyst color-white"><h3>Platinum package</h3></div>
               <div class="caption">
                 <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</div>
-                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Order</a></p>
+                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
               </div>
             </div>
           </div>
@@ -376,5 +386,10 @@
     <script id="formtemplate" type="text/template">
       <option>placeholder</option>
     </script>
+
+    <script id="price_list_template" type="text/tempalte">
+       <div>price_list_template placeholder</div>
+    </script>
+
   </body>
 </html>

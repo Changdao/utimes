@@ -36,4 +36,5 @@ public interface SchoolService {
 
     void addSchoolTuition(SchoolTuitionBean tuitionBean,int schoolId);
     void loadCourses(SchoolBean school);
+    public List<CourseBean> getCourses(int schoolId);
 }
