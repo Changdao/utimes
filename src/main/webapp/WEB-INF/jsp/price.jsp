@@ -118,37 +118,40 @@
 
     <section class="background-blue color-yellow">
         <div class="container">
-            <h1>Pricing search</h1>
+
             <form id="searchform">
             <div class="row">
-            <div class="col-sm-12 col-md-offset-3 col-md-6">
-                <div class="form-group">
-                    <label for="inputEmail1" class="control-label">School</label>
-                    <div>
-                        <select class='form-control' id="schoolselect">
-
-                        </select>
-                    </div>
+                <div class="col-md-3">
+                    <h1>Pricing search</h1>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="inputEmail1" class="control-label">School</label>
+                        <div>
+                            <select class='form-control' id="schoolselect">
 
-                <div class="form-group">
-                    <label for="inputEmail1" class="control-label">Courses</label>
-                    <div>
-                        <select class="form-control" id="courseselect">
-
-                        </select>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="weeks" class="control-label">Weeks</label>
-                    <div>
-                        <input class="form-control" id="weeks" type="text">
+                    <div class="form-group">
+                        <label for="inputEmail1" class="control-label">Courses</label>
+                        <div>
+                            <select class="form-control" id="courseselect">
+
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <a class="btn btn-primary" href="#add" id="comparebtn">Add To Compare </a>
-            </div>
+                    <div class="form-group">
+                        <label for="weeks" class="control-label">Weeks</label>
+                        <div>
+                            <input class="form-control" id="weeks" type="text">
+                        </div>
+                    </div>
+
+                    <a class="btn btn-primary" href="#add" id="comparebtn">Add To Compare </a>
+                </div>
             </div> <!-- row -->
             </form>
         </div>
@@ -176,7 +179,7 @@
             </div>
           </div>
           <div class="col-sm-6 col-md-3">
-            <div class="thumbnail info-thumbnail popular background-clouds color-text">
+            <div class="thumbnail info-thumbnail background-clouds color-text">
               <div class="pricing-head bordered">
                 <div class="pricing-head-body background-white">
                   <div class="price-wrapper color-text">
@@ -187,7 +190,28 @@
               </div>
               <div class="special background-peter-river color-white"><h3>Silver package</h3></div>
               <div class="caption">
-                <div class="description">You can use template elements as you have them in the examples but if you feel creative you can compose our own color combinations in ui elements. You have beutiful set of flat ui colors to work with just use <i>color-{color-name}</i> or <i>background-{color-name}</i> to change text color or background of any element on the page.</div>
+                <div class="description">
+                <div class="row">
+                    <div class="col-md-6">Name1</div>
+                    <div class="col-md-6 text-right">Value1</div>
+
+                </div>
+                <div class="row">
+                                    <div class="col-md-6">Name1</div>
+                                    <div class="col-md-6 text-right">Value1</div>
+
+                </div>
+                <div class="row">
+                                    <div class="col-md-6">Name1</div>
+                                    <div class="col-md-6 text-right">Value1</div>
+
+                </div>
+                <div class="row">
+                                    <div class="col-md-6">Name1</div>
+                                    <div class="col-md-6 text-right">Value1</div>
+                </div>
+
+                </div>
                 <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
               </div>
             </div>
