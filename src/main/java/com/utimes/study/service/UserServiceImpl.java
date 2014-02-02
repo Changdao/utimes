@@ -62,11 +62,17 @@ public class UserServiceImpl implements UserService {
 	}
 	private static String LOGIN_SQL="select * from user where email=? and password=?";
 	public UserBean login(String email,String password)
-	{
-		Object obj=jdbcTemplate.queryForObject(LOGIN_SQL, new Object[]{email,password},
+	{   try
+        {
+		    Object obj=jdbcTemplate.queryForObject(LOGIN_SQL, new Object[]{email,password},
 				new UserBeanMapper());
-		//Logger.getLogger(this.getClass()).debug("UserBean is:"+obj);
-		return (UserBean)obj;
+		    //Logger.getLogger(this.getClass()).debug("UserBean is:"+obj);
+		    return (UserBean)obj;
+        }
+        catch(org.springframework.dao.EmptyResultDataAccessException e)
+        {
+            return null;
+        }
 	}
 
     @Override

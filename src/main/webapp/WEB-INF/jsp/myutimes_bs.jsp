@@ -1,27 +1,25 @@
 <%@ page contentType="text/html;charset=utf-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
-        <title>U时代国际游学</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link href="assets/css/font-awesome.css" rel="stylesheet">
-        <link href="assets/css/neat.css" rel="stylesheet" media="screen">
-        <link rel="shortcut icon" href="assets/img/logou.png">
+      <title>U时代国际游学</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Bootstrap -->
+      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+      <link href="assets/css/font-awesome.css" rel="stylesheet">
+      <link href="assets/css/neat.css" rel="stylesheet" media="screen">
+      <link rel="shortcut icon" href="assets/img/logou.png">
 
-        <!-- Use google font -->
-        <link href="assets/css/googlefonts.css" rel="stylesheet" type="text/css" />
+      <!-- Use google font -->
+      <link href="assets/css/googlefonts.css" rel="stylesheet" type="text/css" />
 
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="assets/js/html5shiv.js"></script>
-          <script src="assets/js/respond.min.js"></script>
-        <![endif]-->
-      </head>
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+        <script src="assets/js/html5shiv.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+      <![endif]-->
+    </head>
   <body>
     <nav id="mainMenu" class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -41,7 +39,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/utimes/">首页</a></li>
             <li><a href="aboutus.html">关于U时代</a></li>
-            <li class="dropdown">
+            <li class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">我的U时代 <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="/utimes/price">游学费用</a></li>
@@ -50,7 +48,7 @@
                 <li><a href="gallery.html">海外院校</a></li>
                 <li class="divider"></li>
                 <li><a href="registration.html">注册</a></li>
-                <li  class="active"><a href="login.html">登录</a></li>
+                <li><a href="login.htm">登录</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -109,9 +107,8 @@
     <div class="background-clouds breadcrumbs-container">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="index.html">Home</a></li>
-          <li class="active">Pages</li>
-          <li class="active">Login</li>
+          <li><a href="index.html">Utimes</a></li>
+          <li class="active">My Utimes</li>
         </ol>
       </div>
     </div>
@@ -119,38 +116,63 @@
 
     <section>
       <div class="container">
-        <h1>Login</h1>
         <div class="row">
-          <div class="col-sm-12 col-md-offset-4 col-md-4">
-            <div class="thumbnail info-thumbnail background-lead">
-              <div class="caption">
-                <h3><span class="fa fa-user"></span> Login</h3>
-                <form role="form" action="/utimes/login.htm">
-                  <div class="form-group">
-                    <label for="exampleInputEmail2">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email" name="email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword2">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" name="password">
-                  </div>
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Remember me
-                    </label>
-                  </div>
-                  <button type="submit" class="btn btn-default">Login</button>
-                  <span class="color-white"><button type="button" class="btn btn-link pull-right">Register</button></span>
-                </form>
-              </div>
+          <div class="col-md-3">
+            <div class="list-group bright background-clouds color-text">
+              <div class="list-group-item"><h3>我的Utimes</h3></div>
+              <a href="#" class="list-group-item">
+                信息中心
+              </a>
+              <a href="#" class="list-group-item active">学校申请</a>
+              <a href="#" class="list-group-item">咨询</a>
+              <a href="#" class="list-group-item">机票</a>
+              <a href="#" class="list-group-item">游学信息</a>
             </div>
+          </div>
+          <div class="col-md-9">
+            <div class="content">
+              <h1>Some article title</h1>
+              <p><img src="assets/img/article-head.jpg" alt="..."></p>
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet semper diam, quis commodo eros. Nam mi est, faucibus et varius tempus, tincidunt in dolor. Fusce sodales, lectus vel molestie rhoncus, elit massa aliquam lacus, porta aliquam sem tortor vitae nisl. Pellentesque aliquam condimentum nunc ut sollicitudin.</p>
+
+              <p>Sed porta ac ipsum ut mollis. Integer id vestibulum dui, at dapibus orci. Nunc adipiscing, orci sit amet ultricies sagittis, arcu orci feugiat lorem, nec feugiat magna erat id lectus. Cras tristique eu sapien ut aliquam. Cras pharetra nisl sapien, ut tincidunt nunc feugiat at. Donec massa nisl, tincidunt eu nulla quis, tristique facilisis nibh. Praesent viverra tempor lectus et consectetur.</p>
+
+              <p>Pellentesque imperdiet diam ut augue vulputate eleifend vitae id lorem. Aliquam a congue lectus, nec sollicitudin risus. Vivamus id nisi tincidunt, tempus orci sed, vestibulum eros. Nulla facilisi. Nam eu ornare libero. Suspendisse adipiscing neque et egestas bibendum. Morbi vulputate non tellus eu dapibus. Maecenas tempor scelerisque pulvinar. Donec dictum pulvinar rhoncus. Sed ornare quis orci eget viverra. Sed tincidunt id turpis interdum congue. Nam quis scelerisque lacus. Suspendisse id metus nibh.</p>
+
+              <ul>
+                <li>Some list item</li>
+                <li>Another one item</li>
+                <li>And another one list item</li>
+                <li>Some list item</li>
+                <li>Another one item</li>
+                <li>And another one list item</li>
+              </ul>
+
+              <p>Pellentesque imperdiet diam ut augue vulputate eleifend vitae id lorem. Aliquam a congue lectus, nec sollicitudin risus. Vivamus id nisi tincidunt, tempus orci sed, vestibulum eros. Nulla facilisi. Nam eu ornare libero. Suspendisse adipiscing neque et egestas bibendum. Morbi vulputate non tellus eu dapibus. Maecenas tempor scelerisque pulvinar. Donec dictum pulvinar rhoncus. Sed ornare quis orci eget viverra. Sed tincidunt id turpis interdum congue. Nam quis scelerisque lacus. Suspendisse id metus nibh.</p>
+
+              <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+              </blockquote>
+
+              <p>Vivamus rhoncus felis non lorem adipiscing, ac faucibus diam mattis. Vestibulum malesuada, sem vitae placerat consequat, est odio dapibus est, ac rutrum tortor justo eget sapien. Etiam vehicula mattis aliquet. Sed dictum hendrerit blandit. Suspendisse justo lacus, ultricies quis aliquam eu, convallis vel neque. Integer lobortis eu dolor a molestie. Nulla rhoncus justo vel risus dictum adipiscing. Donec ornare dictum augue, sed bibendum enim mattis a. Donec at metus purus. Duis pellentesque feugiat odio sed vehicula. Pellentesque egestas ac nisi id auctor. Cras aliquet, ligula a lobortis tristique, sapien libero ornare libero, et viverra tellus nisi non ligula. Nullam eleifend lacus sem, sit amet rutrum elit congue vitae. Praesent vehicula viverra odio in aliquet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent interdum nisl et magna dignissim tincidunt.</p>
+            </div>
+            <ul class="pagination">
+              <li class="disabled"><a href="#">&laquo;</a></li>
+              <li class="active"><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">&raquo;</a></li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
 
-    <%@include file="footer.jsp" %>
+   <%@include file="footer.jsp" %>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="assets/js/jquery.min.js"></script>

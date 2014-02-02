@@ -30,7 +30,7 @@ public class LoginController extends AbstractController {
 		
 		request.getSession().setAttribute(Common.WEB_USER_KEY,user );
 		
-		return new ModelAndView("myutimes",Common.WEB_USER_KEY,user);
+		return new ModelAndView("myutimes_bs",Common.WEB_USER_KEY,user);
 		
 	}
 
