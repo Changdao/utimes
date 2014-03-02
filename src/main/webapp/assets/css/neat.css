@@ -368,7 +368,11 @@ a:hover,
   color: #fff;
   border: 1px #1d6fa5 solid;
 }
-section,
+section{
+  position: relative;
+  padding: 30px 0 30px 0;
+  background: #fff;
+}
 footer {
   position: relative;
   padding: 60px 0 30px 0;

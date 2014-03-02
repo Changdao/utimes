@@ -6,8 +6,8 @@
      <bean id="dataSource"
          class="org.apache.commons.dbcp.BasicDataSource">
        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-       <property name="url" value="jdbc:mysql://localhost/utimes"/>
-       <property name="username" value="utimes"/>
+       <property name="url" value="jdbc:mysql://localhost:13306/utimes"/>
+       <property name="username" value="utimesedu"/>
        <property name="password" value="utimes#123"/>
        <property name="initialSize" value="5"/>
        <property name="maxActive" value="10"/>
@@ -29,6 +29,7 @@
 
     <bean id="priceService" class="com.utimes.study.service.PriceServiceImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
+        <property name="schoolService" ref="schoolService"/>
     </bean>
 
     <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

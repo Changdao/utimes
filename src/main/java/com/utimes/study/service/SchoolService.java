@@ -15,9 +15,11 @@ public interface SchoolService {
     public void updateCourse(CourseBean course);
     public void deleteCourse(CourseBean course);
     public void deleteCourse(int id);
+    public CourseBean getCourse(int id);
 
     public void updateSchool(SchoolBean schoolBean);
 	public SchoolBean getSchool(String id);
+    public void deleteSchool(String id);
     public SchoolBean findSchoolByName(String name);
     public void deleteArea(String id);
     public void deleteTuition(int id);

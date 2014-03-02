@@ -49,8 +49,15 @@ public class SchoolUpdateControler extends AbstractController {
         String location=request.getParameter("location");
         String sinceStr=request.getParameter("since");
 
-        Date sinceDate= sdf.parse(sinceStr);
+        Date sinceDate=new Date();
+        try
+        {
+            sinceDate= sdf.parse(sinceStr);
+        }
+        catch(Exception e)
+        {
 
+        }
 
         Enumeration emer=request.getParameterNames();
         while(emer.hasMoreElements())

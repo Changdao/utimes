@@ -87,7 +87,7 @@ public class SchoolServiceImpl implements SchoolService {
 
 
 	private JdbcTemplate jdbcTemplate;
-	private static String SCHOOL_SELECT_SQL = "SELECT * FROM SCHOOL";
+	private static String SCHOOL_SELECT_SQL = "SELECT * FROM SCHOOL where flag>=0";
 
 	@SuppressWarnings("unchecked")
 	public List<SchoolBean> getSchools() {
@@ -95,7 +95,7 @@ public class SchoolServiceImpl implements SchoolService {
 				new SchoolRowMapper());
 	}
 
-	private static String SCHOOL_GET_BY_ID_SQL = "select * from SCHOOL where id=?";
+	private static String SCHOOL_GET_BY_ID_SQL = "select * from SCHOOL where id=? and flag>=0";
     private static String SCHOOL_AREA_GET_BY_SCHOOL_SQL="select * from SCHOOLAREA where flag>=0 and school_id=?";
     private static String SCHOOL_TUITION_GET_BY_SCHOOL_SQL="select * from SCHOOLTUITIONITEMS WHERE school_id=? and flag>=0";
 
@@ -111,6 +111,11 @@ public class SchoolServiceImpl implements SchoolService {
         school.setTuitionItems(tuitions);
         return school;
 	}
+
+    private static String SCHOOL_DELETE_SCHOOL = "update school set flag=-1 where id=?";
+    public void deleteSchool(String id){
+        jdbcTemplate.update(SCHOOL_DELETE_SCHOOL,new Object[]{id});
+    }
 
     private Integer getLastInsertID()
     {
@@ -266,9 +271,18 @@ public class SchoolServiceImpl implements SchoolService {
         return  jdbcTemplate.query(SCHOOL_COURSES_SELECT_SQL,new Object[]{schoolId},new CourseRowMapper(null));
     }
 
+
+    private static String SCHOOL_COURSE_SELECT_SQL = "select * from course where id=?";
+    public CourseBean getCourse(int id)
+    {
+        List result= jdbcTemplate.query(SCHOOL_COURSE_SELECT_SQL,new Object[]{id},new CourseRowMapper(null));
+        if(result.size()>0)return (CourseBean)result.get(0);
+        else return null;
+    }
+
     private  List<CourseBean> getCoursesByArea(SchoolAreaBean area)
     {
-        return  jdbcTemplate.query(SCHOOL_AREA_COURSES_SELECT_SQL,new Object[]{area},new CourseRowMapper(area));
+        return  jdbcTemplate.query(SCHOOL_AREA_COURSES_SELECT_SQL,new Object[]{area.getId()},new CourseRowMapper(area));
     }
 
     @Override

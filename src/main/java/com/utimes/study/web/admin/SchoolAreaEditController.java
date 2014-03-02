@@ -99,7 +99,7 @@ public class SchoolAreaEditController  extends AbstractController {
                     area.setId(intAreaId);
 
                 }
-                return new ModelAndView("/admin/schoolAreaJSON","area",area);
+                return new ModelAndView("/admin/schoolAreaJson","area",area);
 
             default :
                 break;

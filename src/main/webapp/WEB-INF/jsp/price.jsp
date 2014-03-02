@@ -118,37 +118,40 @@
 
     <section class="background-blue color-yellow">
         <div class="container">
-            <h1>Pricing search</h1>
+
             <form id="searchform">
             <div class="row">
-            <div class="col-sm-12 col-md-offset-3 col-md-6">
-                <div class="form-group">
-                    <label for="inputEmail1" class="control-label">School</label>
-                    <div>
-                        <select class='form-control' id="schoolselect">
-
-                        </select>
-                    </div>
+                <div class="col-md-3">
+                    <h1>Pricing search</h1>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="inputEmail1" class="control-label">School</label>
+                        <div>
+                            <select class='form-control' id="schoolselect">
 
-                <div class="form-group">
-                    <label for="inputEmail1" class="control-label">Courses</label>
-                    <div>
-                        <select class="form-control" id="courseselect">
-
-                        </select>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="weeks" class="control-label">Weeks</label>
-                    <div>
-                        <input class="form-control" id="weeks" type="text">
+                    <div class="form-group">
+                        <label for="inputEmail1" class="control-label">Courses</label>
+                        <div>
+                            <select class="form-control" id="courseselect">
+
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <a class="btn btn-primary" href="#add" id="comparebtn">Add To Compare </a>
-            </div>
+                    <div class="form-group">
+                        <label for="weeks" class="control-label">Weeks</label>
+                        <div>
+                            <input class="form-control" id="weeks" type="text">
+                        </div>
+                    </div>
+
+                    <a class="btn btn-primary" href="#add" id="comparebtn">Add To Compare </a>
+                </div>
             </div> <!-- row -->
             </form>
         </div>
@@ -157,153 +160,90 @@
     <section class="background-orange color-white">
       <div class="container">
         <h1 class="no-border">Pricing List</h1>
-        <div class="row">
-          <div class="col-sm-6 col-md-3">
-            <div class="thumbnail info-thumbnail background-clouds color-text">
-              <div class="pricing-head bordered">
-                <div class="pricing-head-body background-white">
-                  <div class="price-wrapper color-text">
-                    <span class="price"><sup><small>$</small></sup>9.<small>99</small></span><br>
-                    <span class="per">Per Month</span>
-                  </div>
-                </div>
-              </div>
-              <div class="special background-emerald color-white"><h3>Bronze package</h3></div>
-              <div class="caption">
-                <div class="description">NEAT template supports as much modern technologies and trends as possible. One of them is font awesome icons. This great set of fonts is avaliable anywere you want on your page. Some of NEAT ui elements are also using font awesome like this info thumbnails.</div>
-                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <div class="thumbnail info-thumbnail popular background-clouds color-text">
-              <div class="pricing-head bordered">
-                <div class="pricing-head-body background-white">
-                  <div class="price-wrapper color-text">
-                    <span class="price"><sup><small>$</small></sup>29.<small>99</small></span><br>
-                    <span class="per">Per Month</span>
-                  </div>
-                </div>
-              </div>
-              <div class="special background-peter-river color-white"><h3>Silver package</h3></div>
-              <div class="caption">
-                <div class="description">You can use template elements as you have them in the examples but if you feel creative you can compose our own color combinations in ui elements. You have beutiful set of flat ui colors to work with just use <i>color-{color-name}</i> or <i>background-{color-name}</i> to change text color or background of any element on the page.</div>
-                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <div class="thumbnail info-thumbnail background-clouds color-text">
-              <div class="pricing-head bordered">
-                <div class="pricing-head-body background-white">
-                  <div class="price-wrapper color-text">
-                    <span class="price"><sup><small>$</small></sup>99.<small>99</small></span><br>
-                    <span class="per">Per Month</span>
-                  </div>
-                </div>
-              </div>
-              <div class="special background-sun-flower color-white"><h3>Gold package</h3></div>
-              <div class="caption">
-                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</div>
-                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <div class="thumbnail info-thumbnail background-clouds color-text">
-            <div class="pricing-head bordered">
-                <div class="pricing-head-body background-white">
-                  <div class="price-wrapper color-text">
-                    <span class="price"><sup><small>$</small></sup>499.<small>99</small></span><br>
-                    <span class="per">Per Month</span>
-                  </div>
-                </div>
-              </div>
-              <div class="special background-amethyst color-white"><h3>Platinum package</h3></div>
-              <div class="caption">
-                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</div>
-                <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
-              </div>
-            </div>
-          </div>
+        <div class="row" id="priceBoard">
+          <div class="col-sm-6 col-md-3" id="b1">
+                      <div class="thumbnail info-thumbnail background-clouds color-text">
+                        <div class="pricing-head">
+                          <div class="pricing-head-body background-emerald">
+                            <div class="price-wrapper color-white">
+                              <span class="price"></span><br>
+                              <span class="per">Total</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="special background-midnight-blue color-white" id="schoolName"><h3></h3></div>
+                        <div class="caption">
+                          <div id="items">
+
+                          </div>
+                          <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3" id="b2">
+                      <div class="thumbnail info-thumbnail background-clouds color-text">
+                        <div class="pricing-head">
+                          <div class="pricing-head-body background-peter-river">
+                            <div class="price-wrapper color-white">
+                              <span class="price"></span><br>
+                              <span class="per">Total</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="special background-midnight-blue color-white"  id="schoolName"><h3></h3></div>
+                            <div class="caption">
+                              <div id="items">
+
+                              </div>
+                              <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
+                            </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3" id="b3">
+                      <div class="thumbnail info-thumbnail background-clouds color-text">
+                        <div class="pricing-head">
+                          <div class="pricing-head-body background-sun-flower">
+                            <div class="price-wrapper color-white">
+                              <span class="price"></span><br>
+                              <span class="per">Per Month</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="special background-midnight-blue color-white"  id="schoolName"><h3></h3></div>
+                            <div class="caption">
+                              <div id="items">
+
+                              </div>
+                              <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
+                            </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3" id="b4">
+                      <div class="thumbnail info-thumbnail background-clouds color-text">
+                      <div class="pricing-head">
+                          <div class="pricing-head-body background-amethyst">
+                            <div class="price-wrapper color-white">
+                              <span class="price"></span><br>
+                              <span class="per">Total</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="special background-midnight-blue color-white"  id="schoolName"><h3></h3></div>
+                            <div class="caption">
+                              <div id="items">
+
+                              </div>
+                              <p class="buttons"><a href="#" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Request</a></p>
+                            </div>
+                      </div>
+                    </div>
+
         </div>
       </div>
     </section>
 
 
-
-
-    <footer class="background-dark-gray color-white">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <h3>Menu</h3>
-            <ul class="nav-footer">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Pages</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Portfolio</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h3>Testmonials</h3>
-            <p class="testimonial">Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</p>
-            <p class="author">lkokosz</p>
-            <p class="testimonial">Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</p>
-            <p class="author">lkokosz</p>
-          </div>
-          <div class="col-md-5">
-            <h3>Contact us</h3>
-            <form class="form-horizontal" role="form">
-              <div class="form-group">
-                <label for="inputName1" class="col-lg-3 control-label">Name</label>
-                <div class="col-lg-9">
-                  <input type="text" class="form-control input-lg" id="inputName1" placeholder="Name">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputEmail1" class="col-lg-3 control-label">Email</label>
-                <div class="col-lg-9">
-                  <input type="email" class="form-control input-lg" id="inputEmail1" placeholder="Email">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputContent1" class="col-lg-3 control-label">Content</label>
-                <div class="col-lg-9">
-                  <textarea id="inputContent1" class="form-control" rows="3"></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-lg-offset-3 col-lg-9">
-                  <button type="submit" class="btn btn-lead btn-lg">Send us an email</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <hr>
-            <div class="row">
-              <div class="col-md-6">
-                All rights reserved &copy; 2013 <a href="http://w3widgets.com">w3widgets.com</a>
-              </div>
-              <div class="col-md-6">
-                <p class="social">
-                  <a href="/"><span class="fa fa-facebook"></span></a>
-                  <a href="/"><span class="fa fa-twitter"></span></a>
-                  <a href="/"><span class="fa fa-youtube"></span></a>
-                  <a href="/"><span class="fa fa-linkedin"></span></a>
-                  <a href="/"><span class="fa fa-pinterest"></span></a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <%@include file="/WEB-INF/jsp/footer.jsp" %>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="assets/js/jquery.min.js"></script>
@@ -388,7 +328,32 @@
     </script>
 
     <script id="price_list_template" type="text/tempalte">
-       <div>price_list_template placeholder</div>
+
+           <div class="thumbnail info-thumbnail background-clouds color-text">
+             <div class="pricing-head bordered">
+               <div class="pricing-head-body background-white">
+                 <div class="price-wrapper color-text">
+                   <span class="price"></span><br>
+                   <span class="per">Total</span>
+                 </div>
+               </div>
+             </div>
+             <div class="special background-peter-river color-white" id="school_name"><h3>学费</h3></div>
+             <div class="caption">
+               <div id="items">
+
+               </div>
+               <p class="buttons"><a href="#" class="btn btn-primary" id="Request"><span class="fa fa-shopping-cart"></span> Request</a></p>
+             </div>
+           </div>
+
+    </script>
+
+    <script id="price_list_item_template" type="text/template">
+
+            <div class="col-md-6"><@- name @></div>
+            <div class="col-md-6 text-right"><@- value @></div>
+
     </script>
 
   </body>

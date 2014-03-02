@@ -27,9 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             dataSource = new BasicDataSource();
 
             dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-            dataSource.setUrl("jdbc:mysql://localhost/utimes");
-            dataSource.setUsername("utimes");
-            dataSource.setPassword("utimes#123");
+            dataSource.setUrl("jdbc:mysql://localhost:13306/utimes");
+            dataSource.setUsername("utimesedu");         //utimesedu
+            dataSource.setPassword("utimes#123");  //PzqZzGtwCrpwLWSh
         }
         return dataSource;
     }

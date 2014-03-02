@@ -56,6 +56,28 @@ public class PricingController {
     @RequestMapping("/pricelists")
     public ModelAndView schoolPriceList(HttpServletRequest request)
     {
+        Enumeration en= request.getParameterNames();
+        System.out.println("<TRACE>>>===============================================================================");
+        while(en.hasMoreElements())
+        {
+            String n= (String) en.nextElement();
+            System.out.println(n+":"+request.getParameter(n));
+        }
+        System.out.println("<TRACE><<===============================================================================");
+
+        int schoolId=Integer.parseInt(request.getParameter("school"));
+        int courseId=Integer.parseInt(request.getParameter("course"));
+        int weeks=Integer.parseInt(request.getParameter("weeks"));
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("price_list_json");
+        mav.addObject("pricelist", priceService.getPriceListBean(schoolId, courseId, weeks));
+
+        return mav;
+      
+    }
+    /*public ModelAndView schoolPriceList(HttpServletRequest request)
+    {
        Enumeration en= request.getParameterNames();
         System.out.println("<TRACE>>>===============================================================================");
         while(en.hasMoreElements())
@@ -74,6 +96,6 @@ public class PricingController {
         mav.addObject("pricelist", priceService.getPriceList(schoolId,courseId,weeks));
 
        return mav;
-    }
+    } */
 
 }
