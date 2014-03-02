@@ -46,6 +46,9 @@ public class SchoolEditController extends AbstractController {
         {
             switch(action)
             {
+                case "delete":
+                    schoolService.deleteSchool(schoolId);
+                    return new ModelAndView("/admin/blank","","");
                 case "loadtuitionpanel":
                     Logger.debug("Action:loadtuitionpanel");
                     String rownumber=(String)request.getParameter("rownumber");

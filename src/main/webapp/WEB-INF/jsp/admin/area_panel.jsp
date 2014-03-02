@@ -13,9 +13,6 @@
         <button class="btn btn-success pull-right grid-toggle-row" title="Close" style="margin-left: 7px;">
             <i class="icon-chevron-up"></i>
         </button>
-        <button class="btn btn-default pull-right grid-insert-row" title="Insert Row" style="margin-left: 7px;">
-            <i class="icon-plus grid-insert-row"></i>
-        </button>
         <button class="btn btn-default pull-right grid-delete-row" title="Delete Row">
         <i class="icon-trash grid-delete-row"></i>
         </button>
@@ -66,7 +63,6 @@
 
         <button class="btn btn-success pull-right grid-toggle-row" title="Close" style="margin-left: 7px;">
         <i  class="icon-chevron-up"></i></button>
-        <button class="btn btn-default pull-right grid-append-row" title="Insert Below" style="margin-left: 7px;">
-        <i class="icon-plus"></i></button>
+
     </div>
 </div>

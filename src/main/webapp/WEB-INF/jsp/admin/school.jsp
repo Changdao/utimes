@@ -221,7 +221,14 @@ div#users-contain table td,div#users-contain table th {
             else alert('Please select a school.');
 		});
 
-
+        $('#delete').button().click(function(){
+                    var id=$('#schools').jqGrid('getGridParam','selrow');
+                    if(id)
+                    {
+                        $.post( 'school_edit.htm?action=delete&schoolid='+id,function(){$('#schools').trigger( 'reloadGrid' );});
+                    }
+                    else alert('Please select a school.');
+        });
 
 		var options = {
                 //target:        '#output1',   // target element(s) to be updated with server response
@@ -274,8 +281,9 @@ div#users-contain table td,div#users-contain table th {
             <table id="schools"></table>
             <div id="pager2"></div>
             <input type="BUTTON" id="new" value="<fmt:message key='school.add'/>" />
-            <input type="BUTTON" id="modify" value="Modify Selected School" />
-            <input type="BUTTON" id="course" value="School courses" />
+            <input type="BUTTON" id="modify" value="<fmt:message key='school.edit'/>" />
+            <input type="BUTTON" id="course" value="<fmt:message key='school.editCourse'/>" />
+            <input type="BUTTON" id="delete" value="<fmt:message key='school.delete'/>" />
 
 
 	<div id="dialog-form" title="Create new school">
