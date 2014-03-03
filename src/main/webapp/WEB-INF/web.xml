@@ -10,12 +10,13 @@
         <param-value>utimes</param-value>
     </context-param>
 
-    <!--context-param>
+    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             /WEB-INF/utimes-data.xml
+            /WEB-INF/utimes-security.xml
         </param-value>
-    </context-param -->
+    </context-param>
 
     <!-- Define the basename for a resource bundle for I18N -->
     <!-- context-param>
@@ -46,15 +47,17 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- listener>
+    <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener -->
+    </listener>
 
     <servlet>
         <servlet-name>utimes</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
+
     <servlet-mapping>
         <servlet-name>utimes</servlet-name>
         <url-pattern>/</url-pattern>
@@ -69,5 +72,16 @@
         <servlet-name>default</servlet-name>
         <url-pattern>*.html</url-pattern>
     </servlet-mapping>
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 
 </web-app>
