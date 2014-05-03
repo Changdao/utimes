@@ -16,10 +16,30 @@ import com.utimes.study.bean.UserBean;
 public class UserServiceImpl implements UserService {
 	private static String COUNT_SQL = "SELECT COUNT(*) FROM user";
 	private JdbcTemplate jdbcTemplate;
+    private MailService mailService;
+    private String mailFrom;
+    private String registerMailTopic;
+    private String registerMailContent;
 
 	public void setJdbcTemplate(JdbcTemplate jt) {
 		this.jdbcTemplate = jt;
 	}
+
+    public void setMailService(MailService mailService) {
+        this.mailService = mailService;
+    }
+
+    public void setMailFrom(String mailFrom) {
+        this.mailFrom = mailFrom;
+    }
+
+    public void setRegisterMailTopic(String registerMailTopic) {
+        this.registerMailTopic = registerMailTopic;
+    }
+
+    public void setRegisterMailContent(String registerMailContent) {
+        this.registerMailContent = registerMailContent;
+    }
 
     static
     {
@@ -33,9 +53,12 @@ public class UserServiceImpl implements UserService {
 	private static String USER_SQL = "insert into user(lastname,firstname,email,memo,password) values(?,?,?,?,?)";
 
 	public void signup(UserBean user) {
+
+
 		jdbcTemplate.update(USER_SQL, new Object[] {
 				user.getLastName(), user.getFirstName(),
 				user.getEmail().toString(), user.getDescription(), user.getPassword() });
+        mailService.sendService(mailFrom,user.getEmail().toString(),registerMailTopic,registerMailContent);
 	}
 
 	private class UserBeanMapper implements RowMapper {

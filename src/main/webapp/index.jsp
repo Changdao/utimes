@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <html>
   <head>
     <title>U时代国际游学</title>
@@ -46,7 +47,7 @@
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="gallery.html">海外院校</a></li>
                 <li class="divider"></li>
-                <li><a href="registration.html">注册</a></li>
+                <li><a href="register.htm">注册</a></li>
                 <li><a href="login.htm">登录</a></li>
               </ul>
             </li>
@@ -76,6 +77,8 @@
               </ul>
             </li>
             <li class="dropdown">
+
+            <c:if test="${sessionScope.user eq null}">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-lock"></span></a>
               <ul class="dropdown-menu">
                 <li>
@@ -96,6 +99,27 @@
                   </form>
                 </li>
               </ul>
+
+             </c:if>
+
+             <c:if test="${sessionScope.user != null}">
+
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-lock"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <form role="form" action="/utimes/login.htm">
+                    <div class="form-group">
+                      <a href="/utimes/myutimes.htm"><c:out value="${sessionScope.user.lastName}"/>&nbsp;<c:out value="${sessionScope.user.firstName}"/></a>
+                    </div>
+                    <div class="form-group">
+                      <span></span>
+                    </div>
+                    <span class="color-white"><a type="button" class="btn btn-link pull-right" href="logout">Logout</a></span>
+                  </form>
+                </li>
+              </ul>
+             </c:if>
+
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->

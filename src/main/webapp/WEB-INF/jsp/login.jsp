@@ -49,8 +49,8 @@
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="gallery.html">海外院校</a></li>
                 <li class="divider"></li>
-                <li><a href="registration.html">注册</a></li>
-                <li  class="active"><a href="login.html">登录</a></li>
+                <li><a href="register.htm">注册</a></li>
+                <li  class="active"><a href="login.htm">登录</a></li>
               </ul>
             </li>
             <li class="dropdown">

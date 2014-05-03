@@ -15,10 +15,10 @@
           </div>
           <div class="col-md-4">
             <h3>Testmonials</h3>
-            <p class="testimonial">Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</p>
-            <p class="author">lkokosz</p>
-            <p class="testimonial">Proin venenatis velit nibh, sit amet commodo sapien tristique at. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras bibendum erat at ultricies rhoncus.</p>
-            <p class="author">lkokosz</p>
+            <p class="testimonial">Uimtes help you!</p>
+            <p class="author">Claire - Founder of Utimes!</p>
+            <p class="testimonial">Utimes promote me!</p>
+            <p class="author">James - Student</p>
           </div>
           <div class="col-md-5">
             <h3>Contact us</h3>
@@ -54,17 +54,9 @@
             <hr>
             <div class="row">
               <div class="col-md-6">
-                All rights reserved &copy; 2013 <a href="http://w3widgets.com">w3widgets.com</a>
+                All rights reserved &copy; 2013 <a href="http://utimesedu.com">Utimesedu.com</a>
               </div>
-              <div class="col-md-6">
-                <p class="social">
-                  <a href="/"><span class="fa fa-facebook"></span></a>
-                  <a href="/"><span class="fa fa-twitter"></span></a>
-                  <a href="/"><span class="fa fa-youtube"></span></a>
-                  <a href="/"><span class="fa fa-linkedin"></span></a>
-                  <a href="/"><span class="fa fa-pinterest"></span></a>
-                </p>
-              </div>
+
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 package com.utimes.study.web;
 
+import com.utimes.study.service.MailService;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.springframework.web.servlet.mvc.SimpleFormController;
@@ -79,4 +80,10 @@ public class UserController extends SimpleFormController {
     public void setUserService(UserService rs) {
 		this.userService = rs;
 	}
+
+    private MailService mailService;
+
+    public void setMailService(MailService mailService) {
+        this.mailService = mailService;
+    }
 }

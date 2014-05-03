@@ -16,6 +16,8 @@
     <!-- this bean with the well known name generates view names for us -->
     <bean id="viewNameTranslator" class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator"/>
 
+
+
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="utimes"/>
@@ -25,6 +27,7 @@
         <property name="userService" ref="userService"/>
         <property name="formView" value="signup"/>
         <property name="successView" value="signedup"/>
+        <property name="mailService" ref="mailService"/>
 
         <property name="validator">
             <bean class="com.utimes.study.validator.UserValidator">
@@ -43,7 +46,7 @@
 
     <bean name="/myutimes.htm" class="com.utimes.study.web.MyUtimesController">
         <property name="loginView" value="login"/>
-        <property name="successView" value="myutimes"/>
+        <property name="successView" value="myutimes_bs"/>
     </bean>
     <bean name="/login.htm" class="com.utimes.study.web.LoginController">
         <property name="userService" ref="userService"/>

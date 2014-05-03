@@ -7,8 +7,8 @@
          class="org.apache.commons.dbcp.BasicDataSource">
        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
        <property name="url" value="jdbc:mysql://localhost:13306/utimes"/>
-       <property name="username" value="utimes"/>
-       <property name="password" value="utimes"/>
+       <property name="username" value="utimesedu"/>
+       <property name="password" value="utimes#123"/>
        <property name="initialSize" value="5"/>
        <property name="maxActive" value="10"/>
     </bean>
@@ -18,6 +18,76 @@
     </bean>
 
     <bean id="userService" class="com.utimes.study.service.UserServiceImpl">
+        <property name="mailService" ref="mailService"/>
+        <property name="mailFrom" value="support@utimesedu.com"/>
+        <property name="registerMailTopic" value="Congratulation!"/>
+        <property name="registerMailContent">
+            <value>
+                <![CDATA[
+                         <p>
+                            &nbsp;&nbsp; <a href="http://www.utimesedu.com" target="_blank"><u>U时代</u></a>国际<a href="http://www.utimesedu.com" target="_blank"><u>游学</u></a>——隶属于北京腾优时代国际教育科技有限公司（简称<a href="http://www.utimesedu.com" target="_blank"><u>U时代</u></a>国际教育），U时代国际<a href="http://www.utimesedu.com" target="_blank"><u>游学</u></a>是U时代国际教育旗下游学品牌，是国内目前最全面，最专业的游学服务机构，公司管理层由多年来一直致力于出国教育行业的资深教师团队组成，为游学的客户提供专业的游学咨询服务。</p>
+                        <p>
+                            &nbsp;&nbsp;&nbsp; U时代提供优质的电话预订及网络预订，并提供丰富的后续服务和保障。目前的游学针对国内所有城市提供预订，游学，包括美国，英国，加拿大，新加波，澳洲，<a href="http://www.utimesedu.com/youxueren/jingdianjieshao/Philippin" target="_blank"><u>菲律宾</u></a>游学等。同时基于U时代良好的资讯平台，可以帮助您了出国游学、语言培训、企业<a href="http://www.utimesedu.com/qiyefangxue/" target="_blank"><u>访学</u></a>、打工度假等游学信息，制定游学计划，并方便的预订游学过程中的服务。通过U时代你不仅可以享受的更贴心的咨询服务同时您还能享受到线路服务额外的优惠计划。同时U时代还不定期的推出团报和限时抢购的游学线路让您获得超级大的优惠，更多惊喜，尽在U时代。</p>
+                        <p>
+                            <span style="color: rgb(255,140,0)"><strong>U时代的寓意：</strong></span></p>
+                        <p>
+                            &nbsp; &nbsp; "U"是英文"You"的谐音，意在为“您”量身定制；</p>
+                        <p>
+                            &nbsp; &nbsp; "U"也是汉语“游”的谐音，意在“游”学“；</p>
+                        <p>
+                            &nbsp; &nbsp; "U"是拉丁文“Ubiquitous”的缩写，表示我们的服务“无所不在”；</p>
+                        <p>
+                            &nbsp; &nbsp; "U"更是我们自己对自己的肯定，更"优秀的”！！<br>
+                            <br>
+                            是的，你行的，你的游学无所不在！认定了的路，我们坚持，我们再学习，我们一定行的！<br>
+                            <br>
+                            <strong>U时代宗旨——让每个人可以游学世界，让世界文化相互交融！</strong><br>
+                            <strong>U时代使命——打造游学“高速公路”，开创每个人都可以游学的时代！</strong><br>
+                            <strong>U时代企业文化四大基石</strong>——<span style="font-family: verdana, geneva, sans-serif"><strong>诚挚负责、笃志求精、团结奋进、创新致远！</strong></span><br>
+                            <br>
+                            <span style="color: rgb(255,140,0)"><strong>U时代游学业务介绍：</strong></span></p>
+                        <p>
+                            1.语言学习：</p>
+                        <p>
+                            •菲律宾纯英文游学，24小时的美式英语环境，侵入式英文学习，是您未来<a href="http://www.utimesedu.com" target="_blank"><u>海外</u></a>留学、高新就业、出国移民的最佳跳板。包含亲子游学、一般英文听说ESL、IELTS、TOEFL、TESOL、TOEIC等保证课程、商务英语等课程。<br>
+                            •韩国游学，深入韩国大学学习，掌握最地道的韩语发音，是您留学、就业的最佳方式！<br>
+                            •适合对象：高中小学生、亲子、外贸商务人士、留学移民者。<br>
+                            •项目特点：依据个人需求定制游学，自由行，无需组团。</p>
+                        <p>
+                            2.冬夏令营：</p>
+                        <p>
+                            •即针对学生的美英加澳冬夏令营，建立国际友谊，结交外国朋友， 提高孩子的独立能力，培养团队合作精神，感受名校浓厚学术氛围，树立远大人生理想，探索世界各地名胜，感受异域文化熏陶，为将来顺利留学奠定基础。<br>
+                            •适合对象：高中校学生。<br>
+                            •项目特点：寒暑假组团出发。<br>
+                            3.企业访学：</p>
+                        <p>
+                            •即针对企业高层管理者和员工进行的文化交流及英语培训项目。以世界知名大学工商管理学院雄厚的师资力量为基础，将西方先进的管理理念与中国时间相结合，根据个体和组织的知识需要，提供相应的补充性知识和前瞻性知识，为企业培养超一流的高级管理人才。<br>
+                            •适合对象：企业在职人员。<br>
+                            •项目特点：依据企业需求定制游学。<br>
+                            4.打工度假：</p>
+                        <p>
+                            •需要Working Holiday Visa，即打工度假<a href="http://www.utimesedu.com/redianwenti/qianzhengwenti/Visa59.h" target="_blank"><u>签证</u></a>。打工度假游学为您提供边打工边旅行的新体验，在提升自身能力的同时也有助于您拓展国际视野。<br>
+                            •适合对象：成人。<br>
+                            •项目特点：依据个人意向限定国家，依据企业需求确定岗位。<br>
+                            5.国际小学：即针对中国教育的弊端，让孩子上国际小学，孩子既开心学习，又拓展了视野，提升了英文，一举三得！</p>
+                        <p>
+                            <br>
+                            <strong><span style="font-size: 14px"><span style="color: #ffa500">发展前景</span></span></strong></p>
+                        <p>
+                            U时代人在“诚挚负责、笃志求精、团结奋进、创新致远”核心价值观的指导下，用全部的智慧和力量，致力于开创每个人都可以游学的时代，帮助中国人以自己的视角去体验世界，让世界文化相互交融。<br>
+                            从个人成长到人生价值的绽放，U时代努力让每一个游学er都能走得更远、去共同体验这个并不完美但却让我们充满好奇的世界。每个游学er都有着自己的梦想，也许每个梦想并不相同，但相信每一个游学er都会努力向着自己的梦想进发。于是大家同行，一起享受这段满载欢乐和收获的游学之旅！<br>
+                            <br>
+	<span style="color: #ff8c00"><span style="font-size: 16px"><strong>青春没有终点，学习永无止境！</strong><br>
+	<br>
+	<b>Let's enjoy the study tour together !</b></span></span></p>
+                        <p>
+                            <br>
+                            &nbsp;</p>
+
+                ]]>
+            </value>
+        </property>
+
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 
@@ -41,5 +111,30 @@
     <!--bean id="registerService" class="com.utimes.study.service.RegisterService">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean -->
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.exmail.qq.com" />
+        <property name="port" value="465" />
+        <property name="username" value="support@utimesedu.com" />
+        <property name="password" value="tdwjqkjf#123" />
+        <property name="protocol"><value>smtp</value></property>
+
+
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtps.ssl.checkserveridentity">true</prop>
+                <prop key="mail.smtps.ssl.trust">*</prop>
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <prop key="mail.smtp.socketFactory.fallback">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="mailService" class="com.utimes.study.service.MailServiceImpl">
+        <property name="mailSender" ref="mailSender" />
+    </bean>
+
 
 </beans>

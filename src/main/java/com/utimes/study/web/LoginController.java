@@ -17,6 +17,7 @@ public class LoginController extends AbstractController {
 	protected ModelAndView handleRequestInternal(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
+
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		UserBean user;
