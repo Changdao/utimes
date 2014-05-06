@@ -10,69 +10,49 @@
 <head>
 <meta charset="utf-8" />
 <title>Utimes Register Page</title>
-<link rel="stylesheet" href="/utimes/assets/css/jquery.ui.all.css" />
+<link rel="stylesheet" href="/utimes/assets/css/jquery-ui-1.9.2.custom.css" />
 <link rel="stylesheet" href="/utimes/assets/css/utimes.css" />
 <link rel="stylesheet" href="/utimes/assets/css/ui.jqgrid.css" />
-<script src="/utimes/assets/js/jquery-1.9.1.js"></script>
+<script src="/utimes/assets/js/jquery-ui-1.9.2.custom.js"></script>
 <script src="/utimes/assets/js/jquery-ui.js"></script>
 <script src="/utimes/assets/js/jquery.jqGrid.min.js" /></script>
 <script src="/utimes/assets/js/grid.locale-cn.js" /></script>
+<script src="/utimes/assets/js/underscore.js"></script>
+<script src="/utimes/assets/js/backbone.js"></script>
+<script src="/utimes/assets/js/utimes/useredit.js"></script>
 
 
-<script type="text/javascript">
-	$(function() {
-		jQuery("#list4").jqGrid(
-				{
-					url : "users.htm?loaddata=true",
-                    datatype : "json",
-					height : 250,
-					colNames : [ '<fmt:message key="user.email"/>', '<fmt:message key="user.lastname"/>', '<fmt:message key="user.firstname"/>', 'Last Date',
-							'Register Date','<fmt:message key="user.description"/>' ],
-					colModel : [ {
-						name : 'email',
-						index : 'email',
-						width : 60
-					}, {
-						name : 'lastName',
-						index : 'lastName',
-						width : 100
-					}, {
-						name : 'firstName',
-						index : 'firstName',
-						width : 100
-					} , {
-                        name : 'lastdate',
-                        index : 'lastdate',
-                        width : 90,
-                        sorttype : "date"
-                    }, {
-                        name : 'regdate',
-                        index : 'regdate',
-                        width : 90,
-                        sorttype : "date"
-                    },
-					{
-					    name: 'description',
-					    index: 'description',
-					    width: 100
-					}],
-					autowidth:true,
-					rownum:10,
-					viewrecords: true,
-                    rowList:[10,20,30],
-                    pager: jQuery('#pager2'),
-					multiselect : false,
-					caption : "Registers List"
-				}).navGrid('#pager2',{edit:false,add:false,del:false});
-		});
-	
-
-</script>
 </head>
 <body>
 	<div id="main-container">
 		<table id="list4"></table>
 		<div id="pager2"></div>
+		<input type="BUTTON" id="new" value="<fmt:message key='user.add'/>" />
+        <input type="BUTTON" id="modify" value="<fmt:message key='user.edit'/>" />
+        <input type="BUTTON" id="password" value="<fmt:message key='user.password'/>" />
+        <input type="BUTTON" id="delete" value="<fmt:message key='user.delete'/>" />
 	</div>
+
+	 <script id="user_form_template" type="text/tempalte">
+
+               <div class="thumbnail info-thumbnail background-clouds color-text">
+                 <div class="pricing-head bordered">
+                   <div class="pricing-head-body background-white">
+                     <div class="price-wrapper color-text">
+                       <span class="price"></span><br>
+                       <span class="per">Total</span>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="special background-peter-river color-white" id="school_name"><h3>学费</h3></div>
+                 <div class="caption">
+                   <div id="items">
+
+                   </div>
+                   <p class="buttons"><a href="#" class="btn btn-primary" id="Request"><span class="fa fa-shopping-cart"></span> Request</a></p>
+                 </div>
+               </div>
+
+        </script>
 </body>
 </html>

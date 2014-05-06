@@ -115,7 +115,7 @@
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="smtp.exmail.qq.com" />
         <property name="port" value="465" />
-        <property name="username" value="support@utimesedu.com" />
+        <property name="username" value="utimes@utimesedu.com" />
         <property name="password" value="tdwjqkjf#123" />
         <property name="protocol"><value>smtp</value></property>
 
