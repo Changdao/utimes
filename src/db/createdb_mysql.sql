@@ -9,6 +9,7 @@ CREATE TABLE `user` (
   `firstname` varchar(32) DEFAULT NULL,
   `lastname` varchar(32) DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL,
+  `flag`    int default 0
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 

@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/utimes/assets/css/jquery-ui-1.9.2.custom.css" />
 <link rel="stylesheet" href="/utimes/assets/css/utimes.css" />
 <link rel="stylesheet" href="/utimes/assets/css/ui.jqgrid.css" />
-<script src="/utimes/assets/js/jquery-ui-1.9.2.custom.js"></script>
+<script src="/utimes/assets/js/jquery-ui.js"></script>
 <script src="/utimes/assets/js/jquery-ui.js"></script>
 <script src="/utimes/assets/js/jquery.jqGrid.min.js" /></script>
 <script src="/utimes/assets/js/grid.locale-cn.js" /></script>
@@ -24,16 +24,17 @@
 
 </head>
 <body>
-	<div id="main-container">
+	<div id="user-main-container">
 		<table id="list4"></table>
 		<div id="pager2"></div>
-		<input type="BUTTON" id="new" value="<fmt:message key='user.add'/>" />
-        <input type="BUTTON" id="modify" value="<fmt:message key='user.edit'/>" />
-        <input type="BUTTON" id="password" value="<fmt:message key='user.password'/>" />
-        <input type="BUTTON" id="delete" value="<fmt:message key='user.delete'/>" />
+		<input type="BUTTON" id="newUser" value="<fmt:message key='user.add'/>" />
+        <input type="BUTTON" id="modifyUser" value="<fmt:message key='user.edit'/>" />
+        <input type="BUTTON" id="passwordUser" value="<fmt:message key='user.password'/>" />
+        <input type="BUTTON" id="deleteUser" value="<fmt:message key='user.delete'/>" />
 	</div>
-
-	 <script id="user_form_template" type="text/tempalte">
+    <div id="dialog-form" title="Create new school">
+    </div>
+	 <script id="user_view_template" type="text/tempalte">
 
                <div class="thumbnail info-thumbnail background-clouds color-text">
                  <div class="pricing-head bordered">
@@ -54,5 +55,35 @@
                </div>
 
         </script>
+     <script id="user_form_template" type="text/tempalte">
+
+
+            		<p class="validateTips">All form fields are required.</p>
+
+            		<form id="school-form" action="createschool.htm">
+            			<fieldset>
+
+            				<label for="lastname">Last Name</label>
+            				<input type="text" name="lastname"
+            					id="lastname" class="text ui-widget-content ui-corner-all" value="<@- lastName @>" />
+            				<label
+            					for="firstname">First Name</label>
+            				<input type="text" name="firstname"
+            					id="firstname" value="<@- firstName @>" class="text ui-widget-content ui-corner-all" />
+            				<label for="email">Email</label>
+            				<input type="text"
+            					name="email" id="email" value="<@- email @>"
+            					class="text ui-widget-content ui-corner-all" />
+
+            				<label for="memo">Memo</label>
+                            <input type="text"
+                                name="memo" id="description" value="<@- description @>"
+                                class="text ui-widget-content ui-corner-all" />
+            			</fieldset>
+
+            			<input type="BUTTON" id="save" value="<fmt:message key='user.save'/>" />
+            		</form>
+
+     </script>
 </body>
 </html>

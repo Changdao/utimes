@@ -24,14 +24,14 @@ public class AdminLoginController {
 
         model.addAttribute("username", name);
         model.addAttribute("message", "Spring Security login + database example");
-        return "hello";
+        return "/admin/main";
 
     }
 
     @RequestMapping(value="/adminlogin", method = RequestMethod.GET)
     public String login(ModelMap model) {
 
-        return "adminlogin";
+        return "adminlogin2";
 
     }
 

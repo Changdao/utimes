@@ -29,7 +29,7 @@ public class UserController extends SimpleFormController {
 	{
 		System.out.println("-->onSubmit was called:"+command);
 		UserBean user=(UserBean)command;
-		userService.signup(user);
+		userService.signup(user,true);
         logger.debug(user);
 		return new ModelAndView(getSuccessView());
 	}

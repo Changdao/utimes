@@ -14,7 +14,7 @@ import com.utimes.study.bean.UserBean;
 
 
 public class UserServiceImpl implements UserService {
-	private static String COUNT_SQL = "SELECT COUNT(*) FROM user";
+	private static String COUNT_SQL = "SELECT COUNT(*) FROM user where flag<>-1";
 	private JdbcTemplate jdbcTemplate;
     private MailService mailService;
     private String mailFrom;
@@ -52,12 +52,13 @@ public class UserServiceImpl implements UserService {
 
 	private static String USER_SQL = "insert into user(lastname,firstname,email,memo,password) values(?,?,?,?,?)";
 
-	public void signup(UserBean user) {
+	public void signup(UserBean user,boolean sendMail) {
 
 
 		jdbcTemplate.update(USER_SQL, new Object[] {
 				user.getLastName(), user.getFirstName(),
 				user.getEmail().toString(), user.getDescription(), user.getPassword() });
+        if(sendMail)
         mailService.sendService(mailFrom,user.getEmail().toString(),registerMailTopic,registerMailContent);
 	}
 
@@ -74,16 +75,16 @@ public class UserServiceImpl implements UserService {
 			return user;
 		}
 	}
-	private static String GET_USER_SQL="select * from user limit ?,?";
+	private static String GET_USERS_SQL ="select * from user where flag<>-1 limit ?,?";
 	
 	@SuppressWarnings("unchecked")
 	public List<Object> getUsers(int pageNumber, int countPerPage) 
 	{
-		return jdbcTemplate.query(GET_USER_SQL, new Object[]{new Integer((pageNumber-1)*countPerPage),new Integer(countPerPage)},
+		return jdbcTemplate.query(GET_USERS_SQL, new Object[]{new Integer((pageNumber-1)*countPerPage),new Integer(countPerPage)},
 				new UserBeanMapper());
 		
 	}
-	private static String LOGIN_SQL="select * from user where email=? and password=?";
+	private static String LOGIN_SQL="select * from user where email=? and password=? and flag<>-1";
 	public UserBean login(String email,String password)
 	{   try
         {
@@ -100,8 +101,40 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean exists(String email) {
-        List list=jdbcTemplate.queryForList("SELECT * FROM USER WHERE EMAIL=?",new Object[]{email});
+        List list=jdbcTemplate.queryForList("SELECT * FROM USER WHERE flag<>-1 and EMAIL=?",new Object[]{email});
 
         return list!=null&&list.size()>1;
+    }
+
+    private static String USER_EDIT_SQL = "update user set firstname=?,lastname=?,email=?,memo=? where id = ?";
+
+    @Override
+    public boolean update(UserBean user) {
+        jdbcTemplate.update(USER_EDIT_SQL,new Object[]{user.getFirstName(),user.getLastName(),user.getEmail(),user.getDescription(),user.getId()});
+        return true;
+    }
+
+
+    private static String GET_USER_SQL = "select * from user where id= ?";
+
+    @Override
+    public UserBean getUser(String id) {
+        try
+        {
+            Object obj=jdbcTemplate.queryForObject(GET_USER_SQL, new Object[]{id},
+                    new UserBeanMapper());
+            //Logger.getLogger(this.getClass()).debug("UserBean is:"+obj);
+            return (UserBean)obj;
+        }
+        catch(org.springframework.dao.EmptyResultDataAccessException e)
+        {
+            return null;
+        }
+    }
+
+    @Override
+    public boolean delete(String id) {
+        jdbcTemplate.update("update user set flag=-1 where id=?",new Object[]{id});
+        return true;
     }
 }

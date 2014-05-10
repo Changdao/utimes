@@ -43,6 +43,8 @@ public class UserBean {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+    @Override
 	public String toString()
 	{
 		return super.toString()+"email:"+email+"\nfirst name:"+this.firstName+"\n lastnaem:"+this.lastName+"\n memo:"+this.description;
@@ -65,6 +67,5 @@ public class UserBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-		
-	
+
 }

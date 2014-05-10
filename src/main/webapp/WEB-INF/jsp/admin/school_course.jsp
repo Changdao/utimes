@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/utimes/assets/css/ui.jqgrid.css" />
     <link rel="stylesheet" href="/utimes/assets/css/bootstrap.css"/>
     <link rel="stylesheet" href="/utimes/assets/css/fontawesome.css"/>
-    <script src="/utimes/assets/js/jquery-ui-1.9.2.custom.js"></script>
+    <script src="/utimes/assets/js/jquery-ui.js"></script>
     <script src="/utimes/assets/js/jquery.form.js"></script>
     <script src="/utimes/assets/js/jquery.jqGrid.min.js" > </script>
     <script src="/utimes/assets/js/jquery.layout.js"></script>
